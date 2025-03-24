@@ -1,0 +1,324 @@
+{"frames": {
+
+"150px-Abaddon_icon.png":
+{
+	"frame": {"x":0,"y":0,"w":150,"h":84},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":84},
+	"sourceSize": {"w":150,"h":84}
+},
+"150px-Alchemist_icon.png":
+{
+	"frame": {"x":150,"y":0,"w":150,"h":84},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":84},
+	"sourceSize": {"w":150,"h":84}
+},
+"150px-Axe_icon.png":
+{
+	"frame": {"x":300,"y":0,"w":150,"h":84},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":84},
+	"sourceSize": {"w":150,"h":84}
+},
+"150px-Beastmaster_icon.png":
+{
+	"frame": {"x":450,"y":0,"w":150,"h":84},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":84},
+	"sourceSize": {"w":150,"h":84}
+},
+"150px-Brewmaster_icon.png":
+{
+	"frame": {"x":600,"y":0,"w":150,"h":84},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":84},
+	"sourceSize": {"w":150,"h":84}
+},
+"150px-Bristleback_icon.png":
+{
+	"frame": {"x":750,"y":0,"w":150,"h":84},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":84},
+	"sourceSize": {"w":150,"h":84}
+},
+"150px-Centaur_Warrunner_icon.png":
+{
+	"frame": {"x":0,"y":84,"w":150,"h":84},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":84},
+	"sourceSize": {"w":150,"h":84}
+},
+"150px-Chaos_Knight_icon.png":
+{
+	"frame": {"x":150,"y":84,"w":150,"h":84},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":84},
+	"sourceSize": {"w":150,"h":84}
+},
+"150px-Clockwerk_icon.png":
+{
+	"frame": {"x":300,"y":84,"w":150,"h":84},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":84},
+	"sourceSize": {"w":150,"h":84}
+},
+"150px-Doom_icon.png":
+{
+	"frame": {"x":450,"y":84,"w":150,"h":84},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":84},
+	"sourceSize": {"w":150,"h":84}
+},
+"150px-Dragon_Knight_icon.png":
+{
+	"frame": {"x":600,"y":84,"w":150,"h":84},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":84},
+	"sourceSize": {"w":150,"h":84}
+},
+"150px-Earth_Spirit_icon.png":
+{
+	"frame": {"x":750,"y":84,"w":150,"h":84},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":84},
+	"sourceSize": {"w":150,"h":84}
+},
+"150px-Earthshaker_icon.png":
+{
+	"frame": {"x":0,"y":168,"w":150,"h":84},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":84},
+	"sourceSize": {"w":150,"h":84}
+},
+"150px-Elder_Titan_icon.png":
+{
+	"frame": {"x":150,"y":168,"w":150,"h":84},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":84},
+	"sourceSize": {"w":150,"h":84}
+},
+"150px-Huskar_icon.png":
+{
+	"frame": {"x":300,"y":168,"w":150,"h":84},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":84},
+	"sourceSize": {"w":150,"h":84}
+},
+"150px-Io_icon.png":
+{
+	"frame": {"x":450,"y":168,"w":150,"h":84},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":84},
+	"sourceSize": {"w":150,"h":84}
+},
+"150px-Kunkka_icon.png":
+{
+	"frame": {"x":600,"y":168,"w":150,"h":84},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":84},
+	"sourceSize": {"w":150,"h":84}
+},
+"150px-Legion_Commander_icon.png":
+{
+	"frame": {"x":750,"y":168,"w":150,"h":84},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":84},
+	"sourceSize": {"w":150,"h":84}
+},
+"150px-Lifestealer_icon.png":
+{
+	"frame": {"x":0,"y":252,"w":150,"h":84},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":84},
+	"sourceSize": {"w":150,"h":84}
+},
+"150px-Lycan_icon.png":
+{
+	"frame": {"x":150,"y":252,"w":150,"h":84},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":84},
+	"sourceSize": {"w":150,"h":84}
+},
+"150px-Magnus_icon.png":
+{
+	"frame": {"x":300,"y":252,"w":150,"h":84},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":84},
+	"sourceSize": {"w":150,"h":84}
+},
+"150px-Mars_icon.png":
+{
+	"frame": {"x":450,"y":252,"w":150,"h":84},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":84},
+	"sourceSize": {"w":150,"h":84}
+},
+"150px-Night_Stalker_icon.png":
+{
+	"frame": {"x":600,"y":252,"w":150,"h":84},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":84},
+	"sourceSize": {"w":150,"h":84}
+},
+"150px-Omniknight_icon.png":
+{
+	"frame": {"x":750,"y":252,"w":150,"h":84},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":84},
+	"sourceSize": {"w":150,"h":84}
+},
+"150px-Phoenix_icon.png":
+{
+	"frame": {"x":0,"y":336,"w":150,"h":84},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":84},
+	"sourceSize": {"w":150,"h":84}
+},
+"150px-Pudge_icon.png":
+{
+	"frame": {"x":150,"y":336,"w":150,"h":84},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":84},
+	"sourceSize": {"w":150,"h":84}
+},
+"150px-Sand_King_icon.png":
+{
+	"frame": {"x":300,"y":336,"w":150,"h":84},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":84},
+	"sourceSize": {"w":150,"h":84}
+},
+"150px-Slardar_icon.png":
+{
+	"frame": {"x":450,"y":336,"w":150,"h":84},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":84},
+	"sourceSize": {"w":150,"h":84}
+},
+"150px-Snapfire_icon.png":
+{
+	"frame": {"x":600,"y":336,"w":150,"h":84},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":84},
+	"sourceSize": {"w":150,"h":84}
+},
+"150px-Spirit_Breaker_icon.png":
+{
+	"frame": {"x":750,"y":336,"w":150,"h":84},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":84},
+	"sourceSize": {"w":150,"h":84}
+},
+"150px-Sven_icon.png":
+{
+	"frame": {"x":0,"y":420,"w":150,"h":84},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":84},
+	"sourceSize": {"w":150,"h":84}
+},
+"150px-Tidehunter_icon.png":
+{
+	"frame": {"x":150,"y":420,"w":150,"h":84},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":84},
+	"sourceSize": {"w":150,"h":84}
+},
+"150px-Timbersaw_icon.png":
+{
+	"frame": {"x":300,"y":420,"w":150,"h":84},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":84},
+	"sourceSize": {"w":150,"h":84}
+},
+"150px-Tiny_icon.png":
+{
+	"frame": {"x":450,"y":420,"w":150,"h":84},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":84},
+	"sourceSize": {"w":150,"h":84}
+},
+"150px-Treant_Protector_icon.png":
+{
+	"frame": {"x":600,"y":420,"w":150,"h":84},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":84},
+	"sourceSize": {"w":150,"h":84}
+},
+"150px-Tusk_icon.png":
+{
+	"frame": {"x":750,"y":420,"w":150,"h":84},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":84},
+	"sourceSize": {"w":150,"h":84}
+},
+"150px-Underlord_icon.png":
+{
+	"frame": {"x":0,"y":504,"w":150,"h":84},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":84},
+	"sourceSize": {"w":150,"h":84}
+},
+"150px-Undying_icon.png":
+{
+	"frame": {"x":150,"y":504,"w":150,"h":84},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":84},
+	"sourceSize": {"w":150,"h":84}
+},
+"150px-Wraith_King_icon.png":
+{
+	"frame": {"x":300,"y":504,"w":150,"h":84},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":150,"h":84},
+	"sourceSize": {"w":150,"h":84}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "Dota_Sheet.png",
+	"format": "RGBA8888",
+	"size": {"w":900,"h":588},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:7c344afbc6dffb09c76017c2d459b40b:3143462c03fad83c1ff77cd5590cd305:dddd5883399a72b8cb2a0269663a2d0e$"
+}
+}
