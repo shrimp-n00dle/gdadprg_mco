@@ -7,7 +7,7 @@
 
 
 
-Game::Game() : mWindow(sf::VideoMode(300, 300), "Jan Vingno")
+Game::Game() : mWindow(sf::VideoMode(640, 480), "MCO Donkey Kong")
 {
     /*Framerate is set to 60*/
     mWindow.setFramerateLimit(60);
@@ -18,14 +18,11 @@ Game::Game() : mWindow(sf::VideoMode(300, 300), "Jan Vingno")
     //SFXManager::getInstance()->loadAll();
 
     //register scenes
-    //SceneManager::getInstance()->registerScene(new MainMenuScene());
-    //SceneManager::getInstance()->registerScene(new GameScene());
-    SceneManager::getInstance()->registerScene(new SpriteScene());
+    SceneManager::getInstance()->registerScene(new MainMenuScene());
+    SceneManager::getInstance()->registerScene(new GameScene());
 
     //load first scene
-    //SceneManager::getInstance()->loadScene(SceneManager::MAIN_MENU_SCENE_NAME);
-    //SceneManager::getInstance()->loadScene(SceneManager::GAME_SCENE_NAME);
-    SceneManager::getInstance()->loadScene(SceneManager::SPRITE_SCENE_NAME);
+    SceneManager::getInstance()->loadScene(SceneManager::MAIN_MENU_SCENE_NAME);
 }
 
 void Game::run()

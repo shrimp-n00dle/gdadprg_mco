@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{3da183c5-7b61-47ba-98a9-6b4ed8aeb9bc}</ProjectGuid>
+    <RootNamespace>MCO</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;SFML_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\Users\Elizabeth\Desktop\DLSU\AY 2024-2025\Term2\SFML-2.5.1\include</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>C:\Users\Elizabeth\Desktop\DLSU\AY 2024-2025\Term2\SFML-2.5.1\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>$(CoreLibraryDependencies);%(AdditionalDependencies)freetype.lib;winmm.lib;opengl32.lib;flac.lib;vorbisenc.lib;vorbisfile.lib;vorbis.lib;ogg.lib;openal32.lib;sfml-graphics-s-d.lib;sfml-audio-s-d.lib;sfml-window-s-d.lib;sfml-system-s-d.lib</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Scripts\Components\AComponent.cpp" />
+    <ClCompile Include="Scripts\Components\AirplaneSupportMovement.cpp" />
+    <ClCompile Include="Scripts\Components\BGMovement.cpp" />
+    <ClCompile Include="Scripts\Components\Collider.cpp" />
+    <ClCompile Include="Scripts\Components\EnemyBehaviour.cpp" />
+    <ClCompile Include="Scripts\Components\EnemySwarmHandler.cpp" />
+    <ClCompile Include="Scripts\Components\FrameComponents\FrameSwticher.cpp" />
+    <ClCompile Include="Scripts\Components\PlayerMovement.cpp" />
+    <ClCompile Include="Scripts\Components\ProjectileMovement.cpp" />
+    <ClCompile Include="Scripts\Game.cpp" />
+    <ClCompile Include="Scripts\GameObjects\AGameObject.cpp" />
+    <ClCompile Include="Scripts\GameObjects\AirplanePlayer.cpp" />
+    <ClCompile Include="Scripts\GameObjects\AirplaneSupport.cpp" />
+    <ClCompile Include="Scripts\GameObjects\APoolable.cpp" />
+    <ClCompile Include="Scripts\GameObjects\BGameObject.cpp" />
+    <ClCompile Include="Scripts\GameObjects\EGameObject.cpp" />
+    <ClCompile Include="Scripts\GameObjects\Entity.cpp" />
+    <ClCompile Include="Scripts\GameObjects\Frames\SpriteFrame.cpp" />
+    <ClCompile Include="Scripts\GameObjects\Playlist.cpp" />
+    <ClCompile Include="Scripts\GameObjects\Poolables\EnemyAirplane.cpp" />
+    <ClCompile Include="Scripts\GameObjects\Poolables\GameObjectPool.cpp" />
+    <ClCompile Include="Scripts\GameObjects\Poolables\ProjectileObject.cpp" />
+    <ClCompile Include="Scripts\GameObjects\Scenes\AScene.cpp" />
+    <ClCompile Include="Scripts\GameObjects\Scenes\GameScene.cpp" />
+    <ClCompile Include="Scripts\GameObjects\Scenes\MainMenuScene.cpp" />
+    <ClCompile Include="Scripts\GameObjects\Scenes\SpriteScene.cpp" />
+    <ClCompile Include="Scripts\GameObjects\Text.cpp" />
+    <ClCompile Include="Scripts\GameObjects\UI\GameScreen.cpp" />
+    <ClCompile Include="Scripts\GameObjects\UI\MainMenuScreen.cpp" />
+    <ClCompile Include="Scripts\GameObjects\UI\MenuBar.cpp" />
+    <ClCompile Include="Scripts\GameObjects\UI\QuitScreen.cpp" />
+    <ClCompile Include="Scripts\GameObjects\UI\ReturnScreen.cpp" />
+    <ClCompile Include="Scripts\GameObjects\UI\UIButton.cpp" />
+    <ClCompile Include="Scripts\GameObjects\UI\UIText.cpp" />
+    <ClCompile Include="Scripts\Inputs\BGInput.cpp" />
+    <ClCompile Include="Scripts\Inputs\FrameInput.cpp" />
+    <ClCompile Include="Scripts\Inputs\GenericInput.cpp" />
+    <ClCompile Include="Scripts\Inputs\PlayerInput.cpp" />
+    <ClCompile Include="Scripts\Inputs\UIButtonInput.cpp" />
+    <ClCompile Include="Scripts\Managers\ApplicationManager.cpp" />
+    <ClCompile Include="Scripts\Managers\FontManager.cpp" />
+    <ClCompile Include="Scripts\Managers\GameObjectManager.cpp" />
+    <ClCompile Include="Scripts\Managers\ObjectPoolHolder.cpp" />
+    <ClCompile Include="Scripts\Managers\PhysicsManager.cpp" />
+    <ClCompile Include="Scripts\Managers\SceneManager.cpp" />
+    <ClCompile Include="Scripts\Managers\SFXManager.cpp" />
+    <ClCompile Include="Scripts\Managers\TextureManager.cpp" />
+    <ClCompile Include="Scripts\Renderer\Renderer.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Scripts\Components\AComponent.hpp" />
+    <ClInclude Include="Scripts\Components\AirplaneSupportMovement.hpp" />
+    <ClInclude Include="Scripts\Components\BGMovement.hpp" />
+    <ClInclude Include="Scripts\Components\Collider.hpp" />
+    <ClInclude Include="Scripts\Components\EnemyBehaviour.hpp" />
+    <ClInclude Include="Scripts\Components\EnemySwarmHandler.hpp" />
+    <ClInclude Include="Scripts\Components\FrameComponents\FrameSwticher.hpp" />
+    <ClInclude Include="Scripts\Components\PlayerMovement.hpp" />
+    <ClInclude Include="Scripts\Components\ProjectileMovement.hpp" />
+    <ClInclude Include="Scripts\Game.hpp" />
+    <ClInclude Include="Scripts\GameObjects\AGameObject.hpp" />
+    <ClInclude Include="Scripts\GameObjects\AirplanePlayer.hpp" />
+    <ClInclude Include="Scripts\GameObjects\AirplaneSupport.hpp" />
+    <ClInclude Include="Scripts\GameObjects\APoolable.hpp" />
+    <ClInclude Include="Scripts\GameObjects\BGameObject.hpp" />
+    <ClInclude Include="Scripts\GameObjects\EGameObject.hpp" />
+    <ClInclude Include="Scripts\GameObjects\Entity.hpp" />
+    <ClInclude Include="Scripts\GameObjects\Frames\SpriteFrame.hpp" />
+    <ClInclude Include="Scripts\GameObjects\Listeners\ButtonListener.hpp" />
+    <ClInclude Include="Scripts\GameObjects\Listeners\CollisionListener.hpp" />
+    <ClInclude Include="Scripts\GameObjects\Playlist.hpp" />
+    <ClInclude Include="Scripts\GameObjects\Poolables\EnemyAirplane.hpp" />
+    <ClInclude Include="Scripts\GameObjects\Poolables\GameObjectPool.hpp" />
+    <ClInclude Include="Scripts\GameObjects\Poolables\ProjectileObject.hpp" />
+    <ClInclude Include="Scripts\GameObjects\Scenes\AScene.hpp" />
+    <ClInclude Include="Scripts\GameObjects\Scenes\GameScene.hpp" />
+    <ClInclude Include="Scripts\GameObjects\Scenes\MainMenuScene.hpp" />
+    <ClInclude Include="Scripts\GameObjects\Scenes\SpriteScene.hpp" />
+    <ClInclude Include="Scripts\GameObjects\Text.hpp" />
+    <ClInclude Include="Scripts\GameObjects\UI\GameScreen.hpp" />
+    <ClInclude Include="Scripts\GameObjects\UI\MainMenuScreen.hpp" />
+    <ClInclude Include="Scripts\GameObjects\UI\MenuBar.hpp" />
+    <ClInclude Include="Scripts\GameObjects\UI\QuitScreen.hpp" />
+    <ClInclude Include="Scripts\GameObjects\UI\ReturnScreen.hpp" />
+    <ClInclude Include="Scripts\GameObjects\UI\UIButton.hpp" />
+    <ClInclude Include="Scripts\GameObjects\UI\UIText.hpp" />
+    <ClInclude Include="Scripts\Inputs\BGInput.hpp" />
+    <ClInclude Include="Scripts\Inputs\FrameInput.hpp" />
+    <ClInclude Include="Scripts\Inputs\GenericInput.hpp" />
+    <ClInclude Include="Scripts\Inputs\PlayerInput.hpp" />
+    <ClInclude Include="Scripts\Inputs\UIButtonInput.hpp" />
+    <ClInclude Include="Scripts\Managers\ApplicationManager.hpp" />
+    <ClInclude Include="Scripts\Managers\FontManager.hpp" />
+    <ClInclude Include="Scripts\Managers\GameObjectManager.hpp" />
+    <ClInclude Include="Scripts\Managers\ObjectPoolHolder.hpp" />
+    <ClInclude Include="Scripts\Managers\PhysicsManager.hpp" />
+    <ClInclude Include="Scripts\Managers\SceneManager.hpp" />
+    <ClInclude Include="Scripts\Managers\SFXManager.hpp" />
+    <ClInclude Include="Scripts\Managers\TextureManager.hpp" />
+    <ClInclude Include="Scripts\Renderer\Renderer.hpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
