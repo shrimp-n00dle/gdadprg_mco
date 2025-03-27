@@ -8,7 +8,7 @@ AirplanePlayer::AirplanePlayer(std::string name) : AGameObject(name) , Collision
 void AirplanePlayer::initialize()
 {
 	this->sprite = new sf::Sprite();
-	this->sprite->setTexture(*TextureManager::getInstance()->getTexture("eagle"));
+	this->sprite->setTexture(*TextureManager::getInstance()->getTexture("player"));
 	sf::Vector2u textureSize = sprite->getTexture()->getSize();
 	this->sprite->setOrigin(textureSize.x / 2.0f, textureSize.y / 2.0f);
 	this->transformable.setPosition(640.0f/2,480.0f/2);
@@ -75,6 +75,7 @@ bool AirplanePlayer::hasFired() { return this->fire; }
 
 void AirplanePlayer::onCollisionEnter(AGameObject* object)
 {
+	std::cout << "Airplane Collision" << std::endl;
 	if (object->getName().find("enemy") != std::string::npos)
 	{
 		std::cout << "AIRPLANe pLAter: Collided with " << object->getName() << "\n";

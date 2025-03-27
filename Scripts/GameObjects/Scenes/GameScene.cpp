@@ -25,6 +25,15 @@ void GameScene::onLoadObjects()
     support2->setChildPosition(-50, 100);
     //PhysicsManager::getInstance()->initialize("supportPhysics2", support2);
 
+    //Ladder* ladder = new Ladder("ladder");
+    //PhysicsManager::getInstance()->initialize("LadderPhysics", ladder);
+    //this->registerObject(ladder);
+
+    //Player* player = new Player("player");
+    //PhysicsManager::getInstance()->initialize("PlayerPhysics", player);
+    //this->registerObject(player);
+
+
     srand(time(nullptr));
     EGameObject* enemiesManager = new EGameObject("EnemiesManager");
     EnemySwarmHandler* swarmHandler = new EnemySwarmHandler(10, "SwarmHandler", enemiesManager);

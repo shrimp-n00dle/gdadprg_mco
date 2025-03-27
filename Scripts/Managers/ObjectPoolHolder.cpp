@@ -4,6 +4,10 @@ const std::string ObjectPoolHolder::ENEMY_POOL_TAG = "EnemyPool";
 
 const std::string ObjectPoolHolder::PROJECTILE_POOL_TAG = "ProjectilePool";
 
+const std::string ObjectPoolHolder::LADDER_POOL_TAG = "LadderPool";
+
+const std::string ObjectPoolHolder::HAMMER_POOL_TAG = "HammerPool";
+
 ObjectPoolHolder* ObjectPoolHolder::sharedInstance = nullptr;
 
 ObjectPoolHolder* ObjectPoolHolder::getInstance()

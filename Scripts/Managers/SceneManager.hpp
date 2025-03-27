@@ -12,6 +12,7 @@ public:
 	static std::string MAIN_MENU_SCENE_NAME;
 	static std::string GAME_SCENE_NAME;
 	static std::string SPRITE_SCENE_NAME;
+	static std::string MCOGAME_SCENE_NAME;
 
 	static SceneManager* getInstance();
 	void registerScene(AScene* scene);

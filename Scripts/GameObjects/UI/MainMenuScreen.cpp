@@ -56,7 +56,7 @@ void MainMenuScreen::onButtonClick(UIButton* button)
 	if (button->getName() == "button_1")
 	{
 		
-		SceneManager::getInstance()->loadScene(SceneManager::GAME_SCENE_NAME);
+		SceneManager::getInstance()->loadScene(SceneManager::MCOGAME_SCENE_NAME);
 		ApplicationManager::getInstance()->resumeApplication();
 	}
 

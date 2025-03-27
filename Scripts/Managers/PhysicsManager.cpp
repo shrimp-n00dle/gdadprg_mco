@@ -4,6 +4,7 @@ PhysicsManager* PhysicsManager::sharedInstance = nullptr;
 
 void PhysicsManager::initialize(std::string name, AGameObject* parent)
 {
+	std::cout << name << "initialized!" << std::endl;
 	sharedInstance = new PhysicsManager(name);
 	parent->attachComponent(sharedInstance);
 }

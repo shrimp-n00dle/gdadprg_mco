@@ -46,6 +46,7 @@ void Collider::setLocalBounds(sf::FloatRect localBounds)
 
 void Collider::collisionEnter(AGameObject* gameObjects)
 {
+	//std::cout << "collisionEnter" << std::endl;
 	if (this->listener != nullptr)
 	{
 		this->listener->onCollisionEnter(gameObjects);

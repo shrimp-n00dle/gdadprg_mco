@@ -32,6 +32,10 @@ void TextureManager::loadAll()
    }
    */
 
+    storeTexture("player", "Assets/Bed/bed0000.png");
+    storeTexture("ladder", "Assets/MCOAssets/ladder.jpg");
+    storeTexture("hammer", "Assets/MCOAssets/hammer.jpg");
+
     /*OBJECTS*/
     storeTexture("avenger", "Assets/Objects/Avenger.png");
 

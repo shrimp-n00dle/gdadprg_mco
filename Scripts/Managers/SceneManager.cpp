@@ -3,6 +3,7 @@
 std::string SceneManager::MAIN_MENU_SCENE_NAME = "MainMenuScene";
 std::string SceneManager::GAME_SCENE_NAME = "GameScene";
 std::string SceneManager::SPRITE_SCENE_NAME = "SpriteScene";
+std::string SceneManager::MCOGAME_SCENE_NAME = "JanScene";
 
 SceneManager* SceneManager::sharedInstance = nullptr;
 

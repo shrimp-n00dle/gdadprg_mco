@@ -19,7 +19,8 @@ Game::Game() : mWindow(sf::VideoMode(640, 480), "MCO Donkey Kong")
 
     //register scenes
     SceneManager::getInstance()->registerScene(new MainMenuScene());
-    SceneManager::getInstance()->registerScene(new GameScene());
+    //SceneManager::getInstance()->registerScene(new GameScene());
+    SceneManager::getInstance()->registerScene(new JScene());
 
     //load first scene
     SceneManager::getInstance()->loadScene(SceneManager::MAIN_MENU_SCENE_NAME);

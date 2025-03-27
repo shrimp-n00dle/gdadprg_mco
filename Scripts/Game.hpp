@@ -8,6 +8,7 @@
 #include "Components/Collider.hpp"
 #include "Components/EnemyBehaviour.hpp"
 #include "Components/EnemySwarmHandler.hpp"
+#include "Components/MCOPlayerMovement.hpp"
 #include "Components/PlayerMovement.hpp"
 #include "Components/ProjectileMovement.hpp"
 
@@ -20,6 +21,7 @@
 
 #include "GameObjects/Scenes/AScene.hpp"
 #include "GameObjects/Scenes/GameScene.hpp"
+#include "GameObjects/Scenes/JScene.hpp"
 #include "GameObjects/Scenes/MainMenuScene.hpp"
 #include "GameObjects/Scenes/SpriteScene.hpp"
 
@@ -38,6 +40,7 @@
 #include "GameObjects/BGameObject.hpp"
 #include "GameObjects/EGameObject.hpp"
 #include "GameObjects/Entity.hpp"
+#include "GameObjects/Player.hpp"
 #include "GameObjects/Playlist.hpp"
 #include "GameObjects/Text.hpp"
 
