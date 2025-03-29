@@ -3,6 +3,10 @@
 
 ApplicationManager* ApplicationManager::sharedInstance = nullptr;
 
+void ApplicationManager::initialize(sf::RenderWindow* window)
+{
+}
+
 ApplicationManager* ApplicationManager::getInstance()
 {
 	if (sharedInstance == nullptr)

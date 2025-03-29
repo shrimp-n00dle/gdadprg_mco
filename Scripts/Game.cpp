@@ -5,9 +5,7 @@
 
 #define PI 3.14159
 
-
-
-Game::Game() : mWindow(sf::VideoMode(640, 480), "MCO Donkey Kong")
+Game::Game() : mWindow(sf::VideoMode(768, 672), "MCO Donkey Kong")
 {
     /*Framerate is set to 60*/
     mWindow.setFramerateLimit(60);
@@ -71,8 +69,6 @@ void Game::processEvents()
 
 void Game::update(sf::Time deltaTime)
 {
-  
-
     if (!ApplicationManager::getInstance()->isPaused())
     {
         GameObjectManager::getInstance()->update(deltaTime);
