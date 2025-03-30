@@ -47,9 +47,9 @@ void Hammer::initialize()
 	renderer->assignDrawable(sprite);
 	attachComponent(renderer);
 
-	/*EnemyBehaviour* behaviour = new EnemyBehaviour("EnemyBehaviour");
-	attachComponent(behaviour);
-	behaviour->configure(1.0f);*/
+	//HammerBehaviour* behaviour = new HammerBehaviour("HammerBehaviour");
+	//attachComponent(behaviour);
+	//behaviour->configure(1.0f);
 
 	this->collider = new Collider("HammerCollider");
 	this->collider->setLocalBounds(sprite->getGlobalBounds());

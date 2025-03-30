@@ -1,18 +1,18 @@
-#include "FrameSwticher.hpp"
+#include "WalkBehaviour.hpp"
 
-FrameSwitcher::FrameSwitcher(std::string name) : AComponent(name, Script) 
+WalkBehaviour::WalkBehaviour(std::string name) : AComponent(name, Script)
 {
 	initializeSprites();
 }
 
-void FrameSwitcher::perform()
+void WalkBehaviour::perform()
 {
-	SpriteFrame* frameObj = (SpriteFrame*)this->getOwner();
-	FrameInput* frameInputController = (FrameInput*)(frameObj->getComponentsOfType(ComponentType::Input)[0]);
+	Player* frameObj = (Player*)this->getOwner();
+	MCOPlayerInput* frameInputController = (MCOPlayerInput*)(frameObj->getComponentsOfType(ComponentType::Input)[0]);
 	sf::Transformable* frameTransformable = frameObj->getTransformable();
 
 	/*Checkers*/
-	if (frameTransformable == nullptr ) std::cout << "frameTransformable not found" << std::endl;
+	if (frameTransformable == nullptr) std::cout << "frameTransformable not found" << std::endl;
 	if (frameInputController == nullptr)  std::cout << "frameInputController not found" << std::endl;
 
 
@@ -27,6 +27,17 @@ void FrameSwitcher::perform()
 		frameInputController->setRight(false);
 	}
 
+	if (frameInputController->isUp())
+	{
+		counter++;
+	
+	}
+	else if (frameInputController->isDown())
+	{
+		counter--;
+		
+	}
+
 	/*if its a negative number, or is beyond 38 go to the beginning of the list and set coutner to 0 or 38*/
 	if (counter > 2) counter = 0;
 	else if (counter < 0) counter = 2;
@@ -36,13 +47,12 @@ void FrameSwitcher::perform()
 	/*Sprite Rendering*/
 	currSprite = sf::IntRect(coord[0], coord[1], coord[2], coord[3]);
 	frameObj->frameSprite->setTextureRect(currSprite);
-	frameObj->frameSprite->setOrigin(currSprite.width / 2, currSprite.height / 2);
+	frameObj->frameSprite->setOrigin(currSprite.width / 2.0f, currSprite.height / 2.0f);
 }
 
-void FrameSwitcher::initializeSprites()
+void WalkBehaviour::initializeSprites()
 {
 	//1. Parse a JSON file
-	//FILE* file = fopen("Assets/SpriteSheets/Dota_Sheet.json", "rb");
 	FILE* file = fopen("Assets/MCOAssets/SpriteSheet/Walk/Walk.json", "rb");
 
 	//2. Check if we opened succesfully
@@ -82,12 +92,12 @@ void FrameSwitcher::initializeSprites()
 
 	}
 
-	//{"x":0, "y" : 0, "w" : 150, "h" : 84},
-	//coord = { 0,0,150,84 };
+	//{"x":40,"y":0,"w":17,"h":24
+	coord = { 40,0,17,24};
 	//currSprite = sf::IntRect(0, 0, 150, 84);
 }
 
-std::vector<int> FrameSwitcher::traverseList(int counter)
+std::vector<int> WalkBehaviour::traverseList(int counter)
 {
 	auto i = spriteList.find(counter)->second;
 	return i;

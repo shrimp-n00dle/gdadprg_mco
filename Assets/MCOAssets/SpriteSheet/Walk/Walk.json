@@ -1,0 +1,36 @@
+{"frames": {
+
+"Walk0.png":
+{
+	"frame": {"x":0,"y":0,"w":17,"h":24},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":17,"h":24},
+	"sourceSize": {"w":17,"h":24}
+},
+"Walk1.png":
+{
+	"frame": {"x":17,"y":0,"w":17,"h":24},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":17,"h":24},
+	"sourceSize": {"w":17,"h":24}
+},
+"Walk2.png":
+{
+	"frame": {"x":34,"y":0,"w":17,"h":24},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":17,"h":24},
+	"sourceSize": {"w":17,"h":24}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "Walk.png",
+	"format": "RGBA8888",
+	"size": {"w":51,"h":24},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:52cafdb5d47228586ba9dcde8fe0e3eb:ec9d158297cd51ca297a68aa29f253e6:83b1df132d1cd786478522f43ab888dd$"
+}
+}

@@ -5,6 +5,8 @@
 #include "../../Managers/GameObjectManager.hpp"
 #include "../../Inputs/FrameInput.hpp"
 #include "../../Components/FrameComponents/FrameSwticher.hpp"
+#include "../../Components/MCOPlayerMovement.hpp"
+#include "../../Inputs/MCOPlayerInput.hpp"
 
 
 class SpriteFrame : public AGameObject

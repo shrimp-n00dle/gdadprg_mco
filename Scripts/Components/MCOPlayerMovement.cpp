@@ -12,7 +12,7 @@ void MCOPlayerMovement::perform()
 	MCOPlayerInput* inputController = (MCOPlayerInput*)(player->getComponentsOfType(ComponentType::Input)[0]);
 	sf::Transformable* playerTransformable = player->getTransformable();
 
-	if (playerTransformable == nullptr || inputController == nullptr)
+	if (playerTransformable == nullptr )//|| inputController == nullptr)
 	{
 		std::cout << "playerTransformable not found" << std::endl;
 	}
@@ -23,13 +23,13 @@ void MCOPlayerMovement::perform()
 
 	if (player->bLadder)
 	{
-		if (player->isUp())
+		if (inputController->isUp())
 		{
 			offset.y -= SPEED_MULTIPLIER;
 			playerTransformable->move(offset * deltaTime.asSeconds());
 		}
 
-		else if (player->isDown())
+		else if (inputController->isDown())
 		{
 			offset.y += SPEED_MULTIPLIER;
 			playerTransformable->move(offset * deltaTime.asSeconds());
@@ -37,17 +37,20 @@ void MCOPlayerMovement::perform()
 
 	}
 
-		if (player->isRight())
+		if (inputController->isRight())
 		{
 			offset.x += SPEED_MULTIPLIER;
+			player->frameSprite->setScale(-2.0f, 2.0f);
 			playerTransformable->move(offset * deltaTime.asSeconds());
 		}
 
-		else if (player->isLeft())
+		else if (inputController->isLeft())
 		{
 			offset.x -= SPEED_MULTIPLIER;
+			player->frameSprite->setScale(2.0f, 2.0f);
 			playerTransformable->move(offset * deltaTime.asSeconds());
 		}
 
+	player->getCollider()->setLocalBounds(player->frameSprite->getGlobalBounds());
 	}
 

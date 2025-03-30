@@ -1,30 +1,29 @@
-#include "FrameSwticher.hpp"
+#include "LadderBehaviour.hpp"
 
-FrameSwitcher::FrameSwitcher(std::string name) : AComponent(name, Script) 
+LadderBehaviour::LadderBehaviour(std::string name) : AComponent(name, Script)
 {
 	initializeSprites();
 }
 
-void FrameSwitcher::perform()
+void LadderBehaviour::perform()
 {
-	SpriteFrame* frameObj = (SpriteFrame*)this->getOwner();
-	FrameInput* frameInputController = (FrameInput*)(frameObj->getComponentsOfType(ComponentType::Input)[0]);
+	Player* frameObj = (Player*)this->getOwner();
+	MCOPlayerInput* frameInputController = (MCOPlayerInput*)(frameObj->getComponentsOfType(ComponentType::Input)[0]);
 	sf::Transformable* frameTransformable = frameObj->getTransformable();
 
 	/*Checkers*/
-	if (frameTransformable == nullptr ) std::cout << "frameTransformable not found" << std::endl;
+	if (frameTransformable == nullptr) std::cout << "frameTransformable not found" << std::endl;
 	if (frameInputController == nullptr)  std::cout << "frameInputController not found" << std::endl;
 
 
-	if (frameInputController->isLeft())
+	if (frameInputController->isDown())
 	{
 		counter--;
-		frameInputController->setLeft(false);
+		
 	}
-	else if (frameInputController->isRight())
+	else if (frameInputController->isUp())
 	{
 		counter++;
-		frameInputController->setRight(false);
 	}
 
 	/*if its a negative number, or is beyond 38 go to the beginning of the list and set coutner to 0 or 38*/
@@ -36,14 +35,13 @@ void FrameSwitcher::perform()
 	/*Sprite Rendering*/
 	currSprite = sf::IntRect(coord[0], coord[1], coord[2], coord[3]);
 	frameObj->frameSprite->setTextureRect(currSprite);
-	frameObj->frameSprite->setOrigin(currSprite.width / 2, currSprite.height / 2);
+	frameObj->frameSprite->setOrigin(currSprite.width / 2.0f, currSprite.height / 2.0f);
 }
 
-void FrameSwitcher::initializeSprites()
+void LadderBehaviour::initializeSprites()
 {
 	//1. Parse a JSON file
-	//FILE* file = fopen("Assets/SpriteSheets/Dota_Sheet.json", "rb");
-	FILE* file = fopen("Assets/MCOAssets/SpriteSheet/Walk/Walk.json", "rb");
+	FILE* file = fopen("Assets/MCOAssets/SpriteSheet/Climb/Climb.json", "rb");
 
 	//2. Check if we opened succesfully
 	assert(file != 0);
@@ -82,12 +80,12 @@ void FrameSwitcher::initializeSprites()
 
 	}
 
-	//{"x":0, "y" : 0, "w" : 150, "h" : 84},
-	//coord = { 0,0,150,84 };
+	// {"x":0,"y":0,"w":19,"h":20},
+	coord = { 0,0,19,20};
 	//currSprite = sf::IntRect(0, 0, 150, 84);
 }
 
-std::vector<int> FrameSwitcher::traverseList(int counter)
+std::vector<int> LadderBehaviour::traverseList(int counter)
 {
 	auto i = spriteList.find(counter)->second;
 	return i;

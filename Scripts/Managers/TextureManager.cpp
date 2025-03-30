@@ -31,9 +31,9 @@ void TextureManager::loadAll()
        loadTexture("coin_" + str_i, "Assets/Coin/coin000" + str_i + ".png");
    }
    */
-
-    storeTexture("player", "Assets/Bed/bed0000.png");
-    storeTexture("ladder", "Assets/MCOAssets/ladder.jpg");
+    // "Assets/Bed/bed0000.png"
+    storeTexture("player", "Assets/MCOAssets/beam.png");
+    storeTexture("ladder", "Assets/MCOAssets/ladder.png");
     storeTexture("hammer", "Assets/MCOAssets/hammer.jpg");
 
     /*OBJECTS*/
@@ -60,7 +60,8 @@ void TextureManager::loadAll()
 
     /*SPRITE FRAMES*/
     storeTexture("sprite_sheet", "Assets/SpriteSheets/Dota_Sheet.png");
-
+    storeTexture("walk_sheet", "Assets/MCOAssets/SpriteSheet/Walk/Walk.png");
+    storeTexture("climb_sheet", "Assets/MCOAssets/SpriteSheet/Climb/Climb.png");
 
 
    

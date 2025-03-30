@@ -7,15 +7,18 @@ Player::Player(std::string name) : AGameObject(name), CollisionListener()
 
 void Player::initialize()
 {
-	this->sprite = new sf::Sprite();
-	this->sprite->setTexture(*TextureManager::getInstance()->getTexture("player"));
-	sf::Vector2u textureSize = sprite->getTexture()->getSize();
-	this->sprite->setOrigin(textureSize.x / 2.0f, textureSize.y / 2.0f);
-	this->transformable.setPosition(640.0f / 2, 480.0f / 2);
+	frameSprite = new sf::Sprite();
+	frameSprite->setTexture(*TextureManager::getInstance()->getTexture("walk_sheet"));
+	sf::Vector2u textureSize = frameSprite->getTexture()->getSize();
+	//this->sprite->setOrigin(textureSize.x / 2.0f, textureSize.y / 2.0f);
+	//this->transformable.setPosition(400.0f,80.0f);
+	frameSprite->setScale(2.0f, 2.0f);
 
 	Renderer* renderer = new Renderer("MCOPlayerSprite");
-	renderer->assignDrawable(this->sprite);
+	renderer->assignDrawable(frameSprite);
 	attachComponent(renderer);
+
+	setChildPosition(400.0f, 60.0f);
 
 	MCOPlayerInput* inputController = new MCOPlayerInput("MCOPlayerInput");
 	this->attachComponent(inputController);
@@ -23,71 +26,54 @@ void Player::initialize()
 	MCOPlayerMovement* movement = new MCOPlayerMovement("MCOMovement");
 	this->attachComponent(movement);
 
+	WalkBehaviour* walkBehaviour = new WalkBehaviour("WalkBehaviour");
+	this->attachComponent(walkBehaviour);
+
 	/*Add colliders*/
 	this->collider = new Collider("PlayerCollider");
-	this->collider->setLocalBounds(sprite->getGlobalBounds());
+	this->collider->setLocalBounds(frameSprite->getGlobalBounds());
 	this->collider->setCollisionListener(this);
 	this->attachComponent(this->collider);
 
 	PhysicsManager::getInstance()->trackObject(this->collider);
 }
 
-
-void Player::processInput(sf::Event event)
+void Player::processInput(sf::Event event) 
 {
-	if (event.type == sf::Event::KeyPressed)
-	{
-		keyFlag = true;
-	}
-	else if (event.type == sf::Event::KeyReleased)
-	{
-		keyFlag = false;
-	}
-
-	switch (event.key.code)
-	{
-	case sf::Keyboard::W:
-		moveUp = keyFlag;
-		break;
-	case sf::Keyboard::A:
-		moveLeft = keyFlag;
-		break;
-	case sf::Keyboard::S:
-		moveDown = keyFlag;
-		break;
-	case sf::Keyboard::D:
-		moveRight = keyFlag;
-		break;
-	}
+	AGameObject::processInput(event);
 }
 
 void Player::update() {}
 
-bool Player::isUp() { return moveUp; }
-bool Player::isDown() { return moveDown; }
-bool Player::isLeft() { return moveLeft; }
-bool Player::isRight() { return moveRight; }
-
 void Player::onCollisionEnter(AGameObject* object)
 {
 	std::cout << "Player Collision" << std::endl;
+
 	/*Eliminate player*/
 	//if (object->getName().find("barrel") != std::string::npos)
 	//{
 		//std::cout << "Player: Collided with " << object->getName() << "\n";
 		//return;
 	//}
-
+	
+	/*Attacked by fireballs*/
 	//if (object->getName().find("enemy") != std::string::npos)
 	//{
 		//std::cout << "Player: Collided with " << object->getName() << "\n";
 		//return;
 	//}
 
+	std::cout << object->getName() << std::endl;
+
 	/*Ladder collision with player*/
 	if (object->getName().find("ladder") != std::string::npos)
 	{
 		std::cout << "Player: Collided with " << object->getName() << "\n";
+		/*Ladder Behaviour initialized the sprite*/
+		if (!bLadder)
+		{
+			changeSpriteState("climb_sheet");
+		}
 		bLadder = true;
 		return;
 	}
@@ -105,6 +91,30 @@ void Player::onCollisionEnter(AGameObject* object)
 
 void Player::onCollisionExit(AGameObject* object)
 {
+	std::cout << "Collision Exit" << std::endl;
+	if (bLadder) changeSpriteState("walk_sheet");
 	bLadder = false;
+	
+}
+
+void Player::changeSpriteState(std::string textureName)
+{
+
+	/*Reassign the sprite*/
+	frameSprite->setTexture(*TextureManager::getInstance()->getTexture(textureName));
+	sf::Vector2u textureSize = frameSprite->getTexture()->getSize();
+	frameSprite->setScale(2.0f, 2.0f);
+
+	Renderer* renderer = new Renderer("MCOPlayerSprite");
+	renderer->assignDrawable(frameSprite);
+	attachComponent(renderer);
+
+	/*Rewrite collider*/
+	this->collider->setLocalBounds(frameSprite->getGlobalBounds());
+}
+
+Collider* Player::getCollider()
+{
+	return this->collider;
 }
 

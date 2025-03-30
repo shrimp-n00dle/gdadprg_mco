@@ -17,8 +17,12 @@ void Ladder::onRelease()
 
 void Ladder::onActivate()
 {
+
 	//EnemyBehaviour* behaviour = (EnemyBehaviour*)findComponentByName("EnemyBehaviour");
 	//behaviour->reset();
+
+	//LadderBehaviour* ladderBehaviour = new LadderBehaviour("LadderBehaviour");
+	//this->attachComponent(ladderBehaviour);
 
 	PhysicsManager::getInstance()->trackObject(this->collider);
 
@@ -37,7 +41,6 @@ void Ladder::initialize()
 	sprite = new sf::Sprite();
 	sprite->setTexture(*TextureManager::getInstance()->getTexture("ladder"));
 	sf::Vector2u textureSize = sprite->getTexture()->getSize();
-	sprite->setScale(0.2f, 0.3f);
 	sprite->setOrigin(textureSize.x / 2, textureSize.y / 2);
 
 	setChildPosition(640 / 2, -30);
@@ -59,7 +62,7 @@ void Ladder::initialize()
 
 void Ladder::onCollisionEnter(AGameObject* object)
 {
-	//std::cout << "Ladder collision" << std::endl;
+	std::cout << "Ladder collision" << std::endl;
 	if (object->getName().find("player") != std::string::npos)
 	{
 		std::cout << "Ladder: collided with " << object->getName() << std::endl;
