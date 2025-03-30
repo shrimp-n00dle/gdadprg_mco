@@ -15,6 +15,7 @@ void WalkBehaviour::perform()
 	if (frameTransformable == nullptr) std::cout << "frameTransformable not found" << std::endl;
 	if (frameInputController == nullptr)  std::cout << "frameInputController not found" << std::endl;
 
+	/*If it is a */
 
 	if (frameInputController->isLeft())
 	{

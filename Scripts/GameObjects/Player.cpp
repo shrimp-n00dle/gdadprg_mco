@@ -29,6 +29,9 @@ void Player::initialize()
 	WalkBehaviour* walkBehaviour = new WalkBehaviour("WalkBehaviour");
 	this->attachComponent(walkBehaviour);
 
+	HammerBehaviour* hammerBehaviour = new HammerBehaviour("HammerBehaviour");
+	this->attachComponent(hammerBehaviour);
+
 	/*Add colliders*/
 	this->collider = new Collider("PlayerCollider");
 	this->collider->setLocalBounds(frameSprite->getGlobalBounds());
@@ -47,8 +50,6 @@ void Player::update() {}
 
 void Player::onCollisionEnter(AGameObject* object)
 {
-	std::cout << "Player Collision" << std::endl;
-
 	/*Eliminate player*/
 	//if (object->getName().find("barrel") != std::string::npos)
 	//{
@@ -56,17 +57,18 @@ void Player::onCollisionEnter(AGameObject* object)
 		//return;
 	//}
 	
-	/*Attacked by fireballs*/
-	//if (object->getName().find("enemy") != std::string::npos)
-	//{
-		//std::cout << "Player: Collided with " << object->getName() << "\n";
-		//return;
-	//}
+	/*Attacked by fireballs and no hammer*/
+	if (object->getName().find("enemy") != std::string::npos && !bHammer)
+	{
+		std::cout << "Player: Collided with " << object->getName() << "\n";
+		//changeSpriteState("hit_sheet");
+		return;
+	}
 
 	std::cout << object->getName() << std::endl;
 
 	/*Ladder collision with player*/
-	if (object->getName().find("ladder") != std::string::npos)
+	if (object->getName().find("ladder") != std::string::npos && !bHammer)
 	{
 		std::cout << "Player: Collided with " << object->getName() << "\n";
 		/*Ladder Behaviour initialized the sprite*/
@@ -82,23 +84,27 @@ void Player::onCollisionEnter(AGameObject* object)
 	if (object->getName().find("hammer") != std::string::npos)
 	{
 		std::cout << "Player: Collided with " << object->getName() << "\n";
-		this->attachChild(object);
+
+		/*Switch the frame to hammer mode*/
+		//changeSpriteState("hammer_sheet");
 		return;
 	}
-
-
 }
 
 void Player::onCollisionExit(AGameObject* object)
 {
-	std::cout << "Collision Exit" << std::endl;
 	if (bLadder) changeSpriteState("walk_sheet");
 	bLadder = false;
-	
 }
 
 void Player::changeSpriteState(std::string textureName)
 {
+	/*Change to hammer_sheet after testing*/
+	if (textureName == "hammer_sheet")
+	{
+		/*Player will not change sprite while hammer mode is still engaged*/
+		bHammer = true;
+	}
 
 	/*Reassign the sprite*/
 	frameSprite->setTexture(*TextureManager::getInstance()->getTexture(textureName));
@@ -109,7 +115,7 @@ void Player::changeSpriteState(std::string textureName)
 	renderer->assignDrawable(frameSprite);
 	attachComponent(renderer);
 
-	/*Rewrite collider*/
+	/*Reassign collider*/
 	this->collider->setLocalBounds(frameSprite->getGlobalBounds());
 }
 

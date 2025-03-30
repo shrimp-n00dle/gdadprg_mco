@@ -50,10 +50,6 @@ void Ladder::initialize()
 	renderer->assignDrawable(sprite);
 	attachComponent(renderer);
 
-	/*EnemyBehaviour* behaviour = new EnemyBehaviour("EnemyBehaviour");
-	attachComponent(behaviour);
-	behaviour->configure(1.0f);*/
-
 	this->collider = new Collider("LadderCollider");
 	this->collider->setLocalBounds(sprite->getGlobalBounds());
 	this->collider->setCollisionListener(this);
@@ -62,7 +58,6 @@ void Ladder::initialize()
 
 void Ladder::onCollisionEnter(AGameObject* object)
 {
-	std::cout << "Ladder collision" << std::endl;
 	if (object->getName().find("player") != std::string::npos)
 	{
 		std::cout << "Ladder: collided with " << object->getName() << std::endl;

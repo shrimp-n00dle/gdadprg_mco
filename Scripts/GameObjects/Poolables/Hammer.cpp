@@ -1,8 +1,6 @@
 #include "Hammer.hpp"
 
-Hammer::Hammer(std::string name) : APoolable(name), CollisionListener()
-{
-};
+Hammer::Hammer(std::string name) : APoolable(name), CollisionListener() {};
 
 Hammer::~Hammer()
 {
@@ -17,12 +15,10 @@ void Hammer::onRelease()
 
 void Hammer::onActivate()
 {
-	//EnemyBehaviour* behaviour = (EnemyBehaviour*)findComponentByName("EnemyBehaviour");
-	//behaviour->reset();
-
 	PhysicsManager::getInstance()->trackObject(this->collider);
 
-	setChildPosition(Game::WINDOW_WIDTH / 2, 0);
+	//Game::WINDOW_WIDTH 
+	setChildPosition(640/ 2, 0);
 	getTransformable()->move(rand() % SPAWN_RANGE - rand() % SPAWN_RANGE, 50);
 }
 
@@ -37,18 +33,18 @@ void Hammer::initialize()
 	sprite = new sf::Sprite();
 	sprite->setTexture(*TextureManager::getInstance()->getTexture("hammer"));
 	sf::Vector2u textureSize = sprite->getTexture()->getSize();
-	sprite->setScale(0.5f, 0.5f);
+	sprite->setScale(0.1f, 0.1f);
 	sprite->setOrigin(textureSize.x / 2, textureSize.y / 2);
 
-	setChildPosition(640 / 2, -30);
+	setChildPosition(10, -30);
 	getTransformable()->move(rand() % SPAWN_RANGE - rand() % SPAWN_RANGE, 0);
 
 	Renderer* renderer = new Renderer("HammerSprite");
 	renderer->assignDrawable(sprite);
 	attachComponent(renderer);
 
-	//HammerBehaviour* behaviour = new HammerBehaviour("HammerBehaviour");
-	//attachComponent(behaviour);
+	//HammerBehaviour* hammerBehaviour = new HammerBehaviour("HammerBehaviour");
+	//attachComponent(hammerBehaviour);
 	//behaviour->configure(1.0f);
 
 	this->collider = new Collider("HammerCollider");
@@ -59,17 +55,15 @@ void Hammer::initialize()
 
 void Hammer::onCollisionEnter(AGameObject* object)
 {
-	//std::cout << "Hammer collision" << std::endl;
 	if (object->getName().find("player") != std::string::npos)
 	{
 		std::cout << "Hammer: collided with " << object->getName() << std::endl;
+
+		/*Delete hammer clone*/
+		GameObjectPool* hammerPool = ObjectPoolHolder::getInstance()->getPool(ObjectPoolHolder::HAMMER_POOL_TAG);
+		hammerPool->releasePoolable((APoolable*)this);
 		return;
-		//GameObjectPool* enemyPool = ObjectPoolHolder::getInstance()->getPool(ObjectPoolHolder::ENEMY_POOL_TAG);
-		//enemyPool->releasePoolable((APoolable*)this);
 	}
 }
-void Hammer::onCollisionExit(AGameObject* object)
-{
-	//std::cout << "EnemyPlane collision exit with " << object->getName() << std::endl;
-}
+void Hammer::onCollisionExit(AGameObject* object) {}
 

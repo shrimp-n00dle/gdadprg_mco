@@ -19,15 +19,11 @@ void JScene::onLoadObjects()
 	this->registerObject(ladderManager);
 
 	/*Hammer*/
-	//srand(time(nullptr));
-	//EGameObject* hammerManager = new EGameObject("HammerManager");
-	//HammerHandler* hammerHandler = new HammerHandler(2, "HammerHandler", hammerManager);
-	///hammerManager->attachComponent(hammerHandler);
-	//this->registerObject(hammerManager);
-
-	//AirplaneSupport* support2 = new AirplaneSupport("Airsupport2");
-	//planeObject->attachChild(support2);
-	//support2->setChildPosition(-50, 100);
+	srand(time(nullptr));
+	EGameObject* hammerManager = new EGameObject("HammerManager");
+	HammerHandler* hammerHandler = new HammerHandler(1, "HammerHandler", hammerManager);
+	hammerManager->attachComponent(hammerHandler);
+	this->registerObject(hammerManager);
 
 	//QuitScreen* quitScreen = new QuitScreen("QuitScreen");
 	//this->registerObject(quitScreen);

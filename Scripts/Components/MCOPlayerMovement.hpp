@@ -13,7 +13,7 @@ public:
 	void perform();
 	bool bLadder = false;
 private:
-
+	float timer = 10.0f;
 	const float SPEED_MULTIPLIER = 300.0f;
 	const float BULLET_SPAWN_INTERVAL = 2.0f;
 	float ticks = 0.0f;

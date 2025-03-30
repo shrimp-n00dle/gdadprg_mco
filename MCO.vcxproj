@@ -140,6 +140,7 @@
     <ClCompile Include="Scripts\Components\FrameComponents\FrameSwticher.cpp" />
     <ClCompile Include="Scripts\Components\FrameComponents\LadderBehaviour.cpp" />
     <ClCompile Include="Scripts\Components\FrameComponents\WalkBehaviour.cpp" />
+    <ClCompile Include="Scripts\Components\HammerBehaviour.cpp" />
     <ClCompile Include="Scripts\Components\HammerHandler.cpp" />
     <ClCompile Include="Scripts\Components\LadderHandler.cpp" />
     <ClCompile Include="Scripts\Components\MCOPlayerMovement.cpp" />
@@ -201,6 +202,7 @@
     <ClInclude Include="Scripts\Components\FrameComponents\FrameSwticher.hpp" />
     <ClInclude Include="Scripts\Components\FrameComponents\LadderBehaviour.hpp" />
     <ClInclude Include="Scripts\Components\FrameComponents\WalkBehaviour.hpp" />
+    <ClInclude Include="Scripts\Components\HammerBehaviour.hpp" />
     <ClInclude Include="Scripts\Components\HammerHandler.hpp" />
     <ClInclude Include="Scripts\Components\LadderHandler.hpp" />
     <ClInclude Include="Scripts\Components\MCOPlayerMovement.hpp" />
