@@ -6,6 +6,11 @@ void JScene::onLoadResources() {}
 
 void JScene::onLoadObjects()
 {
+	/*Level*/
+	Level1Map* levelMap = new Level1Map("level1Map");
+	PhysicsManager::getInstance()->initialize("MapPhysics", levelMap);
+	this->registerObject(levelMap);
+
 	/*Player*/
 	Player* player = new Player("player");
 	PhysicsManager::getInstance()->initialize("PlayerPhysics", player);
@@ -17,7 +22,7 @@ void JScene::onLoadObjects()
 	LadderHandler* ladderHandler = new LadderHandler(1, "ladderHandler", ladderManager);
 	ladderManager->attachComponent(ladderHandler);
 	this->registerObject(ladderManager);
-
+	
 	/*Hammer*/
 	srand(time(nullptr));
 	EGameObject* hammerManager = new EGameObject("HammerManager");

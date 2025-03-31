@@ -5,7 +5,7 @@
 
 #define PI 3.14159
 
-Game::Game() : mWindow(sf::VideoMode(768, 672), "MCO Donkey Kong")
+Game::Game() : mWindow(sf::VideoMode(672, 768), "MCO Donkey Kong")
 {
     /*Framerate is set to 60*/
     mWindow.setFramerateLimit(60);

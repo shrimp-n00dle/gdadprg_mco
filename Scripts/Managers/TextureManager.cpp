@@ -63,7 +63,7 @@ void TextureManager::loadAll()
     storeTexture("walk_sheet", "Assets/MCOAssets/SpriteSheet/Walk/Walk.png");
     storeTexture("climb_sheet", "Assets/MCOAssets/SpriteSheet/Climb/Climb.png");
 
-
+    storeTexture("level1", "Assets/Maps/25m.png");
    
 }
 

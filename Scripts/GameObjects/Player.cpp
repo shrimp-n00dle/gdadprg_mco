@@ -57,6 +57,8 @@ void Player::onCollisionEnter(AGameObject* object)
 		//return;
 	//}
 	
+	std::cout << "collided" << std::endl;
+
 	/*Attacked by fireballs and no hammer*/
 	if (object->getName().find("enemy") != std::string::npos && !bHammer)
 	{
@@ -64,6 +66,8 @@ void Player::onCollisionEnter(AGameObject* object)
 		//changeSpriteState("hit_sheet");
 		return;
 	}
+
+
 
 	std::cout << object->getName() << std::endl;
 
@@ -82,6 +86,15 @@ void Player::onCollisionEnter(AGameObject* object)
 
 	/*Hammer collision with player*/
 	if (object->getName().find("hammer") != std::string::npos)
+	{
+		std::cout << "Player: Collided with " << object->getName() << "\n";
+
+		/*Switch the frame to hammer mode*/
+		//changeSpriteState("hammer_sheet");
+		return;
+	}
+
+	if (object->getName().find("platform") != std::string::npos)
 	{
 		std::cout << "Player: Collided with " << object->getName() << "\n";
 

@@ -11,6 +11,9 @@ void PhysicsManager::initialize(std::string name, AGameObject* parent)
 
 PhysicsManager* PhysicsManager::getInstance()
 {
+	if (!sharedInstance) {
+		sharedInstance = new PhysicsManager("PhysicsManager");
+	}
 	return sharedInstance;
 }
 
