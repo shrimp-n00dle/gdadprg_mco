@@ -8,7 +8,7 @@ void SpriteFrame::initialize()
 {
 	//sf::Sprite* sprite = new sf::Sprite();
 	frameSprite = new sf::Sprite();
-	frameSprite->setTexture(*TextureManager::getInstance()->getTexture("sprite_sheet"));
+	frameSprite->setTexture(*TextureManager::getInstance()->getTexture("walk_sheet"));
 	sf::Vector2u textureSize = frameSprite->getTexture()->getSize();
 
 	Renderer* renderer = new Renderer("SpriteFrame");

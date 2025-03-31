@@ -1,0 +1,44 @@
+{"frames": {
+
+"Climb0.png":
+{
+	"frame": {"x":0,"y":0,"w":19,"h":20},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":19,"h":20},
+	"sourceSize": {"w":19,"h":20}
+},
+"Climb1.png":
+{
+	"frame": {"x":19,"y":0,"w":19,"h":20},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":19,"h":20},
+	"sourceSize": {"w":19,"h":20}
+},
+"Climb2.png":
+{
+	"frame": {"x":38,"y":0,"w":19,"h":20},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":19,"h":20},
+	"sourceSize": {"w":19,"h":20}
+},
+"Climb3.png":
+{
+	"frame": {"x":57,"y":0,"w":20,"h":20},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":20,"h":20},
+	"sourceSize": {"w":20,"h":20}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "Climb.png",
+	"format": "RGBA8888",
+	"size": {"w":77,"h":20},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:a78d25bd513bded8e10be58ca322c241:3458e5fa96a2a177a5736d1ab714703a:4451814608acb0954d59b37ea86b2284$"
+}
+}

@@ -5,6 +5,9 @@
 #include "../Managers/PhysicsManager.hpp"
 #include "../Inputs/MCOPlayerInput.hpp"
 #include "../Components/MCOPlayerMovement.hpp"
+#include "../Components/FrameComponents/WalkBehaviour.hpp"
+#include "../Components/FrameComponents/LadderBehaviour.hpp"
+#include "../GameObjects/Poolables/GameObjectPool.hpp"
 
 
 class Player : public AGameObject, public CollisionListener
@@ -18,22 +21,21 @@ public:
 	void onCollisionEnter(AGameObject* object);
 	void onCollisionExit(AGameObject* object);
 
-	bool isUp();
-	bool isDown();
-	bool isLeft();
-	bool isRight();
-	bool bLadder;
+	void changeSpriteState(std::string textureName);
+
+	bool bLadder = false;
+	bool bHammer = false;
+
+	Collider* getCollider();
+
+	sf::Sprite* frameSprite;
 private:
-	//MCOPlayerMovement* movement;
 	const float SPEED_MULTIPLIER = 300.0f;
 
-
 	Collider* collider = nullptr;
-	bool moveUp = false;
-	bool moveDown = false;
-	bool moveLeft = false;
-	bool moveRight = false;
-	bool keyFlag = false;
+
+	sf::Time deltaTime;
+	float timer = 10.0f;
 
 protected:
 	sf::Event event;

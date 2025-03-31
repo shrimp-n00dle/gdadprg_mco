@@ -85,13 +85,27 @@ std::vector<APoolable*> GameObjectPool::requestPoolableBatch(int size)
 that obj to availableObjects list while setting the corresponding flags*/
 void GameObjectPool::releasePoolable(APoolable* poolableObject)
 {
-		if (objCounter > 200) return;
+	// Search for the list of current used object in usedObjects then move that object to availableObjects list while setting the corresponding enabled flags
 
-			poolableObject->setEnabled(false);
-			availableObjects.push_back(poolableObject);
+	int index = -1;
+
+	for (int i = 0; i < this->usedObjects.size() && index == -1; i++) {
+		if (this->usedObjects[i] == poolableObject)
+			index = i;
+	}
+
+	if (index != -1) {
+		this->availableObjects.push_back(poolableObject);
+		this->usedObjects.erase(this->usedObjects.begin() + index);
+		this->setEnabled(poolableObject, false);
+	}
+		//if (objCounter > 200) return;
+
+		//	poolableObject->setEnabled(false);
+		//	availableObjects.push_back(poolableObject);
 			//usedObjects.erase(poolableObject);
-			std::cout << this->objCounter << std::endl;
-			this->objCounter++;
+		//	std::cout << this->objCounter << std::endl;
+		//	this->objCounter++;
 }
 
 /*implement loop that will release list of objects*/
@@ -100,8 +114,9 @@ void GameObjectPool::releasePoolableBatch(std::vector<APoolable*> objectList)
 	//the number of pools being release as it hits 30 is not consistent
 	for (int i = 0; i < objectList.size(); i++)
 	{
-		objectList[i]->onRelease();
-		std::cout << "Release "  <<i << std::endl;
+		//objectList[i]->onRelease();
+		this->releasePoolable(objectList[i]);
+		std::cout << "Released "  <<i << std::endl;
 	}
 	
 	

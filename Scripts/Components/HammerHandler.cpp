@@ -21,7 +21,6 @@ void HammerHandler::perform()
 
 	if (ticks > SPAWN_INTERNAL)
 	{
-		//std::cout << "CHECK SPAWN " << std::endl;
 		ticks = 0.0f;
 		HammerPool->requestPoolable();
 	}
