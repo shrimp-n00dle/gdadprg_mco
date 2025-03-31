@@ -3,6 +3,8 @@
 Player::Player(std::string name) : AGameObject(name), CollisionListener()
 {
 	this->name = name;
+	this->sheetName = "walk_sheet";
+
 }
 
 void Player::initialize()
@@ -29,6 +31,9 @@ void Player::initialize()
 	WalkBehaviour* walkBehaviour = new WalkBehaviour("WalkBehaviour");
 	this->attachComponent(walkBehaviour);
 
+	LadderBehaviour* ladderBehaviour = new LadderBehaviour("LadderBehaviour");
+	this->attachComponent(ladderBehaviour);
+
 	HammerBehaviour* hammerBehaviour = new HammerBehaviour("HammerBehaviour");
 	this->attachComponent(hammerBehaviour);
 
@@ -51,11 +56,19 @@ void Player::update() {}
 void Player::onCollisionEnter(AGameObject* object)
 {
 	/*Eliminate player*/
-	//if (object->getName().find("barrel") != std::string::npos)
-	//{
-		//std::cout << "Player: Collided with " << object->getName() << "\n";
-		//return;
-	//}
+	if (object->getName().find("barrel") != std::string::npos)
+	{
+		std::cout << "Player: Collided with " << object->getName() << "\n";
+		//changeSpriteState("hit_sheet");
+		return;
+	}
+
+	/*If the player has a hammer, delete the barrel*/
+	if (object->getName().find("barrel") != std::string::npos && bHammer)
+	{
+		std::cout << "Player: Collided with " << object->getName() << "\n";
+		return;
+	}
 	
 	/*Attacked by fireballs and no hammer*/
 	if (object->getName().find("enemy") != std::string::npos && !bHammer)
@@ -65,7 +78,12 @@ void Player::onCollisionEnter(AGameObject* object)
 		return;
 	}
 
-	std::cout << object->getName() << std::endl;
+	/*Attacked by fireballs with hammer*/
+	if (object->getName().find("enemy") != std::string::npos && bHammer)
+	{
+		std::cout << "Player: Collided with " << object->getName() << "\n";
+		return;
+	}
 
 	/*Ladder collision with player*/
 	if (object->getName().find("ladder") != std::string::npos && !bHammer)
@@ -86,19 +104,19 @@ void Player::onCollisionEnter(AGameObject* object)
 		std::cout << "Player: Collided with " << object->getName() << "\n";
 
 		/*Switch the frame to hammer mode*/
-		//changeSpriteState("hammer_sheet");
+		changeSpriteState("hammer_sheet");
 		return;
 	}
 }
 
 void Player::onCollisionExit(AGameObject* object)
 {
-	if (bLadder) changeSpriteState("walk_sheet");
 	bLadder = false;
 }
 
 void Player::changeSpriteState(std::string textureName)
 {
+	sheetName = textureName;
 	/*Change to hammer_sheet after testing*/
 	if (textureName == "hammer_sheet")
 	{
@@ -122,5 +140,10 @@ void Player::changeSpriteState(std::string textureName)
 Collider* Player::getCollider()
 {
 	return this->collider;
+}
+
+std::string Player::getSheetName()
+{
+	return sheetName;
 }
 

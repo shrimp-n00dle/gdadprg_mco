@@ -43,10 +43,6 @@ void Hammer::initialize()
 	renderer->assignDrawable(sprite);
 	attachComponent(renderer);
 
-	//HammerBehaviour* hammerBehaviour = new HammerBehaviour("HammerBehaviour");
-	//attachComponent(hammerBehaviour);
-	//behaviour->configure(1.0f);
-
 	this->collider = new Collider("HammerCollider");
 	this->collider->setLocalBounds(sprite->getGlobalBounds());
 	this->collider->setCollisionListener(this);

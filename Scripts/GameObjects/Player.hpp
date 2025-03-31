@@ -27,11 +27,12 @@ public:
 	bool bHammer = false;
 
 	Collider* getCollider();
+	std::string getSheetName();
 
 	sf::Sprite* frameSprite;
 private:
 	const float SPEED_MULTIPLIER = 300.0f;
-
+	std::string sheetName = "";
 	Collider* collider = nullptr;
 
 	sf::Time deltaTime;

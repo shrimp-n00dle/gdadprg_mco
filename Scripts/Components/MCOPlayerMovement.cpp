@@ -12,12 +12,6 @@ void MCOPlayerMovement::perform()
 	MCOPlayerInput* inputController = (MCOPlayerInput*)(player->getComponentsOfType(ComponentType::Input)[0]);
 	sf::Transformable* playerTransformable = player->getTransformable();
 
-	if (player->bHammer)
-	{
-		timer -= deltaTime.asSeconds();
-		std::cout << timer << std::endl;
-	}
-
 	if (playerTransformable == nullptr || inputController == nullptr)
 	{
 		std::cout << "playerTransformable not found" << std::endl;
@@ -57,6 +51,6 @@ void MCOPlayerMovement::perform()
 			playerTransformable->move(offset * deltaTime.asSeconds());
 		}
 
-	player->getCollider()->setLocalBounds(player->frameSprite->getGlobalBounds());
+		player->getCollider()->setLocalBounds(player->frameSprite->getGlobalBounds());
 	}
 
