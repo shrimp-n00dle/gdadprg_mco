@@ -18,6 +18,7 @@ void MCOPlayerMovement::perform()
 	}
 
 	sf::Vector2f offset(0.0f, 0.0f);
+	sf::Vector2f jumpOffset(0.0f, 0.0f);
 
 	this->ticks += this->deltaTime.asSeconds();
 
@@ -51,6 +52,32 @@ void MCOPlayerMovement::perform()
 			playerTransformable->move(offset * deltaTime.asSeconds());
 		}
 
-		player->getCollider()->setLocalBounds(player->frameSprite->getGlobalBounds());
+		if (!player->bLadder && !player->bHammer)
+		{
+			if (inputController->isJump() && !bHop)
+			{
+				std::cout << "hi" << std::endl;
+				offset.y -= JUMP_MULTIPLIER;
+				playerTransformable->move(offset * deltaTime.asSeconds());
+				bHop = true;
+
+				//player->changeSpriteState("jump_sheet");
+			}
+		}
+
+		if (bHop) jumpTimer -= deltaTime.asSeconds();
+
+		/*If its at the peak, bring it down*/
+		if (jumpTimer <= 0.0f)
+		{
+			jumpTimer = 0.5f;
+			bHop = false;
+			offset.y += JUMP_MULTIPLIER;
+			playerTransformable->move(offset * deltaTime.asSeconds());
+			player->changeSpriteState("walk_sheet");
+		}
+	
+		
+	player->getCollider()->setLocalBounds(player->frameSprite->getGlobalBounds());
 	}
 

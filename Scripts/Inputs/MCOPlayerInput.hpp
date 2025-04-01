@@ -11,6 +11,7 @@ public:
 	bool isDown();
 	bool isLeft();
 	bool isRight();
+	bool isJump();
 
 	void setLeft(bool flag);
 	void setRight(bool flag);
@@ -22,5 +23,6 @@ private:
 	bool moveLeft = false;
 	bool moveRight = false;
 	bool keyFlag = false;
+	bool bJump = false;
 };
 
