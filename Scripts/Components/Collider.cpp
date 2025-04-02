@@ -44,6 +44,11 @@ void Collider::setLocalBounds(sf::FloatRect localBounds)
 	this->localBounds = localBounds;
 }
 
+sf::FloatRect Collider::getLocalBounds()
+{
+	return this->localBounds;
+}
+
 void Collider::collisionEnter(AGameObject* gameObjects)
 {
 	//std::cout << "collisionEnter" << std::endl;

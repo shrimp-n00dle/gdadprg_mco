@@ -46,7 +46,15 @@ void Player::processInput(sf::Event event)
 	AGameObject::processInput(event);
 }
 
-void Player::update() {}
+void Player::update(sf::Time deltaTime) {
+	// std::cout << "kyaaaa~~" << std::endl;
+	if (!bGrounded) {  // Apply gravity only when not grounded
+		velocity.y += 9.8f * deltaTime.asSeconds() * 0.5f;
+	}
+	frameSprite->move(0, velocity.y);
+
+	AGameObject::update(deltaTime);
+}
 
 void Player::onCollisionEnter(AGameObject* object)
 {
@@ -56,6 +64,8 @@ void Player::onCollisionEnter(AGameObject* object)
 		//std::cout << "Player: Collided with " << object->getName() << "\n";
 		//return;
 	//}
+
+	std::cout << "object->getName() = " << object->getName() << std::endl;
 	
 	/*Attacked by fireballs and no hammer*/
 	if (object->getName().find("enemy") != std::string::npos && !bHammer)
@@ -91,9 +101,15 @@ void Player::onCollisionEnter(AGameObject* object)
 	}
 
 	/*Platform collision with player*/
-	if (object->getName().find("platform") != std::string::npos)
+	if (object->getName().find("level1Map") != std::string::npos)
 	{
-		std::cout << "Player: Collided with " << object->getName() << "\n";
+		velocity.y = 0.f;
+		bGrounded = true;  // Ensure player is considered grounded
+
+		platformsCollidingWith.insert(object);
+
+		sf::FloatRect bounds = frameSprite->getGlobalBounds();
+		frameSprite->move(0, -2.f);
 
 		return;
 	}
@@ -101,8 +117,21 @@ void Player::onCollisionEnter(AGameObject* object)
 
 void Player::onCollisionExit(AGameObject* object)
 {
-	if (bLadder) changeSpriteState("walk_sheet");
-	bLadder = false;
+	if (object->getName().find("ladder") != std::string::npos)
+	{
+		changeSpriteState("walk_sheet");
+		bLadder = false;
+	}
+
+	if (object->getName().find("level1Map") != std::string::npos)
+	{
+		platformsCollidingWith.erase(object);
+
+		if (platformsCollidingWith.empty())
+		{
+			bGrounded = false;
+		}
+	}
 }
 
 void Player::changeSpriteState(std::string textureName)

@@ -1,5 +1,6 @@
 #pragma once
 #include "iostream"
+#include "set"
 #include "AGameObject.hpp"
 #include "../Managers/TextureManager.hpp"
 #include "../Managers/PhysicsManager.hpp"
@@ -16,7 +17,7 @@ public:
 	Player(std::string name);
 	void initialize();
 	void processInput(sf::Event event);
-	void update();
+	void update(sf::Time deltaTime);
 
 	void onCollisionEnter(AGameObject* object);
 	void onCollisionExit(AGameObject* object);
@@ -29,6 +30,8 @@ public:
 	Collider* getCollider();
 
 	sf::Sprite* frameSprite;
+	sf::Vector2f velocity;
+
 private:
 	const float SPEED_MULTIPLIER = 300.0f;
 
@@ -36,6 +39,8 @@ private:
 
 	sf::Time deltaTime;
 	float timer = 10.0f;
+	bool bGrounded = false;
+	std::set<AGameObject*> platformsCollidingWith;
 
 protected:
 	sf::Event event;

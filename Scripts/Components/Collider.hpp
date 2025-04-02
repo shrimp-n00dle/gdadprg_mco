@@ -26,6 +26,7 @@ public:
 
 	sf::FloatRect getGlobalBounds();
 	void setLocalBounds(sf::FloatRect localBounds);
+	sf::FloatRect getLocalBounds();
 	void collisionEnter(AGameObject* gameObjects);
 	void collisionExit(AGameObject* gameObjects);
 
