@@ -33,6 +33,8 @@ void MCOPlayerInput::perform()
 	case sf::Keyboard::D:
 		moveRight = keyFlag;
 		break;
+	case sf::Keyboard::Space:
+		bJump = keyFlag;
 	}
 }
 
@@ -40,6 +42,7 @@ bool MCOPlayerInput::isUp() { return moveUp; }
 bool MCOPlayerInput::isDown() { return moveDown; }
 bool MCOPlayerInput::isLeft() { return moveLeft; }
 bool MCOPlayerInput::isRight() { return moveRight; }
+bool MCOPlayerInput::isJump() { return bJump; }
 
 
 void MCOPlayerInput::setLeft(bool flag) { moveLeft = flag; }

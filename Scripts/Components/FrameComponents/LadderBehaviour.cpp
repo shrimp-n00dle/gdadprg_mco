@@ -8,34 +8,46 @@ LadderBehaviour::LadderBehaviour(std::string name) : AComponent(name, Script)
 void LadderBehaviour::perform()
 {
 	Player* frameObj = (Player*)this->getOwner();
-	MCOPlayerInput* frameInputController = (MCOPlayerInput*)(frameObj->getComponentsOfType(ComponentType::Input)[0]);
-	sf::Transformable* frameTransformable = frameObj->getTransformable();
 
-	/*Checkers*/
-	if (frameTransformable == nullptr) std::cout << "frameTransformable not found" << std::endl;
-	if (frameInputController == nullptr)  std::cout << "frameInputController not found" << std::endl;
-
-
-	if (frameInputController->isDown())
+	//If the current sprite is equal to climb_sheet
+	if (frameObj->getSheetName() == "climb_sheet")
 	{
-		counter--;
-		
+		MCOPlayerInput* frameInputController = (MCOPlayerInput*)(frameObj->getComponentsOfType(ComponentType::Input)[0]);
+		sf::Transformable* frameTransformable = frameObj->getTransformable();
+
+		/*Checkers*/
+		if (frameTransformable == nullptr) std::cout << "frameTransformable not found" << std::endl;
+		if (frameInputController == nullptr)  std::cout << "frameInputController not found" << std::endl;
+
+
+		if (frameObj->bLadder)
+		{
+			if (frameInputController->isDown())
+			{
+				counter--;
+
+			}
+			else if (frameInputController->isUp())
+			{
+				counter++;
+			}
+		}
+
+		if (frameObj->bLadder == false && frameObj->bHammer == false) frameObj->changeSpriteState("walk_sheet");
+
+
+		/*if its a negative number, or is beyond 38 go to the beginning of the list and set coutner to 0 or 38*/
+		if (counter > 3) counter = 0;
+		else if (counter < 0) counter = 3;
+
+		coord = traverseList(counter);
+
+		/*Sprite Rendering*/
+		currSprite = sf::IntRect(coord[0], coord[1], coord[2], coord[3]);
+		frameObj->frameSprite->setTextureRect(currSprite);
+		frameObj->frameSprite->setOrigin(currSprite.width / 2.0f, currSprite.height / 2.0f);
 	}
-	else if (frameInputController->isUp())
-	{
-		counter++;
-	}
-
-	/*if its a negative number, or is beyond 38 go to the beginning of the list and set coutner to 0 or 38*/
-	if (counter > 2) counter = 0;
-	else if (counter < 0) counter = 2;
-
-	coord = traverseList(counter);
-
-	/*Sprite Rendering*/
-	currSprite = sf::IntRect(coord[0], coord[1], coord[2], coord[3]);
-	frameObj->frameSprite->setTextureRect(currSprite);
-	frameObj->frameSprite->setOrigin(currSprite.width / 2.0f, currSprite.height / 2.0f);
+	
 }
 
 void LadderBehaviour::initializeSprites()
@@ -79,10 +91,7 @@ void LadderBehaviour::initializeSprites()
 		counter++;
 
 	}
-
-	// {"x":0,"y":0,"w":19,"h":20},
 	coord = { 0,0,19,20};
-	//currSprite = sf::IntRect(0, 0, 150, 84);
 }
 
 std::vector<int> LadderBehaviour::traverseList(int counter)

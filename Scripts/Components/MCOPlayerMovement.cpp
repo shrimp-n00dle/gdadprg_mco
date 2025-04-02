@@ -12,18 +12,13 @@ void MCOPlayerMovement::perform()
 	MCOPlayerInput* inputController = (MCOPlayerInput*)(player->getComponentsOfType(ComponentType::Input)[0]);
 	sf::Transformable* playerTransformable = player->getTransformable();
 
-	if (player->bHammer)
-	{
-		timer -= deltaTime.asSeconds();
-		std::cout << timer << std::endl;
-	}
-
 	if (playerTransformable == nullptr || inputController == nullptr)
 	{
 		std::cout << "playerTransformable not found" << std::endl;
 	}
 
 	sf::Vector2f offset(0.0f, 0.0f);
+	sf::Vector2f jumpOffset(0.0f, 0.0f);
 
 	this->ticks += this->deltaTime.asSeconds();
 
@@ -57,6 +52,32 @@ void MCOPlayerMovement::perform()
 			playerTransformable->move(offset * deltaTime.asSeconds());
 		}
 
+		if (!player->bLadder && !player->bHammer)
+		{
+			if (inputController->isJump() && !bHop)
+			{
+				std::cout << "hi" << std::endl;
+				offset.y -= JUMP_MULTIPLIER;
+				playerTransformable->move(offset * deltaTime.asSeconds());
+				bHop = true;
+
+				//player->changeSpriteState("jump_sheet");
+			}
+		}
+
+		if (bHop) jumpTimer -= deltaTime.asSeconds();
+
+		/*If its at the peak, bring it down*/
+		if (jumpTimer <= 0.0f)
+		{
+			jumpTimer = 0.5f;
+			bHop = false;
+			offset.y += JUMP_MULTIPLIER;
+			playerTransformable->move(offset * deltaTime.asSeconds());
+			player->changeSpriteState("walk_sheet");
+		}
+	
+		
 	player->getCollider()->setLocalBounds(player->frameSprite->getGlobalBounds());
 	}
 
