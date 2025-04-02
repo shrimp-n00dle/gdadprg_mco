@@ -15,6 +15,8 @@ public:
 	void untrackObject(Collider* object);
 	void perform();
 
+	void debugCollisions();
+
 private:
 	PhysicsManager(std::string name) : AComponent(name, Script) {};
 	PhysicsManager(PhysicsManager const&) : AComponent(name, Script) {};

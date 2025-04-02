@@ -189,6 +189,7 @@
     <ClCompile Include="Scripts\Managers\ObjectPoolHolder.cpp" />
     <ClCompile Include="Scripts\Managers\PhysicsManager.cpp" />
     <ClCompile Include="Scripts\Managers\SceneManager.cpp" />
+    <ClCompile Include="Scripts\Managers\ScoreManager.cpp" />
     <ClCompile Include="Scripts\Managers\SFXManager.cpp" />
     <ClCompile Include="Scripts\Managers\TextureManager.cpp" />
     <ClCompile Include="Scripts\Renderer\Renderer.cpp" />
@@ -253,6 +254,7 @@
     <ClInclude Include="Scripts\Managers\ObjectPoolHolder.hpp" />
     <ClInclude Include="Scripts\Managers\PhysicsManager.hpp" />
     <ClInclude Include="Scripts\Managers\SceneManager.hpp" />
+    <ClInclude Include="Scripts\Managers\ScoreManager.hpp" />
     <ClInclude Include="Scripts\Managers\SFXManager.hpp" />
     <ClInclude Include="Scripts\Managers\TextureManager.hpp" />
     <ClInclude Include="Scripts\Renderer\Renderer.hpp" />

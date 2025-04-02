@@ -16,7 +16,7 @@ public:
     void loadHighScore();
 
 private:
-    ScoreManager() {};
+    ScoreManager();
     ScoreManager(ScoreManager const&) {};
     ScoreManager& operator=(ScoreManager const&) {};
     static ScoreManager* sharedInstance;

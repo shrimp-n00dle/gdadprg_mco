@@ -20,6 +20,7 @@ PhysicsManager* PhysicsManager::getInstance()
 void PhysicsManager::trackObject(Collider* object)
 {
 	//object->setAlreadyCollided(false);
+	std::cout << "tracking object: " << object->getName() << std::endl;
 	this->trackedObjects.push_back(object);
 }
 
@@ -74,6 +75,45 @@ void PhysicsManager::perform()
 	}
 
 	this->cleanUpObjects();
+}
+
+void PhysicsManager::debugCollisions()
+{
+	std::cout << "========== PHYSICS DEBUG ==========\n";
+	std::cout << "Tracked objects: " << trackedObjects.size() << "\n";
+
+	for (int i = 0; i < trackedObjects.size(); i++) {
+		Collider* collider = trackedObjects[i];
+		AGameObject* owner = collider->getOwner();
+		sf::FloatRect bounds = collider->getGlobalBounds();
+
+		std::cout << i << ": " << owner->getName() << " collider bounds: "
+			<< bounds.left << ", " << bounds.top
+			<< " size: " << bounds.width << "x" << bounds.height << "\n";
+
+		// Print owner position
+		sf::Vector2f ownerPos = owner->getTransformable()->getPosition();
+		std::cout << "   Owner position: " << ownerPos.x << ", " << ownerPos.y << "\n";
+	}
+
+	// Check potential collisions
+	std::cout << "----- COLLISION CHECKS -----\n";
+	for (int i = 0; i < trackedObjects.size(); i++) {
+		for (int j = i + 1; j < trackedObjects.size(); j++) {
+			Collider* collider1 = trackedObjects[i];
+			Collider* collider2 = trackedObjects[j];
+
+			sf::FloatRect bounds1 = collider1->getGlobalBounds();
+			sf::FloatRect bounds2 = collider2->getGlobalBounds();
+
+			bool isColliding = bounds1.intersects(bounds2);
+
+			std::cout << "Check: " << collider1->getOwner()->getName()
+				<< " vs " << collider2->getOwner()->getName()
+				<< " - Colliding: " << (isColliding ? "YES" : "NO") << "\n";
+		}
+	}
+	std::cout << "==================================\n";
 }
 
 void PhysicsManager::cleanUpObjects()

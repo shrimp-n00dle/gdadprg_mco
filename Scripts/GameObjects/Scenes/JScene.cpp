@@ -7,13 +7,13 @@ void JScene::onLoadResources() {}
 void JScene::onLoadObjects()
 {
 	/*Level*/
+	Player* player = new Player("player");
 	Level1Map* levelMap = new Level1Map("level1Map");
-	PhysicsManager::getInstance()->initialize("MapPhysics", levelMap);
-	this->registerObject(levelMap);
+
+	PhysicsManager::getInstance()->initialize("PlayerPhysics", player);
 
 	/*Player*/
-	Player* player = new Player("player");
-	PhysicsManager::getInstance()->initialize("PlayerPhysics", player);
+	this->registerObject(levelMap);
 	this->registerObject(player);
 
 	/*Ladder*/

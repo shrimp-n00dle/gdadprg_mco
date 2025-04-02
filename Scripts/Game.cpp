@@ -73,6 +73,11 @@ void Game::update(sf::Time deltaTime)
     if (!ApplicationManager::getInstance()->isPaused())
     {
         GameObjectManager::getInstance()->update(deltaTime);
+        if (debugTimer >= 2.0f) {  // Debug every 2 seconds to avoid spam
+            PhysicsManager::getInstance()->debugCollisions();
+            debugTimer = 0;
+        }
+        debugTimer += deltaTime.asSeconds();
     }
 }
 

@@ -93,6 +93,7 @@ private:
 private:
     sf::RenderWindow mWindow;
     Entity mSampleEntity;
+    float debugTimer = 0;
 
 
     std::vector<Entity*> mEntityList;
