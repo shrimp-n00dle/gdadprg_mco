@@ -29,9 +29,40 @@ void Level1Map::initialize()
 
 	// --- Define platform colliders ---
 	std::vector<sf::FloatRect> platformBounds = {
-		{0, -20, 50, 50},	// Example platform 1
-		{50, 50, 300, 20}		// Example platform 2
-		//{100, 100, 250, 20},	// Example platform 3
+		// Bottom-left platform, every succeeding value goes upward
+		{0, 744, 336, 24}, {336, 741, 48, 24}, {384, 738, 48, 24}, {432, 735, 48, 24},
+		{480, 732, 48, 24}, {528, 729, 48, 24}, {576, 726, 48, 24}, {624, 723, 48, 24},
+		
+		// 2nd-floor platforms, every succeeding value goes upward
+		{576, 660, 48, 24},	{528, 657, 48, 24}, {480, 654, 48, 24}, {432, 651, 48, 24},
+		{384, 648, 48, 24}, {336, 645, 48, 24}, {288, 642, 48, 24}, {240, 639, 48, 24}, 
+		{192, 636, 48, 24}, {144, 633, 48, 24}, {96, 630, 48, 24}, {48, 627, 48, 24},
+		{0, 624, 48, 24},
+
+		// 3nd-floor platforms, every succeeding value goes upward
+		{48, 560, 48, 24}, {96, 557, 48, 24}, {144, 554, 48, 24}, {192, 551, 48, 24},
+		{240, 548, 48, 24}, {288, 545, 48, 24}, {336, 542, 48, 24}, {384, 539, 48, 24},
+		{432, 536, 48, 24}, {480, 533, 48, 24}, {528, 530, 48, 24}, {576, 527, 48, 24},
+		{624, 524, 48, 24},
+
+		// 4th-floor platforms, every succeeding value goes upward
+		{576, 461, 48, 24}, {528, 458, 48, 24}, {480, 455, 48, 24}, {432, 452, 48, 24},
+		{384, 449, 48, 24}, {336, 446, 48, 24}, {288, 443, 48, 24}, {240, 440, 48, 24},
+		{192, 437, 48, 24}, {144, 434, 48, 24}, {96, 431, 48, 24}, {48, 428, 48, 24},
+		{0, 425, 48, 24},
+
+		// 5th-floor platforms, every succeeding value goes upward
+		{48, 363, 48, 24}, {96, 360, 48, 24}, {144, 357, 48, 24}, {192, 354, 48, 24},
+		{240, 351, 48, 24}, {288, 348, 48, 24}, {336, 345, 48, 24}, {384, 342, 48, 24},
+		{432, 339, 48, 24}, {480, 336, 48, 24}, {528, 333, 48, 24}, {576, 330, 48, 24},
+		{624, 327, 48, 24},
+
+		// 6th-floor platforms, every succeeding value goes upward
+		{576, 264, 48, 24}, {528, 261, 48, 24}, {480, 258, 48, 24}, {432, 255, 48, 24},
+		{0, 252, 432, 24},
+
+		// Final Platform
+		{264, 167, 144, 24}
 	};
 
 	std::vector<sf::RectangleShape*> boundingBoxes;
@@ -48,6 +79,7 @@ void Level1Map::initialize()
 		/* Debug Lines for the bounding boxes */
 		sf::RectangleShape* boundingBox = new sf::RectangleShape();
 		boundingBox->setPosition(bounds.left, bounds.top);
+		boundingBox->setOrigin(0, 0);
 		boundingBox->setSize(sf::Vector2f(bounds.width, bounds.height));
 		boundingBox->setFillColor(sf::Color(0, 255, 0, 100));  // Semi-transparent green
 		boundingBox->setOutlineColor(sf::Color::Red);

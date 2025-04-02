@@ -20,7 +20,6 @@ PhysicsManager* PhysicsManager::getInstance()
 void PhysicsManager::trackObject(Collider* object)
 {
 	//object->setAlreadyCollided(false);
-	std::cout << "tracking object: " << object->getName() << std::endl;
 	this->trackedObjects.push_back(object);
 }
 
@@ -87,7 +86,7 @@ void PhysicsManager::debugCollisions()
 		AGameObject* owner = collider->getOwner();
 		sf::FloatRect bounds = collider->getGlobalBounds();
 
-		std::cout << i << ": " << owner->getName() << " collider bounds: "
+		std::cout << i << ": " << collider->getName() << " collider bounds: "
 			<< bounds.left << ", " << bounds.top
 			<< " size: " << bounds.width << "x" << bounds.height << "\n";
 
@@ -97,7 +96,7 @@ void PhysicsManager::debugCollisions()
 	}
 
 	// Check potential collisions
-	std::cout << "----- COLLISION CHECKS -----\n";
+	std::cout << "----- CURRENT COLLISION CHECKS -----\n";
 	for (int i = 0; i < trackedObjects.size(); i++) {
 		for (int j = i + 1; j < trackedObjects.size(); j++) {
 			Collider* collider1 = trackedObjects[i];
@@ -108,9 +107,10 @@ void PhysicsManager::debugCollisions()
 
 			bool isColliding = bounds1.intersects(bounds2);
 
-			std::cout << "Check: " << collider1->getOwner()->getName()
-				<< " vs " << collider2->getOwner()->getName()
-				<< " - Colliding: " << (isColliding ? "YES" : "NO") << "\n";
+			if (isColliding) 
+				std::cout << "Check: " << collider1->getOwner()->getName()
+					<< " vs " << collider2->getOwner()->getName()
+					<< " - Colliding: " << (isColliding ? "YES" : "NO") << "\n";
 		}
 	}
 	std::cout << "==================================\n";
