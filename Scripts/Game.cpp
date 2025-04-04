@@ -15,6 +15,12 @@ Game::Game() : mWindow(sf::VideoMode(672, 768), "MCO Donkey Kong")
     FontManager::getInstance()->loadAll();
     //SFXManager::getInstance()->loadAll();
 
+    /*Audio*/
+   /* addAudio("1");
+    addAudio("2");
+    addAudio("3");
+    addAudio("4");*/
+
     //register scenes
     SceneManager::getInstance()->registerScene(new MainMenuScene());
     //SceneManager::getInstance()->registerScene(new GameScene());
@@ -74,7 +80,7 @@ void Game::update(sf::Time deltaTime)
     {
         GameObjectManager::getInstance()->update(deltaTime);
         if (debugTimer >= 2.0f) {  // Debug every 2 seconds to avoid spam
-            PhysicsManager::getInstance()->debugCollisions();
+            //PhysicsManager::getInstance()->debugCollisions();
             debugTimer = 0;
         }
         debugTimer += deltaTime.asSeconds();

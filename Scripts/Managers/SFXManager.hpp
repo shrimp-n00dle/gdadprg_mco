@@ -3,6 +3,10 @@
 #include "SFML/Graphics.hpp"
 #include "unordered_map"
 
+
+/*All audio clippings from https://www.youtube.com/watch?v=GKYUNtGrShc 
+https://www.youtube.com/watch?v=KJkcNP4VkiM
+*/
 class SFXManager
 {
 public:

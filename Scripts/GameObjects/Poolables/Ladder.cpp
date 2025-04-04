@@ -9,25 +9,14 @@ Ladder::~Ladder()
 	delete this->sprite;
 }
 
-
 void Ladder::onRelease()
 {
-	PhysicsManager::getInstance()->untrackObject(this->collider);
+	//PhysicsManager::getInstance()->untrackObject(this->collider);
 }
 
 void Ladder::onActivate()
 {
-
-	//EnemyBehaviour* behaviour = (EnemyBehaviour*)findComponentByName("EnemyBehaviour");
-	//behaviour->reset();
-
-	//LadderBehaviour* ladderBehaviour = new LadderBehaviour("LadderBehaviour");
-	//this->attachComponent(ladderBehaviour);
-
-	PhysicsManager::getInstance()->trackObject(this->collider);
-
-	setChildPosition(Game::WINDOW_WIDTH / 2, 0);
-	getTransformable()->move(rand() % SPAWN_RANGE - rand() % SPAWN_RANGE, 50);
+	//PhysicsManager::getInstance()->trackObject(this->collider);
 }
 
 APoolable* Ladder::clone()
@@ -35,26 +24,50 @@ APoolable* Ladder::clone()
 	APoolable* copyObj = new Ladder(name);
 	return copyObj;
 }
-
 void Ladder::initialize()
 {
-	sprite = new sf::Sprite();
-	sprite->setTexture(*TextureManager::getInstance()->getTexture("ladder"));
-	sf::Vector2u textureSize = sprite->getTexture()->getSize();
-	sprite->setOrigin(textureSize.x / 2, textureSize.y / 2);
+	// --- Define Ladder colliders ---
+	std::vector<sf::FloatRect> ladderBounds = 
+	{
+		/*Total of 9 ladders in the level*/
+		{550, 640, 30, 70}, 
+		{285,530,30,90}, {90,550,30,60},
+		{325,430,30,100}, {550,440,30,80},
+		{100,340,30,70}, {200,330,30,80},
+		{550,250,30,70},
+		{380,160,30,70},
+	};
 
-	setChildPosition(640 / 2, -30);
-	getTransformable()->move(rand() % SPAWN_RANGE - rand() % SPAWN_RANGE, 0);
+	std::vector<sf::RectangleShape*> boundingBoxes;
 
-	Renderer* renderer = new Renderer("LadderSprite");
-	renderer->assignDrawable(sprite);
-	attachComponent(renderer);
+	for (const auto& bounds : ladderBounds) 
+	{
+		Collider* ladderCollider = new Collider("LadderCollider");
+		ladderCollider->setLocalBounds(bounds);
+		ladderCollider->setCollisionListener(this);
+		this->attachComponent(ladderCollider);
+		PhysicsManager::getInstance()->trackObject(ladderCollider);
 
-	this->collider = new Collider("LadderCollider");
-	this->collider->setLocalBounds(sprite->getGlobalBounds());
-	this->collider->setCollisionListener(this);
-	this->attachComponent(this->collider);
+		/* Debug Lines for the bounding boxes */
+		sf::RectangleShape* boundingBox = new sf::RectangleShape();
+		boundingBox->setPosition(bounds.left, bounds.top);
+		boundingBox->setOrigin(0, 0);
+		boundingBox->setSize(sf::Vector2f(bounds.width, bounds.height));
+		boundingBox->setFillColor(sf::Color(0, 255, 0, 100));  // Semi-transparent blue
+		boundingBox->setOutlineColor(sf::Color::Blue);
+		boundingBox->setOutlineThickness(2);
+
+		boundingBoxes.push_back(boundingBox);
+	}
+
+	// Attach each bounding box to a Renderer
+	for (auto* box : boundingBoxes) {
+		Renderer* boundingRenderer = new Renderer("LadderBounds");
+		boundingRenderer->assignDrawable(box);
+		this->attachComponent(boundingRenderer);
+	}
 }
+
 
 void Ladder::onCollisionEnter(AGameObject* object)
 {
