@@ -17,7 +17,7 @@ private:
 	float timer = 10.0f;
 	float jumpTimer = 0.5f;
 	const float SPEED_MULTIPLIER = 300.0f;
-	const float JUMP_MULTIPLIER = 1000.0f;
+	const float JUMP_MULTIPLIER = 4.0f;
 	const float BULLET_SPAWN_INTERVAL = 2.0f;
 	float ticks = 0.0f;
 	GameObjectPool* projectilePool;

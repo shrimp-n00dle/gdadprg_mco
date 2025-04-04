@@ -30,57 +30,58 @@ void Level1Map::initialize()
 	// --- Define platform colliders ---
 	std::vector<sf::FloatRect> platformBounds = {
 		// Bottom-left platform, every succeeding value goes upward
-		{0, 744, 336, 16}, {336, 741, 48, 16}, {384, 738, 48, 16}, {432, 735, 48, 16},
-		{480, 732, 48, 16}, {528, 729, 48, 16}, {576, 726, 48, 16}, {624, 723, 48, 16},
+		{0, 744, 336, 15}, {336, 741, 48, 15}, {384, 738, 48, 15}, {432, 735, 48, 15},
+		{480, 732, 48, 15}, {528, 729, 48, 15}, {576, 726, 48, 15}, {624, 723, 48, 15},
 		
 		// 2nd-floor platforms, every succeeding value goes upward
-		{576, 660, 48, 16},	{528, 657, 48, 16}, {480, 654, 48, 16}, {432, 651, 48, 16},
-		{384, 648, 48, 16}, {336, 645, 48, 16}, {288, 642, 48, 16}, {240, 639, 48, 16}, 
-		{192, 636, 48, 16}, {144, 633, 48, 16}, {96, 630, 48, 16}, {48, 627, 48, 16},
-		{0, 624, 48, 16},
+		{576, 660, 48, 15},	{528, 657, 48, 15}, {480, 654, 48, 15}, {432, 651, 48, 15},
+		{384, 648, 48, 15}, {336, 645, 48, 15}, {288, 642, 48, 15}, {240, 639, 48, 15}, 
+		{192, 636, 48, 15}, {144, 633, 48, 15}, {96, 630, 48, 15}, {48, 627, 48, 15},
+		{0, 624, 48, 15},
 
 		// 3nd-floor platforms, every succeeding value goes upward
-		{48, 560, 48, 16}, {96, 557, 48, 16}, {144, 554, 48, 16}, {192, 551, 48, 16},
-		{240, 548, 48, 16}, {288, 545, 48, 16}, {336, 542, 48, 16}, {384, 539, 48, 16},
-		{432, 536, 48, 16}, {480, 533, 48, 16}, {528, 530, 48, 16}, {576, 527, 48, 16},
-		{624, 524, 48, 16},
+		{48, 560, 48, 15}, {96, 557, 48, 15}, {144, 554, 48, 15}, {192, 551, 48, 15},
+		{240, 548, 48, 15}, {288, 545, 48, 15}, {336, 542, 48, 15}, {384, 539, 48, 15},
+		{432, 536, 48, 15}, {480, 533, 48, 15}, {528, 530, 48, 15}, {576, 527, 48, 15},
+		{624, 524, 48, 15},
 
 		// 4th-floor platforms, every succeeding value goes upward
-		{576, 461, 48, 16}, {528, 458, 48, 16}, {480, 455, 48, 16}, {432, 452, 48, 16},
-		{384, 449, 48, 16}, {336, 446, 48, 16}, {288, 443, 48, 16}, {240, 440, 48, 16},
-		{192, 437, 48, 16}, {144, 434, 48, 16}, {96, 431, 48, 16}, {48, 428, 48, 16},
-		{0, 425, 48, 16},
+		{576, 461, 48, 15}, {528, 458, 48, 15}, {480, 455, 48, 15}, {432, 452, 48, 15},
+		{384, 449, 48, 15}, {336, 446, 48, 15}, {288, 443, 48, 15}, {240, 440, 48, 15},
+		{192, 437, 48, 15}, {144, 434, 48, 15}, {96, 431, 48, 15}, {48, 428, 48, 15},
+		{0, 425, 48, 15},
 
 		// 5th-floor platforms, every succeeding value goes upward
-		{48, 363, 48, 16}, {96, 360, 48, 16}, {144, 357, 48, 16}, {192, 354, 48, 16},
-		{240, 351, 48, 16}, {288, 348, 48, 16}, {336, 345, 48, 16}, {384, 342, 48, 16},
-		{432, 339, 48, 16}, {480, 336, 48, 16}, {528, 333, 48, 16}, {576, 330, 48, 16},
-		{624, 327, 48, 16},
+		{48, 363, 48, 15}, {96, 360, 48, 15}, {144, 357, 48, 15}, {192, 354, 48, 15},
+		{240, 351, 48, 15}, {288, 348, 48, 15}, {336, 345, 48, 15}, {384, 342, 48, 15},
+		{432, 339, 48, 15}, {480, 336, 48, 15}, {528, 333, 48, 15}, {576, 330, 48, 15},
+		{624, 327, 48, 15},
 
 		// 6th-floor platforms, every succeeding value goes upward
-		{576, 264, 48, 16}, {528, 261, 48, 16}, {480, 258, 48, 16}, {432, 255, 48, 16},
-		{0, 252, 432, 16},
+		{576, 264, 48, 15}, {528, 261, 48, 15}, {480, 258, 48, 15}, {432, 255, 48, 15},
+		{0, 252, 432, 15},
 
 		// Final Platform
-		{264, 167, 144, 16}
+		{264, 167, 144, 15}
 	};
 
 	std::vector<sf::RectangleShape*> boundingBoxes;
 
-	for (const auto& bounds : platformBounds) {
+	for (int i = 0; i < platformBounds.size(); i++) {
+		// Create unique name for each collider
+		std::string colliderName = "PlatformCollider_" + std::to_string(i);
 
-		Collider* platformCollider = new Collider("PlatformCollider");
-		platformCollider->setLocalBounds(bounds);
+		Collider* platformCollider = new Collider(colliderName);
+		platformCollider->setLocalBounds(platformBounds[i]);
 		platformCollider->setCollisionListener(this);
 		this->attachComponent(platformCollider);
 		PhysicsManager::getInstance()->trackObject(platformCollider);
 
-
 		/* Debug Lines for the bounding boxes */
 		sf::RectangleShape* boundingBox = new sf::RectangleShape();
-		boundingBox->setPosition(bounds.left, bounds.top);
+		boundingBox->setPosition(platformBounds[i].left, platformBounds[i].top);
 		boundingBox->setOrigin(0, 0);
-		boundingBox->setSize(sf::Vector2f(bounds.width, bounds.height));
+		boundingBox->setSize(sf::Vector2f(platformBounds[i].width, platformBounds[i].height));
 		boundingBox->setFillColor(sf::Color(0, 255, 0, 100));  // Semi-transparent green
 		boundingBox->setOutlineColor(sf::Color::Red);
 		boundingBox->setOutlineThickness(2);

@@ -38,46 +38,38 @@ void MCOPlayerMovement::perform()
 
 	}
 
-		if (inputController->isRight())
+	if (inputController->isRight())
+	{
+		offset.x += SPEED_MULTIPLIER;
+		player->frameSprite->setScale(-2.0f, 2.0f);
+		playerTransformable->move(offset * deltaTime.asSeconds());
+	}
+
+	else if (inputController->isLeft())
+	{
+		offset.x -= SPEED_MULTIPLIER;
+		player->frameSprite->setScale(2.0f, 2.0f);
+		playerTransformable->move(offset * deltaTime.asSeconds());
+	}
+
+	if (!player->bLadder && !player->bHammer)
+	{
+		if (inputController->isJump() && !bHop && player->isGrounded())
 		{
-			offset.x += SPEED_MULTIPLIER;
-			player->frameSprite->setScale(-2.0f, 2.0f);
-			playerTransformable->move(offset * deltaTime.asSeconds());
+			std::cout << "Jump initiated" << std::endl;
+			player->bGrounded = false;
+			player->platformsCollidingWith.clear();
+			player->velocity.y = -JUMP_MULTIPLIER; // Upward force
+			bHop = true;
+
+			// player->changeSpriteState("jump_sheet");
 		}
+	}
 
-		else if (inputController->isLeft())
-		{
-			offset.x -= SPEED_MULTIPLIER;
-			player->frameSprite->setScale(2.0f, 2.0f);
-			playerTransformable->move(offset * deltaTime.asSeconds());
-		}
-
-		if (!player->bLadder && !player->bHammer)
-		{
-			if (inputController->isJump() && !bHop)
-			{
-				std::cout << "hi" << std::endl;
-				offset.y -= JUMP_MULTIPLIER;
-				playerTransformable->move(offset * deltaTime.asSeconds());
-				bHop = true;
-
-				//player->changeSpriteState("jump_sheet");
-			}
-		}
-
-		if (bHop) jumpTimer -= deltaTime.asSeconds();
-
-		/*If its at the peak, bring it down*/
-		if (jumpTimer <= 0.0f)
-		{
-			jumpTimer = 0.5f;
-			bHop = false;
-			offset.y += JUMP_MULTIPLIER;
-			playerTransformable->move(offset * deltaTime.asSeconds());
-			player->changeSpriteState("walk_sheet");
-		}
+	if (!inputController->isJump()) {
+		bHop = false;
+	}
 	
-		
 	player->getCollider()->setLocalBounds(player->frameSprite->getGlobalBounds());
 	}
 

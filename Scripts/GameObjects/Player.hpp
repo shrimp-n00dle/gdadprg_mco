@@ -26,12 +26,15 @@ public:
 
 	bool bLadder = false;
 	bool bHammer = false;
+	bool bGrounded = false;
+	bool isGrounded() const { return bGrounded; }
 
 	Collider* getCollider();
 	std::string getSheetName();
 
 	sf::Sprite* frameSprite;
 	sf::Vector2f velocity;
+	std::set<Collider*> platformsCollidingWith;
 
 private:
 	const float SPEED_MULTIPLIER = 300.0f;
@@ -40,8 +43,8 @@ private:
 
 	sf::Time deltaTime;
 	float timer = 10.0f;
-	bool bGrounded = false;
-	std::set<AGameObject*> platformsCollidingWith;
+	sf::Vector2f previousPosition = sf::Vector2f(0,0);
+	
 
 protected:
 	sf::Event event;
