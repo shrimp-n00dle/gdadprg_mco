@@ -75,12 +75,12 @@ void Player::update(sf::Time deltaTime) {
 			}
 		}
 
-		std::cout << "FrameSprite initial position: " << frameSprite->getPosition().x << ", " << frameSprite->getPosition().y << std::endl;
+		//std::cout << "FrameSprite initial position: " << frameSprite->getPosition().x << ", " << frameSprite->getPosition().y << std::endl;
 		frameSprite->setPosition(frameSprite->getPosition().x,
 			highestPlatformY - (highestPlatformHeight * 2.0) - playerHeight);
-		std::cout << "FrameSprite new position: " << frameSprite->getPosition().x << ", " << frameSprite->getPosition().y << std::endl;
+		/*std::cout << "FrameSprite new position: " << frameSprite->getPosition().x << ", " << frameSprite->getPosition().y << std::endl;
 		std::cout << "Highest Platform Y: " << highestPlatformY << std::endl;
-		std::cout << "Player height: " << playerHeight << std::endl;
+		std::cout << "Player height: " << playerHeight << std::endl;*/
 	}
 	
 

@@ -59,8 +59,11 @@ void MCOPlayerMovement::perform()
 			std::cout << "Jump initiated" << std::endl;
 			player->bGrounded = false;
 			player->platformsCollidingWith.clear();
-			player->velocity.y = -JUMP_MULTIPLIER; // Upward force
+			player->velocity.y -= JUMP_MULTIPLIER; // Upward force
 			bHop = true;
+
+			/*Adding jumping effects*/
+			//SFXManager::getInstance()->mAudioList[0]->playSong();
 
 			// player->changeSpriteState("jump_sheet");
 		}

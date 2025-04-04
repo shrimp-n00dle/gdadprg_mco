@@ -26,6 +26,12 @@ void SFXManager::loadAudio(std::string key, std::string path)
     audio->loadFromFile(path);
     AudioMap[key] = audio;
 
+    /*prepare the song for the scene*/
+    Playlist* newAudio = Playlist::readySongtoScene(AudioMap[key]);
+
+    /*store the song in the audiolist*/
+    mAudioList.push_back(newAudio);
+
     // NEVER DO THIS >> &mEnemyList[0]
 }
 

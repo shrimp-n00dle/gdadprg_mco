@@ -1,4 +1,5 @@
 #pragma once
+#include "../GameObjects/Playlist.hpp"
 #include "SFML/Audio.hpp"
 #include "SFML/Graphics.hpp"
 #include "unordered_map"
@@ -11,7 +12,7 @@ class SFXManager
 {
 public:
     static SFXManager* getInstance();
-
+    std::vector<Playlist*> mAudioList;
     void loadAll();
     sf::SoundBuffer* getAudio(std::string);
 
@@ -20,6 +21,7 @@ private:
     SFXManager(SFXManager const&) {};
     SFXManager& operator=(SFXManager const&){};
     static SFXManager* sharedInstance;
+
 
     void loadAudio(std::string,std::string);
 

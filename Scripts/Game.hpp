@@ -88,7 +88,6 @@ private:
     void handleAudioInput(sf::Keyboard::Key key, bool isPressed);
 
     void addEntity(std::string key, float x, float y);
-    void addAudio(std::string key);
 
 private:
     sf::RenderWindow mWindow;
@@ -97,7 +96,7 @@ private:
 
 
     std::vector<Entity*> mEntityList;
-    std::vector<Playlist*> mAudioList;
+ 
 
     bool mIsMovingUp = false;
     bool mIsMovingDown = false;

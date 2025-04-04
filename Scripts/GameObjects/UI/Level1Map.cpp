@@ -18,9 +18,6 @@ void Level1Map::initialize()
 	Renderer* renderer = new Renderer("Level1Map");
 	renderer->assignDrawable(mapSprite);
 	attachComponent(renderer);
-	
-
-
 
 	float mapScaleX = mapSprite->getScale().x;
 	float mapScaleY = mapSprite->getScale().y;

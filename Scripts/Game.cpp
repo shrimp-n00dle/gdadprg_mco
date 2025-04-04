@@ -13,13 +13,7 @@ Game::Game() : mWindow(sf::VideoMode(672, 768), "MCO Donkey Kong")
     
     TextureManager::getInstance()->loadAll();
     FontManager::getInstance()->loadAll();
-    //SFXManager::getInstance()->loadAll();
-
-    /*Audio*/
-   /* addAudio("1");
-    addAudio("2");
-    addAudio("3");
-    addAudio("4");*/
+    SFXManager::getInstance()->loadAll();
 
     //register scenes
     SceneManager::getInstance()->registerScene(new MainMenuScene());
@@ -134,16 +128,4 @@ void Game::addEntity(std::string key, float x, float y)
     sf::Texture* texture = TextureManager::getInstance()->getTexture(key);
     Entity* newEntity = Entity::createEntity(texture,x,y);
     mEntityList.push_back(newEntity);
-}
-
-void Game::addAudio(std::string key)
-{
-    /*get the audio from the main library*/
-    sf::SoundBuffer* audio = SFXManager::getInstance()->getAudio(key);
-
-    /*prepare the song for the scene*/
-    Playlist* newAudio = Playlist::readySongtoScene(audio);
-
-    /*store the song in the audiolist*/
-    mAudioList.push_back(newAudio);
 }
