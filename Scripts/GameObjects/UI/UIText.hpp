@@ -10,8 +10,10 @@ public:
 	~UIText();
 	void initialize();
 	void setText(std::string text);
+	void setTextStyled(std::string text);
 	std::string getText();
 	void setSize(unsigned int size);
+	void setColor(sf::Color color);
 
 private:
 	sf::Text* text;

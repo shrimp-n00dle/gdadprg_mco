@@ -5,12 +5,12 @@
 
 #define PI 3.14159
 
-Game::Game() : mWindow(sf::VideoMode(672, 768), "MCO Donkey Kong")
+Game::Game() : mWindow(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "MCO Donkey Kong")
 {
     /*Framerate is set to 60*/
     mWindow.setFramerateLimit(60);
 
-    
+    ApplicationManager::getInstance()->initialize(&mWindow);
     TextureManager::getInstance()->loadAll();
     FontManager::getInstance()->loadAll();
     SFXManager::getInstance()->loadAll();
@@ -22,7 +22,7 @@ Game::Game() : mWindow(sf::VideoMode(672, 768), "MCO Donkey Kong")
     SceneManager::getInstance()->registerScene(new SpriteScene());
 
     //load first scene
-    SceneManager::getInstance()->loadScene(SceneManager::MCOGAME_SCENE_NAME);
+    SceneManager::getInstance()->loadScene(SceneManager::MAIN_MENU_SCENE_NAME);
 }
 
 void Game::run()
@@ -73,8 +73,8 @@ void Game::update(sf::Time deltaTime)
     if (!ApplicationManager::getInstance()->isPaused())
     {
         GameObjectManager::getInstance()->update(deltaTime);
-        if (debugTimer >= 2.0f) {  // Debug every 2 seconds to avoid spam
-            //PhysicsManager::getInstance()->debugCollisions();
+        if (debugTimer >= 5.0f) {  // Debug every 2 seconds to avoid spam
+            PhysicsManager::getInstance()->debugCollisions();
             debugTimer = 0;
         }
         debugTimer += deltaTime.asSeconds();
