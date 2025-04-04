@@ -90,11 +90,13 @@ void Level1Map::initialize()
 	}
 
 	// Attach each bounding box to a Renderer
+	/*
 	for (auto* box : boundingBoxes) {
 		Renderer* boundingRenderer = new Renderer("PlatformBounds");
 		boundingRenderer->assignDrawable(box);
 		this->attachComponent(boundingRenderer);
 	}
+	*/
 }
 
 void Level1Map::onCollisionEnter(AGameObject* object)

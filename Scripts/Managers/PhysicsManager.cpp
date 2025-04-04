@@ -79,6 +79,7 @@ void PhysicsManager::perform()
 void PhysicsManager::debugCollisions()
 {
 	std::cout << "========== PHYSICS DEBUG ==========\n";
+	/*
 	std::cout << "Tracked objects: " << trackedObjects.size() << "\n";
 
 	for (int i = 0; i < trackedObjects.size(); i++) {
@@ -94,7 +95,7 @@ void PhysicsManager::debugCollisions()
 		sf::Vector2f ownerPos = owner->getTransformable()->getPosition();
 		std::cout << "   Owner position: " << ownerPos.x << ", " << ownerPos.y << "\n";
 	}
-
+	*/
 	// Check potential collisions
 	std::cout << "----- CURRENT COLLISION CHECKS -----\n";
 	for (int i = 0; i < trackedObjects.size(); i++) {
