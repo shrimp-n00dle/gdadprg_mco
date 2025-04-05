@@ -5,15 +5,16 @@
 
 #define PI 3.14159
 
-Game::Game() : mWindow(sf::VideoMode(672, 768), "MCO Donkey Kong")
+Game::Game() : mWindow(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "MCO Donkey Kong")
 {
     /*Framerate is set to 60*/
     mWindow.setFramerateLimit(60);
 
-    
+    ApplicationManager::getInstance()->initialize(&mWindow);
     TextureManager::getInstance()->loadAll();
     FontManager::getInstance()->loadAll();
     SFXManager::getInstance()->loadAll();
+    ScoreManager::getInstance();
 
     //register scenes
     SceneManager::getInstance()->registerScene(new MainMenuScene());

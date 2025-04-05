@@ -55,9 +55,10 @@ void TextureManager::loadAll()
     /*UI*/
     storeTexture("btn_normal", "Assets/UI/b_4.png");
     storeTexture("btn_pressed", "Assets/UI/b_5.png");
-    storeTexture("title_bg", "Assets/UI/f.png");
+    storeTexture("title_bg", "Assets/UI/quit.png");
     storeTexture("menu_bar", "Assets/UI/bar_1.png");
-    storeTexture("menu_bg", "Assets/UI/TitleScreenBG.png");
+    storeTexture("menu_bg", "Assets/UI/donkeykongtitle.png");
+    storeTexture("blank_bg", "Assets/UI/blankbg.png");
 
     /*SPRITE FRAMES*/
     storeTexture("sprite_sheet", "Assets/SpriteSheets/Dota_Sheet.png");

@@ -29,6 +29,7 @@
 #include "GameObjects/UI/MainMenuScreen.hpp"
 #include "GameObjects/UI/MenuBar.hpp"
 #include "GameObjects/UI/Level1Map.hpp"
+#include "GameObjects/UI/Level1UI.hpp"
 #include "GameObjects/UI/QuitScreen.hpp"
 #include "GameObjects/UI/ReturnScreen.hpp"
 #include "GameObjects/UI/UIButton.hpp"
@@ -74,10 +75,10 @@ public:
     const sf::Time TimePerFrame = sf::seconds(1.f/60.0f);
 
     //640
-    static const int WINDOW_WIDTH = 640;
+    static const int WINDOW_WIDTH = 672;
 
     //480
-    static const int WINDOW_HEIGHT = 480;
+    static const int WINDOW_HEIGHT = 768;
 
 private:
     void processEvents();

@@ -5,6 +5,11 @@ ApplicationManager* ApplicationManager::sharedInstance = nullptr;
 
 void ApplicationManager::initialize(sf::RenderWindow* window)
 {
+	if (sharedInstance == NULL) {
+		sharedInstance = new ApplicationManager();
+	}
+	sharedInstance->window = window;
+	sharedInstance->state = Running;
 }
 
 ApplicationManager* ApplicationManager::getInstance()

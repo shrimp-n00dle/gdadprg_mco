@@ -19,7 +19,7 @@ void QuitScreen::initialize()
 
 	float posX = Game::WINDOW_WIDTH / 2;
 	float posY = Game::WINDOW_HEIGHT / 2;
-	setChildPosition(Game::WINDOW_WIDTH / 2, Game::WINDOW_HEIGHT / 2);
+	setChildPosition(Game::WINDOW_WIDTH / 2, Game::WINDOW_HEIGHT / 3);
 	transformable.setScale(sf::Vector2f(0.7f, 0.7f));
 
 	sf::Texture* btnNormal = TextureManager::getInstance()->getTexture("btn_normal");
@@ -29,7 +29,7 @@ void QuitScreen::initialize()
 	this->attachChild(menu_Text);
 	menu_Text->setChildPosition(0, -20);
 	menu_Text->setSize(30);
-	menu_Text->setText("Are you sure you want to quit the game ?");
+	menu_Text->setTextStyled("ARE YOU SURE YOU WANT TO QUIT THE GAME?");
 
 	UIButton* button1 = new UIButton("button_yes", btnNormal, btnPressed);
 	this->attachChild(button1);
@@ -60,7 +60,6 @@ void QuitScreen::onButtonClick(UIButton* button)
 {
 	if (button->getName() == "button_yes")
 	{
-		
 		ApplicationManager::getInstance()->applicationQuit();
 	}
 	else if (button->getName() == "button_no")

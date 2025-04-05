@@ -18,15 +18,14 @@ void MainMenuScreen::initialize()
 
 	float posX = Game::WINDOW_WIDTH / 2;
 	float posY = Game::WINDOW_HEIGHT / 2;
-	setChildPosition(Game::WINDOW_WIDTH / 2, Game::WINDOW_HEIGHT / 2);
-	transformable.setScale(sf::Vector2f(0.7f, 0.7f));
+	setChildPosition(posX, posY / 2);
+	transformable.setScale(sf::Vector2f(0.8f, 0.8f));
 
-	sf::Texture* btnNormal = TextureManager::getInstance()->getTexture("btn_normal");
-	sf::Texture* btnPressed = TextureManager::getInstance()->getTexture("btn_pressed");
+	sf::Texture* btnNormal = TextureManager::getInstance()->getTexture("blank_bg");
 
-	UIButton* button1 = new UIButton("button_1", btnNormal, btnPressed);
+	UIButton* button1 = new UIButton("button_1", btnNormal, btnNormal);
 	this->attachChild(button1);
-	button1->setChildPosition(0,-50);
+	button1->setChildPosition(0,300);
 	button1->getTransformable()->setScale(0.3f, 0.3f);
 	button1->setButtonListener(this);
 
@@ -34,12 +33,13 @@ void MainMenuScreen::initialize()
 	UIText* button1_Text = new UIText("text_1");
 	button1->attachChild(button1_Text);
 	button1_Text->setChildPosition(0,-20);
+	button1_Text->setColor(sf::Color(254, 161, 59));
 	button1_Text->setSize(85);
-	button1_Text->setText("PLAY GAME");
+	button1_Text->setText("PLAY DEMO");
 
-	UIButton* button2 = new UIButton("button_2", btnNormal, btnPressed);
+	UIButton* button2 = new UIButton("button_2", btnNormal, btnNormal);
 	this->attachChild(button2);
-	button2->setChildPosition(0,50);
+	button2->setChildPosition(0,400);
 	button2->getTransformable()->setScale(0.3f, 0.3f);
 	button2->setButtonListener(this);
 
@@ -47,7 +47,14 @@ void MainMenuScreen::initialize()
 	button2->attachChild(button2_Text);
 	button2_Text->setChildPosition(0,-20);
 	button2_Text->setSize(85);
-	button2_Text->setText("QUIT");
+	button2_Text->setColor(sf::Color(254, 161, 59));
+	button2_Text->setText("QUIT GAME");
+
+	UIText* credits = new UIText("credits");
+	this->attachChild(credits);
+	credits->setChildPosition(0, 600);
+	credits->setSize(25);
+	credits->setText("2025, VINGNO & CAO");
 }
 
 void MainMenuScreen::onButtonClick(UIButton* button)
