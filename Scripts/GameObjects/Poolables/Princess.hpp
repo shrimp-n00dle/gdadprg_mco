@@ -1,33 +1,25 @@
 #pragma once
 #include "../APoolable.hpp"
 #include "../../Managers/TextureManager.hpp"
-#include "../../Components/HammerBehaviour.hpp"
-#include "../../Components/HammerHandler.hpp"
 #include "../Listeners/CollisionListener.hpp"
 #include "../../Managers/PhysicsManager.hpp"
 #include "../../Managers/ObjectPoolHolder.hpp"
+#include "../../Components/FrameComponents/PBehaviour.hpp"
 #include "GameObjectPool.hpp"
-class Hammer : public APoolable, public CollisionListener
+class Princess : public APoolable, public CollisionListener
 {
 public:
-	Hammer(std::string name);
-	~Hammer();
+	Princess(std::string name);
+	~Princess();
 	void initialize();
-
+	void update(sf::Time deltaTime);
 	void onRelease();
 	void onActivate();
 	APoolable* clone();
 
 	void onCollisionEnter(AGameObject* object);
 	void onCollisionExit(AGameObject* object);
-
-private:
-	int counter = 0;
-	sf::Sprite* sprite; //= new sf::Sprite();
-	float timer = 10.0f;
-
-	const int SPAWN_RANGE = 300;
-
-	Collider* collider;
+	sf::Sprite* frameSprite;
+	float timer = 2.0f;
 };
 

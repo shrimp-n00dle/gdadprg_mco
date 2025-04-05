@@ -141,11 +141,13 @@
     <ClCompile Include="Scripts\Components\FrameComponents\BarrelBehaviour.cpp" />
     <ClCompile Include="Scripts\Components\FrameComponents\FrameSwticher.cpp" />
     <ClCompile Include="Scripts\Components\FrameComponents\LadderBehaviour.cpp" />
+    <ClCompile Include="Scripts\Components\FrameComponents\PBehaviour.cpp" />
     <ClCompile Include="Scripts\Components\FrameComponents\WalkBehaviour.cpp" />
     <ClCompile Include="Scripts\Components\HammerBehaviour.cpp" />
     <ClCompile Include="Scripts\Components\HammerHandler.cpp" />
     <ClCompile Include="Scripts\Components\LadderHandler.cpp" />
     <ClCompile Include="Scripts\Components\MCOPlayerMovement.cpp" />
+    <ClCompile Include="Scripts\Components\NPCHandler.cpp" />
     <ClCompile Include="Scripts\Components\PlayerMovement.cpp" />
     <ClCompile Include="Scripts\Components\ProjectileMovement.cpp" />
     <ClCompile Include="Scripts\Components\Source.cpp" />
@@ -163,7 +165,9 @@
     <ClCompile Include="Scripts\GameObjects\Poolables\EnemyAirplane.cpp" />
     <ClCompile Include="Scripts\GameObjects\Poolables\GameObjectPool.cpp" />
     <ClCompile Include="Scripts\GameObjects\Poolables\Hammer.cpp" />
+    <ClCompile Include="Scripts\GameObjects\Poolables\Kong.cpp" />
     <ClCompile Include="Scripts\GameObjects\Poolables\Ladder.cpp" />
+    <ClCompile Include="Scripts\GameObjects\Poolables\Princess.cpp" />
     <ClCompile Include="Scripts\GameObjects\Poolables\ProjectileObject.cpp" />
     <ClCompile Include="Scripts\GameObjects\Scenes\AScene.cpp" />
     <ClCompile Include="Scripts\GameObjects\Scenes\GameScene.cpp" />
@@ -209,11 +213,13 @@
     <ClInclude Include="Scripts\Components\FrameComponents\BarrelBehaviour.hpp" />
     <ClInclude Include="Scripts\Components\FrameComponents\FrameSwticher.hpp" />
     <ClInclude Include="Scripts\Components\FrameComponents\LadderBehaviour.hpp" />
+    <ClInclude Include="Scripts\Components\FrameComponents\PBehaviour.hpp" />
     <ClInclude Include="Scripts\Components\FrameComponents\WalkBehaviour.hpp" />
     <ClInclude Include="Scripts\Components\HammerBehaviour.hpp" />
     <ClInclude Include="Scripts\Components\HammerHandler.hpp" />
     <ClInclude Include="Scripts\Components\LadderHandler.hpp" />
     <ClInclude Include="Scripts\Components\MCOPlayerMovement.hpp" />
+    <ClInclude Include="Scripts\Components\NPCHandler.hpp" />
     <ClInclude Include="Scripts\Components\PlayerMovement.hpp" />
     <ClInclude Include="Scripts\Components\ProjectileMovement.hpp" />
     <ClInclude Include="Scripts\Game.hpp" />
@@ -233,7 +239,9 @@
     <ClInclude Include="Scripts\GameObjects\Poolables\EnemyAirplane.hpp" />
     <ClInclude Include="Scripts\GameObjects\Poolables\GameObjectPool.hpp" />
     <ClInclude Include="Scripts\GameObjects\Poolables\Hammer.hpp" />
+    <ClInclude Include="Scripts\GameObjects\Poolables\Kong.hpp" />
     <ClInclude Include="Scripts\GameObjects\Poolables\Ladder.hpp" />
+    <ClInclude Include="Scripts\GameObjects\Poolables\Princess.hpp" />
     <ClInclude Include="Scripts\GameObjects\Poolables\ProjectileObject.hpp" />
     <ClInclude Include="Scripts\GameObjects\Scenes\AScene.hpp" />
     <ClInclude Include="Scripts\GameObjects\Scenes\GameScene.hpp" />

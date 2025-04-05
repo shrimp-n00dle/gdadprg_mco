@@ -10,6 +10,8 @@ const std::string ObjectPoolHolder::HAMMER_POOL_TAG = "HammerPool";
 
 const std::string ObjectPoolHolder::BARREL_POOL_TAG = "BarrelPool";
 
+const std::string ObjectPoolHolder::PRINCESS_POOL_TAG = "PrincessPool";
+
 ObjectPoolHolder* ObjectPoolHolder::sharedInstance = nullptr;
 
 ObjectPoolHolder* ObjectPoolHolder::getInstance()

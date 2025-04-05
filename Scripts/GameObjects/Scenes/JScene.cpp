@@ -32,8 +32,16 @@ void JScene::onLoadObjects()
 	hammerManager->attachComponent(hammerHandler);
 	this->registerObject(hammerManager);
 
+	/*UI*/
 	Level1UI* level1UI = new Level1UI("Level1UI");
 	this->registerObject(level1UI);
+
+	/*Princess and DonkeyKong*/
+	srand(time(nullptr));
+	EGameObject* npcManager = new EGameObject("NPCManager");
+	NPCHandler* npcHandler = new NPCHandler(1, "NPCHandler", npcManager);
+	npcManager->attachComponent(npcHandler);
+	this->registerObject(npcManager);
 
 	//QuitScreen* quitScreen = new QuitScreen("QuitScreen");
 	//this->registerObject(quitScreen);
