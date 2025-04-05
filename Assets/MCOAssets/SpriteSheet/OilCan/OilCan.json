@@ -1,0 +1,28 @@
+{"frames": {
+
+"Can0.png":
+{
+	"frame": {"x":0,"y":0,"w":18,"h":26},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":18,"h":26},
+	"sourceSize": {"w":18,"h":26}
+},
+"Can1.png":
+{
+	"frame": {"x":0,"y":26,"w":18,"h":27},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":18,"h":27},
+	"sourceSize": {"w":18,"h":27}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "OilCan.png",
+	"format": "RGBA8888",
+	"size": {"w":18,"h":53},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:9eb85b8cdeaf062289556906c9c94dfd:468ad670a0b09c0b0ab23e986d83b3f1:5d039a5c92261b341d2c4b4e3823b1cd$"
+}
+}

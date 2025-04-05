@@ -9,6 +9,7 @@
 #include "../../Components/BarrelHandler.hpp"
 #include "../../Components/PHandler.hpp"
 #include "../../Components/KHandler.hpp"
+#include "../../Components/CHandler.hpp"
 class JScene : public AScene
 {
 public:

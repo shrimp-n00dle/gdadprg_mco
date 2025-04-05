@@ -43,7 +43,7 @@ void JScene::onLoadObjects()
 	Level1UI* level1UI = new Level1UI("Level1UI");
 	this->registerObject(level1UI);
 
-	/*Princess and DonkeyKong*/
+	/*Princess, DonkeyKong and OilCan*/
 	srand(time(nullptr));
 	EGameObject* pManager = new EGameObject("PManager");
 	PHandler* pHandler = new PHandler(1, "PHandler", pManager);
@@ -55,6 +55,12 @@ void JScene::onLoadObjects()
 	KHandler* kHandler = new KHandler(1, "KHandler", kManager);
 	kManager->attachComponent(kHandler);
 	this->registerObject(kManager);
+
+	srand(time(nullptr));
+	EGameObject* cManager = new EGameObject("CManager");
+	CHandler* cHandler = new CHandler(1, "CHandler", cManager);
+	cManager->attachComponent(cHandler);
+	this->registerObject(cManager);
 
 	//QuitScreen* quitScreen = new QuitScreen("QuitScreen");
 	//this->registerObject(quitScreen);

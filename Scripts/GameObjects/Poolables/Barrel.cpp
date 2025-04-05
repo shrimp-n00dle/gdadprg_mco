@@ -84,7 +84,7 @@ void Barrel::initialize()
 void Barrel::onCollisionEnter(AGameObject* object)
 {
 	/*When it collides with the oilcan*/
-	if (object->getName().find("player") != std::string::npos)
+	if (object->getName().find("oilcan") != std::string::npos)
 	{
 		std::cout << "Barrel: collided with " << object->getName() << std::endl;
 

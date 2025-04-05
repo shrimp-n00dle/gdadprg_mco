@@ -135,10 +135,12 @@
     <ClCompile Include="Scripts\Components\AirplaneSupportMovement.cpp" />
     <ClCompile Include="Scripts\Components\BarrelHandler.cpp" />
     <ClCompile Include="Scripts\Components\BGMovement.cpp" />
+    <ClCompile Include="Scripts\Components\CHandler.cpp" />
     <ClCompile Include="Scripts\Components\Collider.cpp" />
     <ClCompile Include="Scripts\Components\EnemyBehaviour.cpp" />
     <ClCompile Include="Scripts\Components\EnemySwarmHandler.cpp" />
     <ClCompile Include="Scripts\Components\FrameComponents\BarrelBehaviour.cpp" />
+    <ClCompile Include="Scripts\Components\FrameComponents\CBehaviour.cpp" />
     <ClCompile Include="Scripts\Components\FrameComponents\FrameSwticher.cpp" />
     <ClCompile Include="Scripts\Components\FrameComponents\KBehaviour.cpp" />
     <ClCompile Include="Scripts\Components\FrameComponents\LadderBehaviour.cpp" />
@@ -169,6 +171,7 @@
     <ClCompile Include="Scripts\GameObjects\Poolables\Hammer.cpp" />
     <ClCompile Include="Scripts\GameObjects\Poolables\Kong.cpp" />
     <ClCompile Include="Scripts\GameObjects\Poolables\Ladder.cpp" />
+    <ClCompile Include="Scripts\GameObjects\Poolables\OilCan.cpp" />
     <ClCompile Include="Scripts\GameObjects\Poolables\Princess.cpp" />
     <ClCompile Include="Scripts\GameObjects\Poolables\ProjectileObject.cpp" />
     <ClCompile Include="Scripts\GameObjects\Scenes\AScene.cpp" />
@@ -209,10 +212,12 @@
     <ClInclude Include="Scripts\Components\AirplaneSupportMovement.hpp" />
     <ClInclude Include="Scripts\Components\BarrelHandler.hpp" />
     <ClInclude Include="Scripts\Components\BGMovement.hpp" />
+    <ClInclude Include="Scripts\Components\CHandler.hpp" />
     <ClInclude Include="Scripts\Components\Collider.hpp" />
     <ClInclude Include="Scripts\Components\EnemyBehaviour.hpp" />
     <ClInclude Include="Scripts\Components\EnemySwarmHandler.hpp" />
     <ClInclude Include="Scripts\Components\FrameComponents\BarrelBehaviour.hpp" />
+    <ClInclude Include="Scripts\Components\FrameComponents\CBehaviour.hpp" />
     <ClInclude Include="Scripts\Components\FrameComponents\FrameSwticher.hpp" />
     <ClInclude Include="Scripts\Components\FrameComponents\KBehaviour.hpp" />
     <ClInclude Include="Scripts\Components\FrameComponents\LadderBehaviour.hpp" />
@@ -245,6 +250,7 @@
     <ClInclude Include="Scripts\GameObjects\Poolables\Hammer.hpp" />
     <ClInclude Include="Scripts\GameObjects\Poolables\Kong.hpp" />
     <ClInclude Include="Scripts\GameObjects\Poolables\Ladder.hpp" />
+    <ClInclude Include="Scripts\GameObjects\Poolables\OilCan.hpp" />
     <ClInclude Include="Scripts\GameObjects\Poolables\Princess.hpp" />
     <ClInclude Include="Scripts\GameObjects\Poolables\ProjectileObject.hpp" />
     <ClInclude Include="Scripts\GameObjects\Scenes\AScene.hpp" />
