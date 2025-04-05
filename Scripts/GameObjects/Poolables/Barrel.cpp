@@ -29,12 +29,12 @@ void Barrel::update(sf::Time deltaTime) {
 
 	if (isGrounded())
 	{
-		if (bLeft)frameSprite->move(1, 0);
-		else frameSprite->move(-1, 0);
+		if (bLeft)this->getTransformable()->move(1, 0);
+		else this->getTransformable()->move(-1, 0);
 	}
 	else if (!isGrounded())
 	{
-		frameSprite->move(0, 9.8f);
+		this->getTransformable()->move(0, 9.8f);
 	}
 	AGameObject::update(deltaTime);
 }
@@ -67,10 +67,10 @@ void Barrel::onCollisionEnter(AGameObject* object)
 	if (object->getName().find("oilcan") != std::string::npos)
 	{
 		std::cout << "Barrel: collided with " << object->getName() << std::endl;
-
+	
 		/*Delete Barrel clone*/
-		GameObjectPool* BarrelPool = ObjectPoolHolder::getInstance()->getPool(ObjectPoolHolder::BARREL_POOL_TAG);
-		BarrelPool->releasePoolable((APoolable*)this);
+		//GameObjectPool* BarrelPool = ObjectPoolHolder::getInstance()->getPool(ObjectPoolHolder::BARREL_POOL_TAG);
+		//BarrelPool->releasePoolable((APoolable*)this);
 		return;
 	}
 
@@ -79,6 +79,7 @@ void Barrel::onCollisionEnter(AGameObject* object)
 	{
 		onGround = true;
 	}
+
 }
 void Barrel::onCollisionExit(AGameObject* object) 
 {
@@ -88,7 +89,6 @@ void Barrel::onCollisionExit(AGameObject* object)
 		onGround = false;
 		if (bLeft) bLeft = false;
 		else if (!bLeft) bLeft = true;
-		
 	}
 
 }

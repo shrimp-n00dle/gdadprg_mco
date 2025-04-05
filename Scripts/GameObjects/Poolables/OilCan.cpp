@@ -24,6 +24,7 @@ void OilCan::initialize()
 	sf::Vector2u textureSize = frameSprite->getTexture()->getSize();
 	frameSprite->setScale(2.5f, 2.5f);
 
+	//setChildPosition(600,250);
 	setChildPosition(100, 710);
 
 	Renderer* renderer = new Renderer("OilCanSprite");
