@@ -1,20 +1,16 @@
 #pragma once
 #include "../APoolable.hpp"
 #include "../../Managers/TextureManager.hpp"
-#include "../../Components/FrameComponents/BarrelBehaviour.hpp"
-#include "../../Components/BarrelHandler.hpp"
 #include "../Listeners/CollisionListener.hpp"
 #include "../../Managers/PhysicsManager.hpp"
 #include "../../Managers/ObjectPoolHolder.hpp"
 #include "GameObjectPool.hpp"
-class Barrel : public APoolable, public CollisionListener
+class Checker : public APoolable, public CollisionListener
 {
 public:
-	Barrel(std::string name);
-	~Barrel();
+	Checker(std::string name);
+	~Checker();
 	void initialize();
-
-	void update(sf::Time deltaTime);
 
 	void onRelease();
 	void onActivate();
@@ -22,16 +18,15 @@ public:
 
 	void onCollisionEnter(AGameObject* object);
 	void onCollisionExit(AGameObject* object);
-	sf::Sprite* frameSprite;
-	bool onGround = false;
-	bool bLeft = true;
-	bool isGrounded() const { return onGround; }
-	bool isTurn() const{ return bLeft; }
-	float timer = 0.5f;
+	sf::RectangleShape* checkerSprite;
 
 private:
 	int counter = 0;
+
+	float timer = 10.0f;
+
 	const int SPAWN_RANGE = 300;
+
 	Collider* collider;
 };
 

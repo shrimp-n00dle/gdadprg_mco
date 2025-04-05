@@ -23,10 +23,8 @@ APoolable* Barrel::clone()
 	return copyObj;
 }
 
-void Barrel::update(sf::Time deltaTime) {
-
-	timer -= deltaTime.asSeconds();
-
+void Barrel::update(sf::Time deltaTime) 
+{
 	if (isGrounded())
 	{
 		if (bLeft)this->getTransformable()->move(1, 0);
@@ -36,6 +34,10 @@ void Barrel::update(sf::Time deltaTime) {
 	{
 		this->getTransformable()->move(0, 9.8f);
 	}
+	/*Animation purposes*/
+	timer -= deltaTime.asSeconds();
+
+
 	AGameObject::update(deltaTime);
 }
 
@@ -69,8 +71,8 @@ void Barrel::onCollisionEnter(AGameObject* object)
 		std::cout << "Barrel: collided with " << object->getName() << std::endl;
 	
 		/*Delete Barrel clone*/
-		//GameObjectPool* BarrelPool = ObjectPoolHolder::getInstance()->getPool(ObjectPoolHolder::BARREL_POOL_TAG);
-		//BarrelPool->releasePoolable((APoolable*)this);
+		GameObjectPool* BarrelPool = ObjectPoolHolder::getInstance()->getPool(ObjectPoolHolder::BARREL_POOL_TAG);
+		BarrelPool->releasePoolable((APoolable*)this);
 		return;
 	}
 
@@ -80,16 +82,30 @@ void Barrel::onCollisionEnter(AGameObject* object)
 		onGround = true;
 	}
 
-}
-void Barrel::onCollisionExit(AGameObject* object) 
-{
-	if (object->getName().find("level1Map") != std::string::npos)
+	/*Collision on the platform*/
+	if (object->getName().find("Checker1") != std::string::npos)
 	{
-		std::cout << "Left " << std::endl;
+		std::cout << "Barrel collided with checker!!!!!" << std::endl;
 		onGround = false;
 		if (bLeft) bLeft = false;
 		else if (!bLeft) bLeft = true;
 	}
 
+	/*Collision on the platform*/
+	if (object->getName().find("Checker2") != std::string::npos)
+	{
+		std::cout << "CHECKER2" << std::endl;
+		onGround = false;
+	}
+
+}
+void Barrel::onCollisionExit(AGameObject* object) 
+{
+	/*if (object->getName().find("level1Map") != std::string::npos)
+	{
+		onGround = false;
+		if (bLeft) bLeft = false;
+		else if (!bLeft) bLeft = true;
+	}*/
 }
 

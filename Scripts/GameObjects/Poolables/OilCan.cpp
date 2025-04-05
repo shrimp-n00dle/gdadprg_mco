@@ -7,9 +7,9 @@ OilCan::~OilCan()
 	delete this->frameSprite;
 }
 
-void OilCan::onRelease() {}
+void OilCan::onRelease() { PhysicsManager::getInstance()->untrackObject(this->collider); }
 
-void OilCan::onActivate() {}
+void OilCan::onActivate() { PhysicsManager::getInstance()->trackObject(this->collider); }
 
 APoolable* OilCan::clone()
 {
@@ -24,7 +24,6 @@ void OilCan::initialize()
 	sf::Vector2u textureSize = frameSprite->getTexture()->getSize();
 	frameSprite->setScale(2.5f, 2.5f);
 
-	//setChildPosition(600,250);
 	setChildPosition(100, 710);
 
 	Renderer* renderer = new Renderer("OilCanSprite");
@@ -33,6 +32,11 @@ void OilCan::initialize()
 
 	CBehaviour* cBehaviour = new CBehaviour("CBehaviour");
 	this->attachComponent(cBehaviour);
+
+	this->collider = new Collider("OilCanCollider");
+	this->collider->setLocalBounds(frameSprite->getGlobalBounds());
+	this->collider->setCollisionListener(this);
+	this->attachComponent(this->collider);
 }
 
 void OilCan::update(sf::Time deltaTime)

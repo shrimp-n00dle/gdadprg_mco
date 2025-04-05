@@ -1,6 +1,7 @@
 #pragma once
 #include "AScene.hpp"
 #include "../Player.hpp"
+#include "../Poolables/Checker.hpp"
 #include "../Poolables/Ladder.hpp"
 #include "../UI/Level1Map.hpp"
 #include "../UI/Level1UI.hpp"

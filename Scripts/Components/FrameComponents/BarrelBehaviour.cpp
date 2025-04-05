@@ -9,6 +9,7 @@ void BarrelBehaviour::perform()
 {
 	Barrel* frameObj = (Barrel*)this->getOwner();
 
+	/*Animation*/
 
 		/*If timer is less than 0 seconds*/
 		if (frameObj->timer <= 0.0f)

@@ -21,5 +21,7 @@ public:
 	void onCollisionExit(AGameObject* object);
 	sf::Sprite* frameSprite;
 	float timer = 1.0f;
+private:
+	Collider* collider;
 };
 

@@ -31,6 +31,33 @@ void JScene::onLoadObjects()
 	BarrelHandler* barrelHandler = new BarrelHandler(1, "BarrelHandler", barrelManager);
 	barrelManager->attachComponent(barrelHandler);
 	this->registerObject(barrelManager);
+
+	/*Barrel Checker*/
+	Checker* checker = new Checker("Checker1");
+	/*sprite->setPosition(platformBounds[i].left, platformBounds[i].top);*/
+	//sprite->setSize(sf::Vector2f(platformBounds[i].width, platformBounds[i].height));
+	checker->setChildPosition(750,250);
+	this->registerObject(checker);
+
+	Checker* checker2 = new Checker("Checker2");
+	checker2->setChildPosition(350, 300);
+	this->registerObject(checker2);
+
+	Checker* checker3 = new Checker("Checker1");
+	checker3->setChildPosition(20, 350);
+	this->registerObject(checker3);
+
+	//Checker* checker3 = new Checker("Checker");
+	//checker3->setChildPosition(600, 250);
+	//this->registerObject(checker3);
+
+	//Checker* checker4 = new Checker("Checker");
+	//checker4->setChildPosition(600, 250);
+	//this->registerObject(checker4);
+
+	//Checker* checker5 = new Checker("Checker");
+	//checker4->setChildPosition(600, 250);
+	//this->registerObject(checker4);
 	
 	/*Hammer*/
 	srand(time(nullptr));
