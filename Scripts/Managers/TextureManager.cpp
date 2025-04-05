@@ -34,7 +34,8 @@ void TextureManager::loadAll()
     // "Assets/Bed/bed0000.png"
     storeTexture("player", "Assets/MCOAssets/beam.png");
     storeTexture("ladder", "Assets/MCOAssets/ladder.png");
-    storeTexture("hammer", "Assets/MCOAssets/hammer.jpg");
+    storeTexture("hammer", "Assets/MCOAssets/hammer.png");
+
 
     /*OBJECTS*/
     storeTexture("avenger", "Assets/Objects/Avenger.png");
@@ -63,6 +64,7 @@ void TextureManager::loadAll()
     storeTexture("walk_sheet", "Assets/MCOAssets/SpriteSheet/Walk/Walk.png");
     storeTexture("climb_sheet", "Assets/MCOAssets/SpriteSheet/Climb/Climb.png");
     storeTexture("hammer_sheet", "Assets/MCOAssets/SpriteSheet/Hammer/Hammer.png");
+    storeTexture("barrel_sheet", "Assets/MCOAssets/SpriteSheet/Barrel/Barrel.png");
 
     storeTexture("level1", "Assets/Maps/25m.png");
    

@@ -1,0 +1,36 @@
+{"frames": {
+
+"kong0.png":
+{
+	"frame": {"x":0,"y":0,"w":42,"h":34},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":42,"h":34},
+	"sourceSize": {"w":42,"h":34}
+},
+"kong1.png":
+{
+	"frame": {"x":0,"y":34,"w":42,"h":35},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":42,"h":35},
+	"sourceSize": {"w":42,"h":35}
+},
+"kong2.png":
+{
+	"frame": {"x":0,"y":69,"w":45,"h":34},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":45,"h":34},
+	"sourceSize": {"w":45,"h":34}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "Kong.png",
+	"format": "RGBA8888",
+	"size": {"w":45,"h":103},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:149f0e3f3a32aa668b75afd6030565e6:9e512c07e9bd811cb9cb91824a3dde3c:98decd09b2af6f0707466c221c0a629f$"
+}
+}

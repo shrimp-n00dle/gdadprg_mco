@@ -133,10 +133,12 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Scripts\Components\AComponent.cpp" />
     <ClCompile Include="Scripts\Components\AirplaneSupportMovement.cpp" />
+    <ClCompile Include="Scripts\Components\BarrelHandler.cpp" />
     <ClCompile Include="Scripts\Components\BGMovement.cpp" />
     <ClCompile Include="Scripts\Components\Collider.cpp" />
     <ClCompile Include="Scripts\Components\EnemyBehaviour.cpp" />
     <ClCompile Include="Scripts\Components\EnemySwarmHandler.cpp" />
+    <ClCompile Include="Scripts\Components\FrameComponents\BarrelBehaviour.cpp" />
     <ClCompile Include="Scripts\Components\FrameComponents\FrameSwticher.cpp" />
     <ClCompile Include="Scripts\Components\FrameComponents\LadderBehaviour.cpp" />
     <ClCompile Include="Scripts\Components\FrameComponents\WalkBehaviour.cpp" />
@@ -157,6 +159,7 @@
     <ClCompile Include="Scripts\GameObjects\Entity.cpp" />
     <ClCompile Include="Scripts\GameObjects\Frames\SpriteFrame.cpp" />
     <ClCompile Include="Scripts\GameObjects\Playlist.cpp" />
+    <ClCompile Include="Scripts\GameObjects\Poolables\Barrel.cpp" />
     <ClCompile Include="Scripts\GameObjects\Poolables\EnemyAirplane.cpp" />
     <ClCompile Include="Scripts\GameObjects\Poolables\GameObjectPool.cpp" />
     <ClCompile Include="Scripts\GameObjects\Poolables\Hammer.cpp" />
@@ -197,10 +200,12 @@
   <ItemGroup>
     <ClInclude Include="Scripts\Components\AComponent.hpp" />
     <ClInclude Include="Scripts\Components\AirplaneSupportMovement.hpp" />
+    <ClInclude Include="Scripts\Components\BarrelHandler.hpp" />
     <ClInclude Include="Scripts\Components\BGMovement.hpp" />
     <ClInclude Include="Scripts\Components\Collider.hpp" />
     <ClInclude Include="Scripts\Components\EnemyBehaviour.hpp" />
     <ClInclude Include="Scripts\Components\EnemySwarmHandler.hpp" />
+    <ClInclude Include="Scripts\Components\FrameComponents\BarrelBehaviour.hpp" />
     <ClInclude Include="Scripts\Components\FrameComponents\FrameSwticher.hpp" />
     <ClInclude Include="Scripts\Components\FrameComponents\LadderBehaviour.hpp" />
     <ClInclude Include="Scripts\Components\FrameComponents\WalkBehaviour.hpp" />
@@ -223,6 +228,7 @@
     <ClInclude Include="Scripts\GameObjects\Listeners\ButtonListener.hpp" />
     <ClInclude Include="Scripts\GameObjects\Listeners\CollisionListener.hpp" />
     <ClInclude Include="Scripts\GameObjects\Playlist.hpp" />
+    <ClInclude Include="Scripts\GameObjects\Poolables\Barrel.hpp" />
     <ClInclude Include="Scripts\GameObjects\Poolables\EnemyAirplane.hpp" />
     <ClInclude Include="Scripts\GameObjects\Poolables\GameObjectPool.hpp" />
     <ClInclude Include="Scripts\GameObjects\Poolables\Hammer.hpp" />

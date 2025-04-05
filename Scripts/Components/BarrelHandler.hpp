@@ -2,13 +2,13 @@
 #include "AComponent.hpp"
 #include "../GameObjects/Poolables/GameObjectPool.hpp"
 #include "../Managers/ObjectPoolHolder.hpp"
-#include "../GameObjects/Poolables/Hammer.hpp"
+#include "../GameObjects/Poolables/Barrel.hpp"
 
-class HammerHandler : public AComponent
+class BarrelHandler : public AComponent
 {
 public:
-	HammerHandler(int numHammers, std::string name, AGameObject* parent);
-	~HammerHandler();
+	BarrelHandler(int numBarrels, std::string name, AGameObject* parent);
+	~BarrelHandler();
 	void perform();
 
 	int getCounter();
@@ -16,7 +16,7 @@ public:
 
 private:
 	int counter = 0;
-	GameObjectPool* HammerPool;
+	GameObjectPool* BarrelPool;
 	const float SPAWN_INTERNAL = 0.01f;
 	float ticks = 0.0f;
 };

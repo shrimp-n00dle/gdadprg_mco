@@ -1,0 +1,28 @@
+{"frames": {
+
+"princess0.png":
+{
+	"frame": {"x":0,"y":0,"w":16,"h":24},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":16,"h":24},
+	"sourceSize": {"w":16,"h":24}
+},
+"princess1.png":
+{
+	"frame": {"x":16,"y":0,"w":17,"h":24},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":17,"h":24},
+	"sourceSize": {"w":17,"h":24}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "Princess.png",
+	"format": "RGBA8888",
+	"size": {"w":33,"h":24},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:ae1aa7de8976d61aa637ff0d58f46dbd:31ffe96eca1f3bddb91ec9a585250d02:81f30d697680ae274901c410a782dfa6$"
+}
+}

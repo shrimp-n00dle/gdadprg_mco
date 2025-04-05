@@ -26,9 +26,24 @@ void JScene::onLoadObjects()
 	/*Hammer*/
 	srand(time(nullptr));
 	EGameObject* hammerManager = new EGameObject("HammerManager");
-	HammerHandler* hammerHandler = new HammerHandler(1, "HammerHandler", hammerManager);
+	HammerHandler* hammerHandler = new HammerHandler(2, "HammerHandler", hammerManager);
 	hammerManager->attachComponent(hammerHandler);
 	this->registerObject(hammerManager);
+
+	/*Barrel*/
+	srand(time(nullptr));
+	EGameObject* barrelManager = new EGameObject("BarrelManager");
+	BarrelHandler* barrelHandler = new BarrelHandler(1, "BarrelHandler", barrelManager);
+	barrelManager->attachComponent(barrelHandler);
+	this->registerObject(barrelManager);
+
+	/*Donkey Kong and Princess*/
+	/*srand(time(nullptr));
+	EGameObject* npcManager = new EGameObject("NPCManager");
+	NPCHandler* NPCHandler = new NPCHandler(1, "NPCHandler", NPCManager);
+	NPCManager->attachComponent(NPCHandler);
+	this->registerObject(NPCManager);*/
+
 
 	//QuitScreen* quitScreen = new QuitScreen("QuitScreen");
 	//this->registerObject(quitScreen);
