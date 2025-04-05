@@ -13,6 +13,7 @@ public:
 	static const std::string HAMMER_POOL_TAG;
 	static const std::string BARREL_POOL_TAG;
 	static const std::string PRINCESS_POOL_TAG;
+	static const std::string KONG_POOL_TAG;
 
 
 	static ObjectPoolHolder* getInstance();

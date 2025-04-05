@@ -25,35 +25,35 @@ APoolable* Barrel::clone()
 
 void Barrel::update(sf::Time deltaTime)
 {
-	//previousPosition = frameSprite->getPosition();
-	//if (!bGrounded) {  // Apply gravity only when not grounded
-	//	velocity.y += 9.8f * deltaTime.asSeconds();
-	//	frameSprite->move(0, velocity.y);
-	//}
-	//else {
-	//	//when grounded
-	//	velocity.y = 0.0f;
-	//	//frameSprite->move(barrelDirection,velocity.y);
+	previousPosition = frameSprite->getPosition();
+	if (!bGrounded) {  // Apply gravity only when not grounded
+		velocity.y += 9.8f * deltaTime.asSeconds();
+		frameSprite->move(0, velocity.y);
+	}
+	else {
+		//when grounded
+		velocity.y = 0.0f;
+		//frameSprite->move(barrelDirection,velocity.y);
 
-	//}
+	}
 
-	//if (!platformsCollidingWith.empty()) {
-	//	// Find the highest platform (platform with LOWEST Y value)
-	//	float highestPlatformY = std::numeric_limits<float>::max();
-	//	float playerHeight = frameSprite->getGlobalBounds().height;
-	//	float highestPlatformHeight = 0;
+	if (!platformsCollidingWith.empty()) {
+		// Find the highest platform (platform with LOWEST Y value)
+		float highestPlatformY = std::numeric_limits<float>::max();
+		float playerHeight = frameSprite->getGlobalBounds().height;
+		float highestPlatformHeight = 0;
 
-	//	for (Collider* platform : platformsCollidingWith) {
-	//		sf::FloatRect platformBounds = platform->getGlobalBounds();
-	//		if (platformBounds.top < highestPlatformY) {
-	//			highestPlatformY = platformBounds.top;
-	//			highestPlatformHeight = platform->getGlobalBounds().height;
-	//		}
-	//	}
-	//	frameSprite->setPosition(frameSprite->getPosition().x, highestPlatformY - (highestPlatformHeight * 2.0) - playerHeight);
-	//}
+		for (Collider* platform : platformsCollidingWith) {
+			sf::FloatRect platformBounds = platform->getGlobalBounds();
+			if (platformBounds.top < highestPlatformY) {
+				highestPlatformY = platformBounds.top;
+				highestPlatformHeight = platform->getGlobalBounds().height;
+			}
+		}
+		frameSprite->setPosition(frameSprite->getPosition().x, highestPlatformY - (highestPlatformHeight * 2.0) - playerHeight);
+	}
 
-	//AGameObject::update(deltaTime);
+	AGameObject::update(deltaTime);
 }
 void Barrel::initialize()
 {

@@ -24,6 +24,13 @@ void JScene::onLoadObjects()
 	ladderManager->attachComponent(ladderHandler);
 	this->registerObject(ladderManager);
 	*/
+
+	/*Barrel*/
+	srand(time(nullptr));
+	EGameObject* barrelManager = new EGameObject("BarrelManager");
+	BarrelHandler* barrelHandler = new BarrelHandler(1, "BarrelHandler", barrelManager);
+	barrelManager->attachComponent(barrelHandler);
+	this->registerObject(barrelManager);
 	
 	/*Hammer*/
 	srand(time(nullptr));
@@ -38,10 +45,16 @@ void JScene::onLoadObjects()
 
 	/*Princess and DonkeyKong*/
 	srand(time(nullptr));
-	EGameObject* npcManager = new EGameObject("NPCManager");
-	NPCHandler* npcHandler = new NPCHandler(1, "NPCHandler", npcManager);
-	npcManager->attachComponent(npcHandler);
-	this->registerObject(npcManager);
+	EGameObject* pManager = new EGameObject("PManager");
+	PHandler* pHandler = new PHandler(1, "PHandler", pManager);
+	pManager->attachComponent(pHandler);
+	this->registerObject(pManager);
+
+	srand(time(nullptr));
+	EGameObject* kManager = new EGameObject("KManager");
+	KHandler* kHandler = new KHandler(1, "KHandler", kManager);
+	kManager->attachComponent(kHandler);
+	this->registerObject(kManager);
 
 	//QuitScreen* quitScreen = new QuitScreen("QuitScreen");
 	//this->registerObject(quitScreen);

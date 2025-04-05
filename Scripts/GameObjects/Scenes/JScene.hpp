@@ -7,7 +7,8 @@
 #include "../../Components/LadderHandler.hpp"
 #include "../../Components/HammerHandler.hpp""
 #include "../../Components/BarrelHandler.hpp"
-#include "../../Components/NPCHandler.hpp"
+#include "../../Components/PHandler.hpp"
+#include "../../Components/KHandler.hpp"
 class JScene : public AScene
 {
 public:

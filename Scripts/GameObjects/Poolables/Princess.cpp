@@ -37,10 +37,7 @@ void Princess::initialize()
 void Princess::update(sf::Time deltaTime)
 {
 	timer -= deltaTime.asSeconds();
-	std::cout << timer << " ";
-
 	AGameObject::update(deltaTime);
-
 }
 
 void Princess::onCollisionEnter(AGameObject* object) {}

@@ -67,6 +67,7 @@ void TextureManager::loadAll()
     storeTexture("hammer_sheet", "Assets/MCOAssets/SpriteSheet/Hammer/Hammer.png");
     storeTexture("barrel_sheet", "Assets/MCOAssets/SpriteSheet/Barrel/Barrel.png");
     storeTexture("princess_sheet", "Assets/MCOAssets/SpriteSheet/Princess/Princess.png");
+    storeTexture("kong_sheet", "Assets/MCOAssets/SpriteSheet/Kong/Kong.png");
 
     storeTexture("level1", "Assets/Maps/25m.png");
    
