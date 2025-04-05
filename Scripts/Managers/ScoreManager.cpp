@@ -12,7 +12,7 @@ ScoreManager* ScoreManager::getInstance() {
 }
 
 // Constructor: Initialize score and load high score from file
-ScoreManager::ScoreManager() : score(0), highScore(10000) {
+ScoreManager::ScoreManager() : score(0), highScore(10000), bonusScore(5000) {
     loadHighScore();
 }
 
@@ -38,6 +38,11 @@ int ScoreManager::getScore() const {
 // ScoreManager::getInstance()->resetScore();
 void ScoreManager::resetScore() {
     this->score = 0;
+}
+
+// Reset bonus score when starting a new game
+void ScoreManager::resetBonusScore() {
+    this->bonusScore = 5000; // Reset to initial bonus value
 }
 
 // EXAMPLE: Get high score
@@ -69,4 +74,14 @@ void ScoreManager::loadHighScore() {
         std::cerr << "No previous high score found, starting fresh.\n";
         this->highScore = 0;
     }
+}
+
+void ScoreManager::saveBonusScore(int bonusScore)
+{
+    this->bonusScore = bonusScore;
+}
+
+int ScoreManager::getBonusScore()
+{
+    return this->bonusScore;
 }

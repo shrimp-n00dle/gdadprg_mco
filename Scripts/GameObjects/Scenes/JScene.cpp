@@ -6,6 +6,10 @@ void JScene::onLoadResources() {}
 
 void JScene::onLoadObjects()
 {
+	ApplicationManager::getInstance()->resumeApplication();
+	ScoreManager::getInstance()->resetBonusScore();
+	ScoreManager::getInstance()->resetScore();
+
 	/*Level*/
 	Level1Map* levelMap = new Level1Map("level1Map");
 	Player* player = new Player("player");
@@ -56,9 +60,21 @@ void JScene::onLoadObjects()
 	kManager->attachComponent(kHandler);
 	this->registerObject(kManager);
 
+	/*Goal*/
+	Goal* goal = new Goal("Goal");
+	this->registerObject(goal);
+
 	PauseScreen* pauseScreen = new PauseScreen("PauseScreen");
 	this->registerObject(pauseScreen);
 	pauseScreen->setEnabled(false);
+
+	// Main cause of the delayed scoring issue.
+	// This is already initialized at the start, so any updates to scores are basically useless.
+	ResultScreen* resultScreen = new ResultScreen("ResultScreen");
+	this->registerObject(resultScreen);
+	resultScreen->setEnabled(false);
+	
+
 	//QuitScreen* quitScreen = new QuitScreen("QuitScreen");
 	//this->registerObject(quitScreen);
 	//quitScreen->setEnabled(false);

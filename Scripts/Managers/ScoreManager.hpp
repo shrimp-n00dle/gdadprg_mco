@@ -15,6 +15,10 @@ public:
     void saveHighScore() const;
     void loadHighScore();
 
+    void saveBonusScore(int bonusScore);
+    int getBonusScore();
+    void resetBonusScore();
+
 private:
     ScoreManager();
     ScoreManager(ScoreManager const&) {};
@@ -23,6 +27,7 @@ private:
 
     int score = 0;
     int highScore = 0;
+    int bonusScore = 0;
     const std::string highScoreFile = "highscore.txt"; // File to store the high score
 };
 

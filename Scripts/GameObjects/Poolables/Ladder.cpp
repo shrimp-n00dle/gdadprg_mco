@@ -60,11 +60,13 @@ void Ladder::initialize()
 	}
 
 	// Attach each bounding box to a Renderer
+	/*
 	for (auto* box : boundingBoxes) {
 		Renderer* boundingRenderer = new Renderer("LadderBounds");
 		boundingRenderer->assignDrawable(box);
 		this->attachComponent(boundingRenderer);
 	}
+	*/
 }
 
 

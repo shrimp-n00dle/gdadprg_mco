@@ -111,20 +111,37 @@ void Player::update(sf::Time deltaTime) {
 			}
 		}
 
-		float mainOffset = highestPlatformY - (highestPlatformHeight * 2.0f) - playerHeight;
-		// std::cout << "mainOffset = " << mainOffset << std::endl;
+		mainOffset = highestPlatformY - (highestPlatformHeight * 2.0f) - playerHeight;
 		if (frameSprite->getPosition().y - mainOffset > 1.0f)
 			mainOffset = frameSprite->getPosition().y - 1.0f;
 		else
 			mainOffset = frameSprite->getPosition().y;
 		frameSprite->setPosition(frameSprite->getPosition().x, mainOffset);
+
+		std::cout << "sprite pos y = " << frameSprite->getPosition().y << std::endl;
+		// bc i do NOT want to see another collision bounds again, i'm brute forcing the end part
+		// player has to stand on the highest platform
+		if (frameSprite->getPosition().y <= 106.f)
+		{
+			ResultScreen* resultScreen = (ResultScreen*)GameObjectManager::getInstance()->findObjectByName("ResultScreen");
+			resultScreen->setEnabled(true);
+			ApplicationManager::getInstance()->pauseApplication();
+		}
 	}
-	
+
 	AGameObject::update(deltaTime);
 }
 
 void Player::onCollisionEnter(AGameObject* object)
 {
+	if (object->getName().find("Goal") != std::string::npos) {
+		std::cout << "Player: Collided with " << object->getName() << "\n";
+		ResultScreen* resultScreen = (ResultScreen*)GameObjectManager::getInstance()->findObjectByName("ResultScreen");
+		resultScreen->setEnabled(true);
+		ApplicationManager::getInstance()->pauseApplication();
+		return;
+	}
+
 	/*Eliminate player*/
 	if (object->getName().find("barrel") != std::string::npos)
 	{

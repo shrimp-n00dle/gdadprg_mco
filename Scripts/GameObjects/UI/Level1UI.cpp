@@ -65,7 +65,6 @@ void Level1UI::initialize()
 	pauseButton->getTransformable()->setScale(0.13f, 0.13f);
 	pauseButton->setButtonListener(this);
 
-
 	// Initial score update
 	updateScoreDisplay();
 }
@@ -82,7 +81,6 @@ void Level1UI::updateScoreDisplay()
 	scoreStream << std::setw(6) << std::setfill('0') << ScoreManager::getInstance()->getScore();
 	playerScoreText->setTextStyled(scoreStream.str());
 
-	// Format high score with leading zeros
 	std::stringstream highScoreStream;
 	highScoreStream << std::setw(6) << std::setfill('0') << ScoreManager::getInstance()->getHighScore();
 	highScoreText->setTextStyled(highScoreStream.str());
@@ -93,18 +91,19 @@ void Level1UI::updateBonusScore(sf::Time deltaTime)
 	bonusCountdown += deltaTime;
 	if (bonusCountdown >= sf::seconds(1.0f))
 	{
-		bonusCountdown = sf::Time::Zero;
-		bonusScore = std::max(0, bonusScore - 50); // Decrease by 50 every second
+		int currentBonus = ScoreManager::getInstance()->getBonusScore();
+		currentBonus = std::max(0, currentBonus - 50); // Decrease by 50 every second
+		ScoreManager::getInstance()->saveBonusScore(currentBonus);
+		
 		std::stringstream bonusStream;
-		bonusStream << std::setw(4) << std::setfill('0') << bonusScore;
+		bonusStream << std::setw(4) << std::setfill('0') << currentBonus;
 		bonusText->setTextStyled(bonusStream.str());
+		
+		bonusCountdown = sf::Time::Zero;
 	}
 }
 
-void Level1UI::onButtonClick(UIButton* button)
-{
-	
-}
+void Level1UI::onButtonClick(UIButton* button) {}
 
 void Level1UI::onButtonReleased(UIButton* button)
 {

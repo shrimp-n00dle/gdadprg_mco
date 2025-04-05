@@ -37,6 +37,7 @@
 #include "GameObjects/UI/UIButton.hpp"
 #include "GameObjects/UI/UIText.hpp"
 
+
 #include "GameObjects/AGameObject.hpp"
 #include "GameObjects/AirplanePlayer.hpp"
 #include "GameObjects/AirplaneSupport.hpp"
@@ -44,6 +45,7 @@
 #include "GameObjects/BGameObject.hpp"
 #include "GameObjects/EGameObject.hpp"
 #include "GameObjects/Entity.hpp"
+#include "GameObjects/Goal.hpp"
 #include "GameObjects/Player.hpp"
 #include "GameObjects/Playlist.hpp"
 #include "GameObjects/Text.hpp"

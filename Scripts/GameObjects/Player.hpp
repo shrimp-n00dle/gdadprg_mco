@@ -9,6 +9,7 @@
 #include "../Components/FrameComponents/WalkBehaviour.hpp"
 #include "../Components/FrameComponents/LadderBehaviour.hpp"
 #include "../GameObjects/Poolables/GameObjectPool.hpp"
+#include "UI/ResultScreen.hpp"
 
 
 class Player : public AGameObject, public CollisionListener
@@ -43,6 +44,7 @@ private:
 
 	sf::Time deltaTime;
 	float timer = 10.0f;
+	float mainOffset;
 	sf::Vector2f previousPosition = sf::Vector2f(0,0);
 	sf::Time debugTimer = sf::Time::Zero;  // Timer for debug output
 	

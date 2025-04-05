@@ -8,10 +8,11 @@
 #include "UIButton.hpp"
 #include "UIText.hpp"
 #include "../../Managers/ScoreManager.hpp"
-#include "PauseScreen.hpp"
 
 #include "iostream"
 #include "string"
+#include <sstream>
+#include <iomanip>
 
 class Level1UI : public AGameObject, public ButtonListener
 {
@@ -31,7 +32,6 @@ private:
 	UIText* playerScoreText;
 	UIText* highScoreText;
 	UIText* bonusText;
-	int bonusScore = 5000;
 	sf::Time bonusCountdown = sf::Time::Zero;
 };
 

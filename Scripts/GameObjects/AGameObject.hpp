@@ -31,7 +31,7 @@
      sf::Transformable* getTransformable();
      sf::Transform getGlobalTransform();
 
-     void setEnabled(bool flag);
+     virtual void setEnabled(bool flag);
      bool isEnabled();
 
      AGameObject* getParent();

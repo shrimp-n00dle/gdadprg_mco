@@ -162,6 +162,7 @@
     <ClCompile Include="Scripts\GameObjects\EGameObject.cpp" />
     <ClCompile Include="Scripts\GameObjects\Entity.cpp" />
     <ClCompile Include="Scripts\GameObjects\Frames\SpriteFrame.cpp" />
+    <ClCompile Include="Scripts\GameObjects\Goal.cpp" />
     <ClCompile Include="Scripts\GameObjects\Playlist.cpp" />
     <ClCompile Include="Scripts\GameObjects\Poolables\Barrel.cpp" />
     <ClCompile Include="Scripts\GameObjects\Poolables\EnemyAirplane.cpp" />
@@ -237,6 +238,7 @@
     <ClInclude Include="Scripts\GameObjects\EGameObject.hpp" />
     <ClInclude Include="Scripts\GameObjects\Entity.hpp" />
     <ClInclude Include="Scripts\GameObjects\Frames\SpriteFrame.hpp" />
+    <ClInclude Include="Scripts\GameObjects\Goal.hpp" />
     <ClInclude Include="Scripts\GameObjects\Player.hpp" />
     <ClInclude Include="Scripts\GameObjects\Listeners\ButtonListener.hpp" />
     <ClInclude Include="Scripts\GameObjects\Listeners\CollisionListener.hpp" />
