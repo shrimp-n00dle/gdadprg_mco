@@ -6,6 +6,8 @@ ResultScreen::ResultScreen(std::string name) : AGameObject(name), ButtonListener
 
 void ResultScreen::initialize()
 {
+    ApplicationManager::getInstance()->pauseApplication();
+
     sf::Sprite* sprite = new sf::Sprite();
     sprite->setTexture(*TextureManager::getInstance()->getTexture("title_bg"));
     sf::Vector2u textureSize = sprite->getTexture()->getSize();
@@ -47,7 +49,7 @@ void ResultScreen::onButtonClick(UIButton* button)
     if (button->getName() == "button_menu")
     {
         // Return to main menu
-        GameObjectManager::getInstance()->loadScene("MainMenu");
+        SceneManager::getInstance()->loadScene(SceneManager::MAIN_MENU_SCENE_NAME);
     }
 }
 

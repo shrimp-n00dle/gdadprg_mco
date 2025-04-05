@@ -58,19 +58,12 @@ void Level1UI::initialize()
 	bonusText->setTextStyled("5000");
 
 	// Pause Button
-	sf::Texture* btnNormal = TextureManager::getInstance()->getTexture("btn_normal");
-	sf::Texture* btnPressed = TextureManager::getInstance()->getTexture("btn_pressed");
-	UIButton* pauseButton = new UIButton("pause_button", btnNormal, btnPressed);
+	sf::Texture* btnNormal = TextureManager::getInstance()->getTexture("btn_pause");
+	UIButton* pauseButton = new UIButton("pause_button", btnNormal, btnNormal);
 	this->attachChild(pauseButton);
-	pauseButton->setChildPosition(600, 20);
-	pauseButton->getTransformable()->setScale(0.2f, 0.2f);
+	pauseButton->setChildPosition(620, 30);
+	pauseButton->getTransformable()->setScale(0.13f, 0.13f);
 	pauseButton->setButtonListener(this);
-
-	UIText* pauseButtonText = new UIText("pause_text");
-	pauseButton->attachChild(pauseButtonText);
-	pauseButtonText->setChildPosition(0, -20);
-	pauseButtonText->setSize(100);
-	pauseButtonText->setText("PAUSE");
 
 
 	// Initial score update
@@ -110,13 +103,16 @@ void Level1UI::updateBonusScore(sf::Time deltaTime)
 
 void Level1UI::onButtonClick(UIButton* button)
 {
-	if (button->getName() == "pause_button")
-	{
-		pauseScreen->setEnabled(true);
-		ApplicationManager::getInstance()->pauseApplication();
-	}
+	
 }
 
 void Level1UI::onButtonReleased(UIButton* button)
 {
+	if (button->getName() == "pause_button")
+	{
+		std::cout << "pause clicked" << std::endl;
+		PauseScreen* pauseScreen = (PauseScreen*)GameObjectManager::getInstance()->findObjectByName("PauseScreen");
+		pauseScreen->setEnabled(true);
+		ApplicationManager::getInstance()->pauseApplication();
+	}
 }

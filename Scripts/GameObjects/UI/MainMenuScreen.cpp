@@ -54,6 +54,7 @@ void MainMenuScreen::initialize()
 	this->attachChild(credits);
 	credits->setChildPosition(0, 600);
 	credits->setSize(25);
+	credits->setFont("oldnesfont");
 	credits->setText("2025, VINGNO & CAO");
 }
 

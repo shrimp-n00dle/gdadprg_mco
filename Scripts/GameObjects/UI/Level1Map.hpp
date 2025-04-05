@@ -25,7 +25,6 @@ public:
 private:
 	bool debugMode = true; // Set to true for visualizing colliders
 	std::vector<sf::RectangleShape> debugRects;
-	ResultScreen* resultScreen;
 	bool levelCompleted = false;
 };
 

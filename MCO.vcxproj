@@ -183,7 +183,9 @@
     <ClCompile Include="Scripts\GameObjects\UI\Level1UI.cpp" />
     <ClCompile Include="Scripts\GameObjects\UI\MainMenuScreen.cpp" />
     <ClCompile Include="Scripts\GameObjects\UI\MenuBar.cpp" />
+    <ClCompile Include="Scripts\GameObjects\UI\PauseScreen.cpp" />
     <ClCompile Include="Scripts\GameObjects\UI\QuitScreen.cpp" />
+    <ClCompile Include="Scripts\GameObjects\UI\ResultScreen.cpp" />
     <ClCompile Include="Scripts\GameObjects\UI\ReturnScreen.cpp" />
     <ClCompile Include="Scripts\GameObjects\UI\UIButton.cpp" />
     <ClCompile Include="Scripts\GameObjects\UI\UIText.cpp" />
@@ -258,7 +260,9 @@
     <ClInclude Include="Scripts\GameObjects\UI\Level1UI.hpp" />
     <ClInclude Include="Scripts\GameObjects\UI\MainMenuScreen.hpp" />
     <ClInclude Include="Scripts\GameObjects\UI\MenuBar.hpp" />
+    <ClInclude Include="Scripts\GameObjects\UI\PauseScreen.hpp" />
     <ClInclude Include="Scripts\GameObjects\UI\QuitScreen.hpp" />
+    <ClInclude Include="Scripts\GameObjects\UI\ResultScreen.hpp" />
     <ClInclude Include="Scripts\GameObjects\UI\ReturnScreen.hpp" />
     <ClInclude Include="Scripts\GameObjects\UI\UIButton.hpp" />
     <ClInclude Include="Scripts\GameObjects\UI\UIText.hpp" />

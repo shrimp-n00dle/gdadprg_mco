@@ -33,6 +33,5 @@ private:
 	UIText* bonusText;
 	int bonusScore = 5000;
 	sf::Time bonusCountdown = sf::Time::Zero;
-	PauseScreen* pauseScreen;
 };
 

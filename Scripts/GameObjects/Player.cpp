@@ -112,7 +112,7 @@ void Player::update(sf::Time deltaTime) {
 		}
 
 		float mainOffset = highestPlatformY - (highestPlatformHeight * 2.0f) - playerHeight;
-		std::cout << "mainOffset = " << mainOffset << std::endl;
+		// std::cout << "mainOffset = " << mainOffset << std::endl;
 		if (frameSprite->getPosition().y - mainOffset > 1.0f)
 			mainOffset = frameSprite->getPosition().y - 1.0f;
 		else
@@ -200,14 +200,6 @@ void Player::onCollisionEnter(AGameObject* object)
 				bool collidingFromAbove = (playerBottom >= platformBounds.top - 4.0f);
 					//&& previousPlayerBottom <= platformBounds.top + 4.0f);
 
-				std::cout << "PlayerBottom: " << playerBottom << " = " << playerBounds.top << " + " << playerBounds.height << std::endl;
-				std::cout << "PreviousPlayerBottom: " << previousPlayerBottom << " = " 
-					<< previousPosition.y << " + (" << playerBounds.height << " / 2.0 )\n";
-				std::cout << "PlayerBottom Collision?: " << playerBottom << " >= " <<
-					platformBounds.top << " - 4.0 " << std::endl;
-				std::cout << "Collision #2?: " << previousPlayerBottom << " <= " <<
-					platformBounds.top << " + 4.0 " << std::endl;
-
 				if (collidingFromAbove) {
 					platformsCollidingWith.insert(platformCollider);
 
@@ -219,13 +211,12 @@ void Player::onCollisionEnter(AGameObject* object)
 				}
 				else {
 					// Handle collision from below or side
-					std::cout << "Not really colliding from above tho" << std::endl;
+					// std::cout << "Not really colliding from above tho" << std::endl;
 					
 					bool movingUpward = velocity.y < 0;  // Using velocity instead of position comparison
-					std::cout << "movingUpward = velocity.y(" << velocity.y << ") < 0" << std::endl;
 					if (movingUpward && playerBottom >= platformBounds.top - 4.0f) {
 						// We're moving up and have reached/passed the platform top - treat it like landing
-						std::cout << "still going to insert it anyways" << std::endl;
+						// std::cout << "still going to insert it anyways" << std::endl;
 						platformsCollidingWith.insert(platformCollider);
 						velocity.y = 0.f;
 						bGrounded = true;
@@ -271,10 +262,10 @@ void Player::onCollisionExit(AGameObject* object)
 
 		for (Collider* platform : platformsToRemove) {
 			platformsCollidingWith.erase(platform);
-			std::cout << "No longer colliding with platform: " << platform->getName() << std::endl;
+			// std::cout << "No longer colliding with platform: " << platform->getName() << std::endl;
 			if (platformsCollidingWith.empty()) {
 				bGrounded = false;
-				std::cout << "Player is no longer grounded" << std::endl;
+				// std::cout << "Player is no longer grounded" << std::endl;
 			}
 		}
 	}

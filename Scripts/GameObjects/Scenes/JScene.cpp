@@ -56,6 +56,9 @@ void JScene::onLoadObjects()
 	kManager->attachComponent(kHandler);
 	this->registerObject(kManager);
 
+	PauseScreen* pauseScreen = new PauseScreen("PauseScreen");
+	this->registerObject(pauseScreen);
+	pauseScreen->setEnabled(false);
 	//QuitScreen* quitScreen = new QuitScreen("QuitScreen");
 	//this->registerObject(quitScreen);
 	//quitScreen->setEnabled(false);

@@ -4,6 +4,7 @@
 #include "../Poolables/Ladder.hpp"
 #include "../UI/Level1Map.hpp"
 #include "../UI/Level1UI.hpp"
+#include "../UI/PauseScreen.hpp"
 #include "../../Components/LadderHandler.hpp"
 #include "../../Components/HammerHandler.hpp""
 #include "../../Components/BarrelHandler.hpp"
