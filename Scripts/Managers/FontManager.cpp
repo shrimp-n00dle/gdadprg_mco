@@ -15,7 +15,7 @@ FontManager* FontManager::getInstance()
 void FontManager::loadAll()
 {
 	loadFont("default","Assets/UI/Sansation.ttf");
-	loadFont("nesfont", "Assets/UI/nes.ttf");
+	loadFont("nesfont", "Assets/UI/nes2.ttf");
 }
 
 void FontManager::loadFont(std::string key,std::string path)

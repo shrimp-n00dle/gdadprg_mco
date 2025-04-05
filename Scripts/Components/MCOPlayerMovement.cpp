@@ -24,20 +24,20 @@ void MCOPlayerMovement::perform()
 
 	if (player->bLadder)
 	{
+		player->velocity = sf::Vector2f(0.0f, 0.0f);
 		if (inputController->isUp())
 		{
-			offset.y -= SPEED_MULTIPLIER;
+			offset.y -= SPEED_MULTIPLIER * 0.3f;
 			playerTransformable->move(offset * deltaTime.asSeconds());
 		}
 
 		else if (inputController->isDown())
 		{
-			offset.y += SPEED_MULTIPLIER;
+			offset.y += SPEED_MULTIPLIER * 0.3f;
 			playerTransformable->move(offset * deltaTime.asSeconds());
 		}
-
+		offset = sf::Vector2f(0.0f, 0.0f);
 	}
-
 	if (inputController->isRight())
 	{
 		offset.x += SPEED_MULTIPLIER;
@@ -67,7 +67,7 @@ void MCOPlayerMovement::perform()
 
 			// player->changeSpriteState("jump_sheet");
 		}
-	}
+	}	
 
 	if (!inputController->isJump()) {
 		bHop = false;

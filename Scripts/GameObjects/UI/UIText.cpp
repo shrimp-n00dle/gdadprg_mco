@@ -80,6 +80,11 @@ std::string UIText::getText()
 	return this->text->getString();
 }
 
+void UIText::setFont(std::string key)
+{
+    this->text->setFont(*FontManager::getInstance()->getFont(key));
+}
+
 void UIText::setSize(unsigned int size)
 {
 	this->text->setCharacterSize(size);
@@ -88,4 +93,14 @@ void UIText::setSize(unsigned int size)
 void UIText::setColor(sf::Color color)
 {
 	this->text->setFillColor(color);
+}
+
+void UIText::setOutlineColor(sf::Color color)
+{
+    this->text->setOutlineColor(color);
+}
+
+void UIText::setOutlineThickness(int thicc)
+{
+    this->text->setOutlineThickness(thicc);
 }

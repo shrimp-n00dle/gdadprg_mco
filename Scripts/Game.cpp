@@ -14,6 +14,7 @@ Game::Game() : mWindow(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "MCO Donkey K
     TextureManager::getInstance()->loadAll();
     FontManager::getInstance()->loadAll();
     SFXManager::getInstance()->loadAll();
+    ScoreManager::getInstance();
 
     //register scenes
     SceneManager::getInstance()->registerScene(new MainMenuScene());
@@ -22,7 +23,7 @@ Game::Game() : mWindow(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "MCO Donkey K
     SceneManager::getInstance()->registerScene(new SpriteScene());
 
     //load first scene
-    SceneManager::getInstance()->loadScene(SceneManager::MAIN_MENU_SCENE_NAME);
+    SceneManager::getInstance()->loadScene(SceneManager::MCOGAME_SCENE_NAME);
 }
 
 void Game::run()
@@ -73,7 +74,7 @@ void Game::update(sf::Time deltaTime)
     if (!ApplicationManager::getInstance()->isPaused())
     {
         GameObjectManager::getInstance()->update(deltaTime);
-        if (debugTimer >= 5.0f) {  // Debug every 2 seconds to avoid spam
+        if (debugTimer >= 2.0f) {  // Debug every 2 seconds to avoid spam
             PhysicsManager::getInstance()->debugCollisions();
             debugTimer = 0;
         }

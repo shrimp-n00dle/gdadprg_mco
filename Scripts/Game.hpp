@@ -29,6 +29,7 @@
 #include "GameObjects/UI/MainMenuScreen.hpp"
 #include "GameObjects/UI/MenuBar.hpp"
 #include "GameObjects/UI/Level1Map.hpp"
+#include "GameObjects/UI/Level1UI.hpp"
 #include "GameObjects/UI/QuitScreen.hpp"
 #include "GameObjects/UI/ReturnScreen.hpp"
 #include "GameObjects/UI/UIButton.hpp"

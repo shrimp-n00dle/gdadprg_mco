@@ -32,6 +32,9 @@ void JScene::onLoadObjects()
 	hammerManager->attachComponent(hammerHandler);
 	this->registerObject(hammerManager);
 
+	Level1UI* level1UI = new Level1UI("Level1UI");
+	this->registerObject(level1UI);
+
 	//QuitScreen* quitScreen = new QuitScreen("QuitScreen");
 	//this->registerObject(quitScreen);
 	//quitScreen->setEnabled(false);

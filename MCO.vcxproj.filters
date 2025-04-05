@@ -204,6 +204,9 @@
     <ClCompile Include="Scripts\Managers\ScoreManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Scripts\GameObjects\UI\Level1UI.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Scripts\Components\FrameComponents\FrameSwticher.hpp">
@@ -393,6 +396,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Scripts\Managers\ScoreManager.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Scripts\GameObjects\UI\Level1UI.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

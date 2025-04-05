@@ -12,7 +12,7 @@ ScoreManager* ScoreManager::getInstance() {
 }
 
 // Constructor: Initialize score and load high score from file
-ScoreManager::ScoreManager() : score(0), highScore(0) {
+ScoreManager::ScoreManager() : score(0), highScore(10000) {
     loadHighScore();
 }
 

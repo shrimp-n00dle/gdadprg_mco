@@ -171,6 +171,7 @@
     <ClCompile Include="Scripts\GameObjects\Text.cpp" />
     <ClCompile Include="Scripts\GameObjects\UI\GameScreen.cpp" />
     <ClCompile Include="Scripts\GameObjects\UI\Level1Map.cpp" />
+    <ClCompile Include="Scripts\GameObjects\UI\Level1UI.cpp" />
     <ClCompile Include="Scripts\GameObjects\UI\MainMenuScreen.cpp" />
     <ClCompile Include="Scripts\GameObjects\UI\MenuBar.cpp" />
     <ClCompile Include="Scripts\GameObjects\UI\QuitScreen.cpp" />
@@ -236,6 +237,7 @@
     <ClInclude Include="Scripts\GameObjects\Text.hpp" />
     <ClInclude Include="Scripts\GameObjects\UI\GameScreen.hpp" />
     <ClInclude Include="Scripts\GameObjects\UI\Level1Map.hpp" />
+    <ClInclude Include="Scripts\GameObjects\UI\Level1UI.hpp" />
     <ClInclude Include="Scripts\GameObjects\UI\MainMenuScreen.hpp" />
     <ClInclude Include="Scripts\GameObjects\UI\MenuBar.hpp" />
     <ClInclude Include="Scripts\GameObjects\UI\QuitScreen.hpp" />

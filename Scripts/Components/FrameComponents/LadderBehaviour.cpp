@@ -25,7 +25,6 @@ void LadderBehaviour::perform()
 			if (frameInputController->isDown())
 			{
 				counter--;
-
 			}
 			else if (frameInputController->isUp())
 			{
