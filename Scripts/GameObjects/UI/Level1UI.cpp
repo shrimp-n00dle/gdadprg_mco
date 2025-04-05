@@ -11,7 +11,7 @@ void Level1UI::initialize()
 	// 1UP Text
 	UIText* playerText = new UIText("1upText");
 	this->attachChild(playerText);
-	playerText->setChildPosition(110, 18);
+	playerText->setChildPosition(120, 18);
 	playerText->setSize(20);
 	playerText->setColor(sf::Color::Red);
 	playerText->setTextStyled("1UP");
@@ -47,7 +47,7 @@ void Level1UI::initialize()
 	levelText->setFont("default");
 	levelText->setSize(25);
 	levelText->setColor(sf::Color(0, 0, 170));
-	levelText->setTextStyled("L=00");
+	levelText->setTextStyled("L=01");
 
 	// Bonus Score (top right)
 	bonusText = new UIText("bonusText");

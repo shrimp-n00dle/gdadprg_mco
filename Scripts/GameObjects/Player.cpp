@@ -12,15 +12,24 @@ void Player::initialize()
 	frameSprite = new sf::Sprite();
 	frameSprite->setTexture(*TextureManager::getInstance()->getTexture("walk_sheet"));
 	sf::Vector2u textureSize = frameSprite->getTexture()->getSize();
-	//this->sprite->setOrigin(textureSize.x / 2.0f, textureSize.y / 2.0f);
+	frameSprite->setOrigin(textureSize.x / 2.0f, textureSize.y / 2.0f);
 	//this->transformable.setPosition(400.0f,80.0f);
+	
+	setChildPosition(150.0f, 60.0f);
+	/*Add colliders*/
+	this->collider = new Collider("PlayerCollider");
+	this->collider->setLocalBounds(frameSprite->getGlobalBounds());
+	this->collider->setCollisionListener(this);
+	this->attachComponent(this->collider);
+	PhysicsManager::getInstance()->trackObject(this->collider);
+
 	frameSprite->setScale(2.0f, 2.0f);
+	frameSprite->setPosition(0.0f, 660.0f);
 
 	Renderer* renderer = new Renderer("MCOPlayerSprite");
 	renderer->assignDrawable(frameSprite);
 	attachComponent(renderer);
 
-	setChildPosition(400.0f, 60.0f);
 
 	MCOPlayerInput* inputController = new MCOPlayerInput("MCOPlayerInput");
 	this->attachComponent(inputController);
@@ -37,13 +46,20 @@ void Player::initialize()
 	HammerBehaviour* hammerBehaviour = new HammerBehaviour("HammerBehaviour");
 	this->attachComponent(hammerBehaviour);
 
-	/*Add colliders*/
-	this->collider = new Collider("PlayerCollider");
-	this->collider->setLocalBounds(frameSprite->getGlobalBounds());
-	this->collider->setCollisionListener(this);
-	this->attachComponent(this->collider);
+	/* Debug Lines for the bounding boxes */
+	sf::RectangleShape* boundingBox = new sf::RectangleShape();
+	boundingBox->setPosition(this->collider->getLocalBounds().left, this->collider->getLocalBounds().top);
+	boundingBox->setOrigin(0, 0);
+	boundingBox->setSize(sf::Vector2f(this->collider->getLocalBounds().width, this->collider->getLocalBounds().height));
+	boundingBox->setFillColor(sf::Color(0, 0, 255, 100));  // Semi-transparent blue
+	boundingBox->setOutlineColor(sf::Color::Red);
+	boundingBox->setOutlineThickness(2);
 
-	PhysicsManager::getInstance()->trackObject(this->collider);
+	Renderer* boundingRenderer = new Renderer("PlayerCollisionBounds");
+	boundingRenderer->assignDrawable(boundingBox);
+	this->attachComponent(boundingRenderer);
+
+	
 }
 
 void Player::processInput(sf::Event event) 
@@ -53,11 +69,15 @@ void Player::processInput(sf::Event event)
 
 void Player::update(sf::Time deltaTime) {
 	previousPosition = frameSprite->getPosition();
-	if (!bGrounded) {  // Apply gravity only when not grounded
+
+	if (!bLadder && !bGrounded) {  // Apply gravity only when not grounded
 		velocity.y += 9.8f * deltaTime.asSeconds();
+
+		if (velocity.y > 500.0f) velocity.y = 500.0f;
+
 		frameSprite->move(0, velocity.y);
 	}
-	else {
+	else if (!bLadder) {
 		velocity.y = 0.0f;
 	}
 
@@ -75,15 +95,13 @@ void Player::update(sf::Time deltaTime) {
 			}
 		}
 
-		//std::cout << "FrameSprite initial position: " << frameSprite->getPosition().x << ", " << frameSprite->getPosition().y << std::endl;
-		frameSprite->setPosition(frameSprite->getPosition().x,
-			highestPlatformY - (highestPlatformHeight * 2.0) - playerHeight);
-		/*std::cout << "FrameSprite new position: " << frameSprite->getPosition().x << ", " << frameSprite->getPosition().y << std::endl;
+		std::cout << "FrameSprite initial position: " << frameSprite->getPosition().x << ", " << frameSprite->getPosition().y << std::endl;
+		frameSprite->setPosition(frameSprite->getPosition().x, highestPlatformY - (highestPlatformHeight * 2.0f) - playerHeight);
+		std::cout << "FrameSprite new position: " << frameSprite->getPosition().x << ", " << frameSprite->getPosition().y << std::endl;
 		std::cout << "Highest Platform Y: " << highestPlatformY << std::endl;
-		std::cout << "Player height: " << playerHeight << std::endl;*/
+		std::cout << "Player height: " << playerHeight << std::endl;
 	}
 	
-
 	AGameObject::update(deltaTime);
 }
 
@@ -191,8 +209,9 @@ void Player::onCollisionExit(AGameObject* object)
 {
 	if (object->getName().find("ladder") != std::string::npos)
 	{
-		changeSpriteState("walk_sheet");
 		bLadder = false;
+		bGrounded = true;
+		changeSpriteState("walk_sheet");
 	}
 
 	if (object->getName().find("level1Map") != std::string::npos)
@@ -212,11 +231,10 @@ void Player::onCollisionExit(AGameObject* object)
 		for (Collider* platform : platformsToRemove) {
 			platformsCollidingWith.erase(platform);
 			std::cout << "No longer colliding with platform: " << platform->getName() << std::endl;
-		}
-
-		if (platformsCollidingWith.empty()) {
-			bGrounded = false;
-			std::cout << "Player is no longer grounded" << std::endl;
+			if (platformsCollidingWith.empty()) {
+				bGrounded = false;
+				std::cout << "Player is no longer grounded" << std::endl;
+			}
 		}
 	}
 }
@@ -241,7 +259,7 @@ void Player::changeSpriteState(std::string textureName)
 	attachComponent(renderer);
 
 	/*Reassign collider*/
-	//this->collider->setLocalBounds(frameSprite->getGlobalBounds());
+	this->collider->setLocalBounds(frameSprite->getGlobalBounds());
 }
 
 Collider* Player::getCollider()
