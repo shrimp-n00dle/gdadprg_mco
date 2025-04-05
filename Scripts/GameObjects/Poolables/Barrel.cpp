@@ -24,38 +24,18 @@ APoolable* Barrel::clone()
 }
 
 void Barrel::update(sf::Time deltaTime) {
-	previousPosition = frameSprite->getPosition();
-	if (!bGrounded) {  // Apply gravity only when not grounded
-		velocity.y += 9.8f * deltaTime.asSeconds();
-		frameSprite->move(0, velocity.y);
+
+	timer -= deltaTime.asSeconds();
+
+	if (isGrounded())
+	{
+		if (bLeft)frameSprite->move(1, 0);
+		else frameSprite->move(-1, 0);
 	}
-	else {
-		velocity.y = 0.0f;
+	else if (!isGrounded())
+	{
+		frameSprite->move(0, 9.8f);
 	}
-
-	if (!platformsCollidingWith.empty()) {
-		// Find the highest platform (platform with LOWEST Y value)
-		float highestPlatformY = std::numeric_limits<float>::max();
-		float playerHeight = frameSprite->getGlobalBounds().height;
-		float highestPlatformHeight = 0;
-
-		for (Collider* platform : platformsCollidingWith) {
-			sf::FloatRect platformBounds = platform->getGlobalBounds();
-			if (platformBounds.top < highestPlatformY) {
-				highestPlatformY = platformBounds.top;
-				highestPlatformHeight = platform->getGlobalBounds().height;
-			}
-		}
-
-		//std::cout << "FrameSprite initial position: " << frameSprite->getPosition().x << ", " << frameSprite->getPosition().y << std::endl;
-		frameSprite->setPosition(frameSprite->getPosition().x,
-			highestPlatformY - (highestPlatformHeight * 2.0) - playerHeight);
-		/*std::cout << "FrameSprite new position: " << frameSprite->getPosition().x << ", " << frameSprite->getPosition().y << std::endl;
-		std::cout << "Highest Platform Y: " << highestPlatformY << std::endl;
-		std::cout << "Player height: " << playerHeight << std::endl;*/
-	}
-
-
 	AGameObject::update(deltaTime);
 }
 
@@ -66,7 +46,7 @@ void Barrel::initialize()
 	sf::Vector2u textureSize = frameSprite->getTexture()->getSize();
 	frameSprite->setScale(2.0f, 2.0f);
 
-	setChildPosition(200, 250);
+	setChildPosition(200, 240);
 
 	Renderer* renderer = new Renderer("BarrelSprite");
 	renderer->assignDrawable(frameSprite);
@@ -97,72 +77,19 @@ void Barrel::onCollisionEnter(AGameObject* object)
 	/*Collision on the platform*/
 	if (object->getName().find("level1Map") != std::string::npos)
 	{
-		std::cout << "Barrel: Collided with " << object->getName() << "\n";
-
-		Collider* playerCollider = dynamic_cast<Collider*>(this->findComponentByType(AComponent::Physics, "BarrelCollider"));
-		std::vector<AComponent*> platformColliders = object->getComponentsOfType(AComponent::Physics);
-		bool hasLanded = false;
-
-		for (AComponent* component : platformColliders) {
-			Collider* platformCollider = dynamic_cast<Collider*>(component);
-			if (platformCollider && platformCollider->hasCollisionWith(playerCollider)) {
-				std::cout << "Found colliding platform: " << platformCollider->getName() << std::endl;
-
-				sf::FloatRect playerBounds = playerCollider->getGlobalBounds();
-				sf::FloatRect platformBounds = platformCollider->getGlobalBounds();
-
-				// Check if this is a collision from above (player's bottom vs platform's top)
-				float playerBottom = playerBounds.top + playerBounds.height;
-				bool collidingFromAbove = (playerBottom >= platformBounds.top - 4.0f &&
-					previousPosition.y + playerBounds.height <= platformBounds.top + 4.0f);
-
-				if (collidingFromAbove) {
-					platformsCollidingWith.insert(platformCollider);
-
-					if (!hasLanded && velocity.y > 0) {
-						velocity.y = 0.f;
-						bGrounded = true;
-						hasLanded = true;
-					}
-				}
-				else {
-					// Handle collision from below or side
-					// If from below, we may want to make the player bounce or just stop upward velocity
-					if (velocity.y < 0) {
-						velocity.y = 0;
-					}
-					frameSprite->setPosition(previousPosition);
-				}
-			}
-		}
-		return;
+		onGround = true;
 	}
 }
 void Barrel::onCollisionExit(AGameObject* object) 
 {
 	if (object->getName().find("level1Map") != std::string::npos)
 	{
-		Collider* playerCollider = dynamic_cast<Collider*>(this->findComponentByType(AComponent::Physics, "BarrelCollider"));
-		if (!playerCollider) return;
-
-		std::vector<AComponent*> platformColliders = object->getComponentsOfType(AComponent::Physics);
-		std::set<Collider*> platformsToRemove;
-
-		for (Collider* platform : platformsCollidingWith) {
-			if (platform->getOwner() == object && !platform->hasCollisionWith(playerCollider)) {
-				platformsToRemove.insert(platform);
-			}
-		}
-
-		for (Collider* platform : platformsToRemove) {
-			platformsCollidingWith.erase(platform);
-			std::cout << "No longer colliding with platform: " << platform->getName() << std::endl;
-		}
-
-		if (platformsCollidingWith.empty()) {
-			bGrounded = false;
-			std::cout << "Barrel is no longer grounded" << std::endl;
-		}
+		std::cout << "Left " << std::endl;
+		onGround = false;
+		if (bLeft) bLeft = false;
+		else if (!bLeft) bLeft = true;
+		
 	}
+
 }
 

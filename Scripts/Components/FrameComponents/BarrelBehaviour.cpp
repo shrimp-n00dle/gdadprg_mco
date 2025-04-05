@@ -8,29 +8,20 @@ BarrelBehaviour::BarrelBehaviour(std::string name) : AComponent(name, Script)
 void BarrelBehaviour::perform()
 {
 	Barrel* frameObj = (Barrel*)this->getOwner();
-	//MCOPlayerInput* frameInputController = (MCOPlayerInput*)(frameObj->getComponentsOfType(ComponentType::Input)[0]);
-	//sf::Transformable* frameTransformable = frameObj->getTransformable();
 
-		/*Checkers*/
-		//if (frameTransformable == nullptr) std::cout << "frameTransformable not found" << std::endl;
-		//if (frameInputController == nullptr)  std::cout << "frameInputController not found" << std::endl;
 
-		//if (frameInputController->isLeft())
-		//{
-		//	counter--;
-		//	//frameInputController->setLeft(false);
-		//}
-		//else if (frameInputController->isRight())
-		//{
-		//	counter++;
-		//	//frameInputController->setRight(false);
-		//}
+		/*If timer is less than 0 seconds*/
+		if (frameObj->timer <= 0.0f)
+		{
+			counter++;
+			frameObj->timer = 0.5f;
+		}
 
 		/*if its a negative number, or is beyond 38 go to the beginning of the list and set coutner to 0 or 38*/
-		//if (counter > 3) counter = 0;
-		//else if (counter < 0) counter = 3;
+		if (counter > 3) counter = 0;
+		else if (counter < 0) counter = 3;
 
-		coord = traverseList(0);
+		coord = traverseList(counter);
 
 		/*Sprite Rendering*/
 		currSprite = sf::IntRect(coord[0], coord[1], coord[2], coord[3]);

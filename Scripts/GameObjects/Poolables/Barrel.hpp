@@ -23,17 +23,16 @@ public:
 	void onCollisionEnter(AGameObject* object);
 	void onCollisionExit(AGameObject* object);
 	sf::Sprite* frameSprite;
-	bool bGrounded= false;
-	bool isGrounded() const { return bGrounded; }
-	sf::Vector2f velocity;
-	std::set<Collider*> platformsCollidingWith;
-	float barrelDirection = 1.0f;
+	bool onGround = false;
+	bool bLeft = true;
+	bool isGrounded() const { return onGround; }
+	float timer = 0.5f;
 
 private:
 
 	int counter = 0;
 	sf::Vector2f previousPosition = sf::Vector2f(0, 0);
-	float timer = 10.0f;
+
 	const int SPAWN_RANGE = 300;
 	Collider* collider;
 };
