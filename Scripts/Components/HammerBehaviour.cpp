@@ -88,8 +88,8 @@ void HammerBehaviour::initializeSprites()
 		counter++;
 
 	}
-	//{"x":34,"y":0,"w":21,"h":34},
-	coord = { 34,0,21,34 };
+	//"frame": {"x":0,"y":0,"w":14,"h":31},
+	coord = { 0,0,14,31 };
 	//coord = traverseList(0);
 }
 

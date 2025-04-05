@@ -7,7 +7,6 @@ Hammer::~Hammer()
 	delete this->sprite;
 }
 
-
 void Hammer::onRelease()
 {
 	PhysicsManager::getInstance()->untrackObject(this->collider);
@@ -16,10 +15,6 @@ void Hammer::onRelease()
 void Hammer::onActivate()
 {
 	PhysicsManager::getInstance()->trackObject(this->collider);
-
-	//Game::WINDOW_WIDTH 
-	setChildPosition(640/ 2, 0);
-	getTransformable()->move(rand() % SPAWN_RANGE - rand() % SPAWN_RANGE, 50);
 }
 
 APoolable* Hammer::clone()
@@ -32,12 +27,12 @@ void Hammer::initialize()
 {
 	sprite = new sf::Sprite();
 	sprite->setTexture(*TextureManager::getInstance()->getTexture("hammer"));
+	sprite->setScale(2.0f, 2.0f);
 	sf::Vector2u textureSize = sprite->getTexture()->getSize();
-	sprite->setScale(0.1f, 0.1f);
 	sprite->setOrigin(textureSize.x / 2, textureSize.y / 2);
 
-	setChildPosition(10, -30);
-	getTransformable()->move(rand() % SPAWN_RANGE - rand() % SPAWN_RANGE, 0);
+	setChildPosition(100, 220);
+	//setChildPosition(60, 300);
 
 	Renderer* renderer = new Renderer("HammerSprite");
 	renderer->assignDrawable(sprite);

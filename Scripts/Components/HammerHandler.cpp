@@ -1,6 +1,5 @@
 #include "HammerHandler.hpp"
 
-
 HammerHandler::HammerHandler(int numHammers, std::string name, AGameObject* parent) : AComponent(name, Script)
 {
 	HammerPool = new GameObjectPool(ObjectPoolHolder::HAMMER_POOL_TAG, new Hammer("hammer"), numHammers, parent);
@@ -25,3 +24,7 @@ void HammerHandler::perform()
 		HammerPool->requestPoolable();
 	}
 }
+
+int HammerHandler::getCounter() { return counter; }
+
+void HammerHandler::setCounter(int increment) { counter += increment; }

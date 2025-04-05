@@ -1,10 +1,7 @@
 #include "MCOPlayerMovement.hpp"
 
 
-MCOPlayerMovement::MCOPlayerMovement(std::string name) : AComponent(name, Script)
-{
-
-}
+MCOPlayerMovement::MCOPlayerMovement(std::string name) : AComponent(name, Script) {}
 
 void MCOPlayerMovement::perform()
 {

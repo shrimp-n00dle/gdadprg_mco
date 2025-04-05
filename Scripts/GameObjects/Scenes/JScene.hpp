@@ -5,7 +5,10 @@
 #include "../UI/Level1Map.hpp"
 #include "../UI/Level1UI.hpp"
 #include "../../Components/LadderHandler.hpp"
-#include "../../Components/HammerHandler.hpp"
+#include "../../Components/HammerHandler.hpp""
+#include "../../Components/BarrelHandler.hpp"
+#include "../../Components/PHandler.hpp"
+#include "../../Components/KHandler.hpp"
 class JScene : public AScene
 {
 public:
