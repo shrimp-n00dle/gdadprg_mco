@@ -2,7 +2,7 @@
 
 BarrelHandler::BarrelHandler(int numBarrels, std::string name, AGameObject* parent) : AComponent(name, Script)
 {
-	BarrelPool = new GameObjectPool(ObjectPoolHolder::BARREL_POOL_TAG, new Barrel("Barrel"), numBarrels, parent);
+	BarrelPool = new GameObjectPool(ObjectPoolHolder::BARREL_POOL_TAG, new Barrel("barrel"), numBarrels, parent);
 
 	BarrelPool->initialize();
 	ObjectPoolHolder::getInstance()->registerObjectPool(BarrelPool);

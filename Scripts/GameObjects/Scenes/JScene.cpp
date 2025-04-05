@@ -26,7 +26,7 @@ void JScene::onLoadObjects()
 	/*Hammer*/
 	srand(time(nullptr));
 	EGameObject* hammerManager = new EGameObject("HammerManager");
-	HammerHandler* hammerHandler = new HammerHandler(2, "HammerHandler", hammerManager);
+	HammerHandler* hammerHandler = new HammerHandler(1, "HammerHandler", hammerManager);
 	hammerManager->attachComponent(hammerHandler);
 	this->registerObject(hammerManager);
 
