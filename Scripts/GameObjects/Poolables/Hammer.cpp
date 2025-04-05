@@ -31,8 +31,8 @@ void Hammer::initialize()
 	sf::Vector2u textureSize = sprite->getTexture()->getSize();
 	sprite->setOrigin(textureSize.x / 2, textureSize.y / 2);
 
-	setChildPosition(100, 220);
-	//setChildPosition(60, 300);
+	//setChildPosition(100, 220);
+	setChildPosition(60, 300);
 
 	Renderer* renderer = new Renderer("HammerSprite");
 	renderer->assignDrawable(sprite);

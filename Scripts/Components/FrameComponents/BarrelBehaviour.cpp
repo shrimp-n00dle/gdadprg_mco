@@ -27,10 +27,10 @@ void BarrelBehaviour::perform()
 		//}
 
 		/*if its a negative number, or is beyond 38 go to the beginning of the list and set coutner to 0 or 38*/
-		if (counter > 3) counter = 0;
-		else if (counter < 0) counter = 3;
+		//if (counter > 3) counter = 0;
+		//else if (counter < 0) counter = 3;
 
-		coord = traverseList(counter);
+		coord = traverseList(0);
 
 		/*Sprite Rendering*/
 		currSprite = sf::IntRect(coord[0], coord[1], coord[2], coord[3]);
@@ -80,8 +80,8 @@ void BarrelBehaviour::initializeSprites()
 
 	}
 
-	//{"x":40,"y":0,"w":17,"h":24
-	coord = { 40,0,17,24 };
+	//	"frame": {"x":0,"y":0,"w":14,"h":12},
+	coord = { 0,0,14,12 };
 	//currSprite = sf::IntRect(0, 0, 150, 84);
 }
 

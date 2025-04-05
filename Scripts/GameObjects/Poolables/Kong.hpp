@@ -20,6 +20,6 @@ public:
 	void onCollisionEnter(AGameObject* object);
 	void onCollisionExit(AGameObject* object);
 	sf::Sprite* frameSprite;
-	float timer = 2.0f;
+	float timer = 4.0f;
 };
 

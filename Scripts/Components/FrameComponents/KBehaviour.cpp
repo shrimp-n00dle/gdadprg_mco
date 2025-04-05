@@ -14,7 +14,7 @@ void KBehaviour::perform()
 	{
 		counter++;
 		if (counter >= 3) counter = 0;
-		frameObj->timer = 2.0f;
+		frameObj->timer = 4.0f;
 	}
 
 	coord = traverseList(counter);
