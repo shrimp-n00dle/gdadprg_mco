@@ -8,6 +8,7 @@
 #include "UIButton.hpp"
 #include "UIText.hpp"
 #include "../../Managers/ScoreManager.hpp"
+#include "PauseScreen.hpp"
 
 #include "iostream"
 #include "string"
@@ -32,5 +33,6 @@ private:
 	UIText* bonusText;
 	int bonusScore = 5000;
 	sf::Time bonusCountdown = sf::Time::Zero;
+	PauseScreen* pauseScreen;
 };
 

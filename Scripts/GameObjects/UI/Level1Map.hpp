@@ -6,6 +6,8 @@
 #include "../../Managers/GameObjectManager.hpp"
 #include "../Listeners/ButtonListener.hpp"
 #include "UIButton.hpp"
+#include "../Listeners/CollisionListener.hpp"
+#include "ResultScreen.hpp"
 
 #include "iostream"
 #include "string"
@@ -23,5 +25,7 @@ public:
 private:
 	bool debugMode = true; // Set to true for visualizing colliders
 	std::vector<sf::RectangleShape> debugRects;
+	ResultScreen* resultScreen;
+	bool levelCompleted = false;
 };
 

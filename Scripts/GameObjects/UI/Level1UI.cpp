@@ -57,6 +57,22 @@ void Level1UI::initialize()
 	bonusText->setColor(sf::Color::Cyan);
 	bonusText->setTextStyled("5000");
 
+	// Pause Button
+	sf::Texture* btnNormal = TextureManager::getInstance()->getTexture("btn_normal");
+	sf::Texture* btnPressed = TextureManager::getInstance()->getTexture("btn_pressed");
+	UIButton* pauseButton = new UIButton("pause_button", btnNormal, btnPressed);
+	this->attachChild(pauseButton);
+	pauseButton->setChildPosition(600, 20);
+	pauseButton->getTransformable()->setScale(0.2f, 0.2f);
+	pauseButton->setButtonListener(this);
+
+	UIText* pauseButtonText = new UIText("pause_text");
+	pauseButton->attachChild(pauseButtonText);
+	pauseButtonText->setChildPosition(0, -20);
+	pauseButtonText->setSize(100);
+	pauseButtonText->setText("PAUSE");
+
+
 	// Initial score update
 	updateScoreDisplay();
 }
@@ -94,13 +110,10 @@ void Level1UI::updateBonusScore(sf::Time deltaTime)
 
 void Level1UI::onButtonClick(UIButton* button)
 {
-	if (button->getName() == "button_yes")
+	if (button->getName() == "pause_button")
 	{
-		// ApplicationManager::getInstance()->applicationQuit();
-	}
-	else if (button->getName() == "button_no")
-	{
-		// this->setEnabled(false);
+		pauseScreen->setEnabled(true);
+		ApplicationManager::getInstance()->pauseApplication();
 	}
 }
 

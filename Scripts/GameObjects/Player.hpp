@@ -44,6 +44,7 @@ private:
 	sf::Time deltaTime;
 	float timer = 10.0f;
 	sf::Vector2f previousPosition = sf::Vector2f(0,0);
+	sf::Time debugTimer = sf::Time::Zero;  // Timer for debug output
 	
 
 protected:

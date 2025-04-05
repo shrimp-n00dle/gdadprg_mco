@@ -37,14 +37,16 @@ void MCOPlayerMovement::perform()
 	}
 	if (inputController->isRight())
 	{
-		offset.x += SPEED_MULTIPLIER;
+		if (player->bLadder) offset.x += SPEED_MULTIPLIER * 0.3f;
+		else offset.x += SPEED_MULTIPLIER;
 		player->frameSprite->setScale(-2.0f, 2.0f);
 		playerTransformable->move(offset * deltaTime.asSeconds());
 	}
 
 	else if (inputController->isLeft())
 	{
-		offset.x -= SPEED_MULTIPLIER;
+		if (player->bLadder) offset.x -= SPEED_MULTIPLIER * 0.3f;
+		else offset.x -= SPEED_MULTIPLIER;
 		player->frameSprite->setScale(2.0f, 2.0f);
 		playerTransformable->move(offset * deltaTime.asSeconds());
 	}

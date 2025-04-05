@@ -17,13 +17,13 @@ void JScene::onLoadObjects()
 	this->registerObject(player);
 
 	/*Ladder*/
-	/*
+	
 	srand(time(nullptr));
 	EGameObject* ladderManager = new EGameObject("ladderManager");
 	LadderHandler* ladderHandler = new LadderHandler(1, "ladderHandler", ladderManager);
 	ladderManager->attachComponent(ladderHandler);
 	this->registerObject(ladderManager);
-	*/
+	
 
 	/*Barrel*/
 	srand(time(nullptr));
@@ -43,7 +43,7 @@ void JScene::onLoadObjects()
 	Level1UI* level1UI = new Level1UI("Level1UI");
 	this->registerObject(level1UI);
 
-	/*Princess and DonkeyKong*/
+	/*Princess and DonkeyDong*/
 	srand(time(nullptr));
 	EGameObject* pManager = new EGameObject("PManager");
 	PHandler* pHandler = new PHandler(1, "PHandler", pManager);

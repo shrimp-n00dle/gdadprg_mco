@@ -68,7 +68,23 @@ void Player::processInput(sf::Event event)
 }
 
 void Player::update(sf::Time deltaTime) {
+	// Update previous position with last frame's final position
 	previousPosition = frameSprite->getPosition();
+
+	// Debug output for platforms every 2 seconds
+	debugTimer += deltaTime;
+	if (debugTimer >= sf::seconds(2.0f)) {
+		std::cout << "\n=== Current Platforms Colliding With ===" << std::endl;
+		if (platformsCollidingWith.empty()) {
+			std::cout << "No platforms currently colliding" << std::endl;
+		} else {
+			for (Collider* platform : platformsCollidingWith) {
+				std::cout << "Platform: " << platform->getName() << std::endl;
+			}
+		}
+		std::cout << "====================================\n" << std::endl;
+		debugTimer = sf::Time::Zero;
+	}
 
 	if (!bLadder && !bGrounded) {  // Apply gravity only when not grounded
 		velocity.y += 9.8f * deltaTime.asSeconds();
@@ -95,11 +111,13 @@ void Player::update(sf::Time deltaTime) {
 			}
 		}
 
-		std::cout << "FrameSprite initial position: " << frameSprite->getPosition().x << ", " << frameSprite->getPosition().y << std::endl;
-		frameSprite->setPosition(frameSprite->getPosition().x, highestPlatformY - (highestPlatformHeight * 2.0f) - playerHeight);
-		std::cout << "FrameSprite new position: " << frameSprite->getPosition().x << ", " << frameSprite->getPosition().y << std::endl;
-		std::cout << "Highest Platform Y: " << highestPlatformY << std::endl;
-		std::cout << "Player height: " << playerHeight << std::endl;
+		float mainOffset = highestPlatformY - (highestPlatformHeight * 2.0f) - playerHeight;
+		std::cout << "mainOffset = " << mainOffset << std::endl;
+		if (frameSprite->getPosition().y - mainOffset > 1.0f)
+			mainOffset = frameSprite->getPosition().y - 1.0f;
+		else
+			mainOffset = frameSprite->getPosition().y;
+		frameSprite->setPosition(frameSprite->getPosition().x, mainOffset);
 	}
 	
 	AGameObject::update(deltaTime);
@@ -177,10 +195,18 @@ void Player::onCollisionEnter(AGameObject* object)
 				sf::FloatRect playerBounds = playerCollider->getGlobalBounds();
 				sf::FloatRect platformBounds = platformCollider->getGlobalBounds();
 
-				// Check if this is a collision from above (player's bottom vs platform's top)
 				float playerBottom = playerBounds.top + playerBounds.height;
-				bool collidingFromAbove = (playerBottom >= platformBounds.top - 4.0f &&
-					previousPosition.y + playerBounds.height <= platformBounds.top + 4.0f);
+				float previousPlayerBottom = previousPosition.y + (playerBounds.height / 2.0f);
+				bool collidingFromAbove = (playerBottom >= platformBounds.top - 4.0f);
+					//&& previousPlayerBottom <= platformBounds.top + 4.0f);
+
+				std::cout << "PlayerBottom: " << playerBottom << " = " << playerBounds.top << " + " << playerBounds.height << std::endl;
+				std::cout << "PreviousPlayerBottom: " << previousPlayerBottom << " = " 
+					<< previousPosition.y << " + (" << playerBounds.height << " / 2.0 )\n";
+				std::cout << "PlayerBottom Collision?: " << playerBottom << " >= " <<
+					platformBounds.top << " - 4.0 " << std::endl;
+				std::cout << "Collision #2?: " << previousPlayerBottom << " <= " <<
+					platformBounds.top << " + 4.0 " << std::endl;
 
 				if (collidingFromAbove) {
 					platformsCollidingWith.insert(platformCollider);
@@ -193,11 +219,27 @@ void Player::onCollisionEnter(AGameObject* object)
 				}
 				else {
 					// Handle collision from below or side
-					// If from below, we may want to make the player bounce or just stop upward velocity
-					if (velocity.y < 0) {
+					std::cout << "Not really colliding from above tho" << std::endl;
+					
+					bool movingUpward = velocity.y < 0;  // Using velocity instead of position comparison
+					std::cout << "movingUpward = velocity.y(" << velocity.y << ") < 0" << std::endl;
+					if (movingUpward && playerBottom >= platformBounds.top - 4.0f) {
+						// We're moving up and have reached/passed the platform top - treat it like landing
+						std::cout << "still going to insert it anyways" << std::endl;
+						platformsCollidingWith.insert(platformCollider);
+						velocity.y = 0.f;
+						bGrounded = true;
+						hasLanded = true;
+					} 
+					else if (velocity.y < 0) {
+						// We're moving up but hit the bottom of a platform
 						velocity.y = 0;
+						frameSprite->setPosition(previousPosition);
+					} 
+					else {
+						// Side collision
+						frameSprite->setPosition(previousPosition);
 					}
-					frameSprite->setPosition(previousPosition);
 				}
 			}
 		}
@@ -207,8 +249,7 @@ void Player::onCollisionEnter(AGameObject* object)
 
 void Player::onCollisionExit(AGameObject* object)
 {
-	if (object->getName().find("ladder") != std::string::npos)
-	{
+	if (object->getName().find("ladder") != std::string::npos) {
 		bLadder = false;
 		bGrounded = true;
 		changeSpriteState("walk_sheet");
