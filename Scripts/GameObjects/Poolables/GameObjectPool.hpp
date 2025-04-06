@@ -6,6 +6,7 @@
 class GameObjectPool
 {
 public: 
+	int hammerCounter = 0;
 	int objCounter = 0;
 	GameObjectPool(std::string tag, APoolable* poolableCopy, int poolableSize, AGameObject* parent);
 	~GameObjectPool();

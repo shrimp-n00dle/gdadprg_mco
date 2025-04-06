@@ -34,7 +34,8 @@ void JScene::onLoadObjects()
 
 	/*Barrel Checker*/
 	Checker* checker = new Checker("Checker1");
-	checker->setChildPosition(750,250);
+	checker->setChildPosition(600, 250);
+	//checker->setChildPosition(750,250);
 	this->registerObject(checker);
 
 	Checker* checker2 = new Checker("Checker2");
@@ -62,7 +63,7 @@ void JScene::onLoadObjects()
 	//this->registerObject(checker7);
 
 	Checker* checker4 = new Checker("Checker1");
-	checker4->setChildPosition(-25, 350);
+	checker4->setChildPosition(-20, 350);
 	this->registerObject(checker4);
 
 	/*Checker* checker3 = new Checker("Checker2");
@@ -96,7 +97,7 @@ void JScene::onLoadObjects()
 	/*Hammer*/
 	srand(time(nullptr));
 	EGameObject* hammerManager = new EGameObject("HammerManager");
-	HammerHandler* hammerHandler = new HammerHandler(1, "HammerHandler", hammerManager);
+	HammerHandler* hammerHandler = new HammerHandler(2, "HammerHandler", hammerManager);
 	hammerManager->attachComponent(hammerHandler);
 	this->registerObject(hammerManager);
 

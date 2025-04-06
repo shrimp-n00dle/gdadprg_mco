@@ -80,8 +80,6 @@ void MCOPlayerMovement::perform()
 
 			/*Adding jumping effects*/
 			SFXManager::getInstance()->mAudioList[3]->playSong();
-
-			//player->changeSpriteState("jump_sprite");
 		}
 
 	}	

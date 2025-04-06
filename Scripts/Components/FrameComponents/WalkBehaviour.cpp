@@ -27,6 +27,10 @@ void WalkBehaviour::perform()
 			counter++;
 			frameInputController->setRight(false);
 		}
+		else if (frameInputController->isJump())
+		{
+			counter = 2;
+		}
 
 		/*if its a negative number, or is beyond 38 go to the beginning of the list and set coutner to 0 or 38*/
 		if (counter > 2) counter = 0;
