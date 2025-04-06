@@ -4,13 +4,13 @@
 #include "../Listeners/CollisionListener.hpp"
 #include "../../Managers/PhysicsManager.hpp"
 #include "../../Managers/ObjectPoolHolder.hpp"
-#include "../../Components/FrameComponents/KBehaviour.hpp"
+#include "../../Components/FrameComponents/CBehaviour.hpp"
 #include "GameObjectPool.hpp"
-class Kong : public APoolable, public CollisionListener
+class OilCan : public APoolable, public CollisionListener
 {
 public:
-	Kong(std::string name);
-	~Kong();
+	OilCan(std::string name);
+	~OilCan();
 	void initialize();
 	void update(sf::Time deltaTime);
 	void onRelease();
@@ -20,6 +20,8 @@ public:
 	void onCollisionEnter(AGameObject* object);
 	void onCollisionExit(AGameObject* object);
 	sf::Sprite* frameSprite;
-	float timer = 4.0f;
+	float timer = 1.0f;
+private:
+	Collider* collider;
 };
 

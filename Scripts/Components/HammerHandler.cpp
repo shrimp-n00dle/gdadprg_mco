@@ -4,8 +4,11 @@ HammerHandler::HammerHandler(int numHammers, std::string name, AGameObject* pare
 {
 	HammerPool = new GameObjectPool(ObjectPoolHolder::HAMMER_POOL_TAG, new Hammer("hammer"), numHammers, parent);
 
+
 	HammerPool->initialize();
 	ObjectPoolHolder::getInstance()->registerObjectPool(HammerPool);
+
+
 }
 
 HammerHandler::~HammerHandler()

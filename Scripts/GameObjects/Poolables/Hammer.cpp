@@ -25,14 +25,12 @@ APoolable* Hammer::clone()
 
 void Hammer::initialize()
 {
+	
 	sprite = new sf::Sprite();
 	sprite->setTexture(*TextureManager::getInstance()->getTexture("hammer"));
 	sprite->setScale(2.0f, 2.0f);
 	sf::Vector2u textureSize = sprite->getTexture()->getSize();
 	sprite->setOrigin(textureSize.x / 2, textureSize.y / 2);
-
-	setChildPosition(100, 220);
-	//setChildPosition(60, 300);
 
 	Renderer* renderer = new Renderer("HammerSprite");
 	renderer->assignDrawable(sprite);

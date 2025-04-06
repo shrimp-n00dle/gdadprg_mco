@@ -4,22 +4,29 @@
 #include "../Listeners/CollisionListener.hpp"
 #include "../../Managers/PhysicsManager.hpp"
 #include "../../Managers/ObjectPoolHolder.hpp"
-#include "../../Components/FrameComponents/KBehaviour.hpp"
 #include "GameObjectPool.hpp"
-class Kong : public APoolable, public CollisionListener
+class Checker : public APoolable, public CollisionListener
 {
 public:
-	Kong(std::string name);
-	~Kong();
+	Checker(std::string name);
+	~Checker();
 	void initialize();
-	void update(sf::Time deltaTime);
+
 	void onRelease();
 	void onActivate();
 	APoolable* clone();
 
 	void onCollisionEnter(AGameObject* object);
 	void onCollisionExit(AGameObject* object);
-	sf::Sprite* frameSprite;
-	float timer = 4.0f;
+	sf::RectangleShape* checkerSprite;
+
+private:
+	int counter = 0;
+
+	float timer = 10.0f;
+
+	const int SPAWN_RANGE = 300;
+
+	Collider* collider;
 };
 

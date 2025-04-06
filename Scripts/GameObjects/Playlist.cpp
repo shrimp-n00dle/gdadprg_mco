@@ -20,6 +20,12 @@ void Playlist::playSong()
     
 }
 
+void Playlist::stopSong()
+{
+    mSound.stop();
+
+}
+
 Playlist* Playlist::readySongtoScene(sf::SoundBuffer* audio)
 {
     Playlist* playlist = new Playlist();

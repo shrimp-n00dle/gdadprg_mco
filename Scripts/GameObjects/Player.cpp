@@ -54,6 +54,9 @@ void Player::initialize()
 	boundingBox->setFillColor(sf::Color(0, 0, 255, 100));  // Semi-transparent blue
 	boundingBox->setOutlineColor(sf::Color::Red);
 	boundingBox->setOutlineThickness(2);
+	
+	HitBehaviour* hitBehaviour = new HitBehaviour("HitBehaviour");
+	this->attachComponent(hitBehaviour);
 
 	Renderer* boundingRenderer = new Renderer("PlayerCollisionBounds");
 	boundingRenderer->assignDrawable(boundingBox);
@@ -69,6 +72,9 @@ void Player::processInput(sf::Event event)
 
 void Player::update(sf::Time deltaTime) {
 	// Update previous position with last frame's final position
+
+	hitTimer -= deltaTime.asSeconds();
+
 	previousPosition = frameSprite->getPosition();
 
 	// Debug output for platforms every 2 seconds
@@ -146,7 +152,7 @@ void Player::onCollisionEnter(AGameObject* object)
 	if (object->getName().find("barrel") != std::string::npos)
 	{
 		std::cout << "Player: Collided with " << object->getName() << "\n";
-		//changeSpriteState("hit_sheet");
+		changeSpriteState("hit_sheet");
 		return;
 	}
 
@@ -154,6 +160,7 @@ void Player::onCollisionEnter(AGameObject* object)
 	if (object->getName().find("barrel") != std::string::npos && bHammer)
 	{
 		std::cout << "Player: Collided with " << object->getName() << "\n";
+		
 		return;
 	}
 	

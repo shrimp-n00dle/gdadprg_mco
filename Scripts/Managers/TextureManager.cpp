@@ -62,6 +62,7 @@ void TextureManager::loadAll()
     storeTexture("btn_pause", "Assets/UI/pause.png");
 
     /*SPRITE FRAMES*/
+    storeTexture("jump_sprite", "Assets/MCOAssets/SpriteSheets/Walk/Walk2.png");
     storeTexture("sprite_sheet", "Assets/SpriteSheets/Dota_Sheet.png");
     storeTexture("walk_sheet", "Assets/MCOAssets/SpriteSheet/Walk/Walk.png");
     storeTexture("climb_sheet", "Assets/MCOAssets/SpriteSheet/Climb/Climb.png");
@@ -69,7 +70,8 @@ void TextureManager::loadAll()
     storeTexture("barrel_sheet", "Assets/MCOAssets/SpriteSheet/Barrel/Barrel.png");
     storeTexture("princess_sheet", "Assets/MCOAssets/SpriteSheet/Princess/Princess.png");
     storeTexture("kong_sheet", "Assets/MCOAssets/SpriteSheet/Kong/Kong.png");
-
+    storeTexture("can_sheet", "Assets/MCOAssets/SpriteSheet/OilCan/OilCan.png");
+    storeTexture("hit_sheet", "Assets/MCOAssets/SpriteSheet/Hit/Hit.png");
     storeTexture("level1", "Assets/Maps/25m.png");
    
 }

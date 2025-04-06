@@ -8,6 +8,8 @@
 #include "../Components/MCOPlayerMovement.hpp"
 #include "../Components/FrameComponents/WalkBehaviour.hpp"
 #include "../Components/FrameComponents/LadderBehaviour.hpp"
+#include "../Components/HammerBehaviour.hpp"
+#include "../Components/FrameComponents/HitBehaviour.hpp"
 #include "../GameObjects/Poolables/GameObjectPool.hpp"
 #include "UI/ResultScreen.hpp"
 
@@ -37,10 +39,13 @@ public:
 	sf::Vector2f velocity;
 	std::set<Collider*> platformsCollidingWith;
 
+	float hitTimer = 0.2f;
+
 private:
 	const float SPEED_MULTIPLIER = 300.0f;
 	std::string sheetName = "";
 	Collider* collider = nullptr;
+
 
 	sf::Time deltaTime;
 	float timer = 10.0f;

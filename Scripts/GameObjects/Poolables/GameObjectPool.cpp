@@ -45,11 +45,19 @@ APoolable* GameObjectPool::requestPoolable()
 {
 	if (hasObjectAvailable(1))
 	{
+		
 		APoolable* poolableObj = availableObjects[availableObjects.size() - 1];
+		std::cout << "POOLABLE NAME!:  " << poolableObj->getName() << std::endl;
 		availableObjects.erase(availableObjects.begin() + availableObjects.size() - 1);
 		usedObjects.push_back(poolableObj);
 		//std::cout << "Requested object Available: " << availableObjects.size() << " Used: " << usedObjects.size() << std::endl;
 		setEnabled(poolableObj, true);
+		if (poolableObj->getName() == "hammer")
+		{
+			hammerCounter++;
+			if (hammerCounter == 1)poolableObj->setChildPosition(60,300);
+			else if (hammerCounter == 2)poolableObj->setChildPosition(500,580);
+		}
 		return poolableObj;
 	}
 
@@ -85,9 +93,29 @@ std::vector<APoolable*> GameObjectPool::requestPoolableBatch(int size)
 that obj to availableObjects list while setting the corresponding flags*/
 void GameObjectPool::releasePoolable(APoolable* poolableObject)
 {
+	for (int i = 0; i < usedObjects.size(); i++)
+	{
+		if (usedObjects[i]->isEnabled() && usedObjects[i] == poolableObject)
+		{
+			std::cout << "Release Poolable item " << i << std::endl;
+			availableObjects.push_back(usedObjects[i]);
+			usedObjects[i]->setEnabled(false);
+			usedObjects.erase(usedObjects.begin() + i);
+		}
+	}
+	/*for (int i = 0; i < usedObjects.size(); i++)
+	{
+		if (usedObjects[i]->isEnabled() && usedObjects[i] == poolableObject)
+		{
+			availableObjects.push_back(usedObjects[i]);
+			usedObjects[i]->setEnabled(false);
+			usedObjects.erase(usedObjects.begin() + i);
+		}
+	}*/
+
 	// Search for the list of current used object in usedObjects then move that object to availableObjects list while setting the corresponding enabled flags
 
-	int index = -1;
+	/*int index = -1;
 
 	for (int i = 0; i < this->usedObjects.size() && index == -1; i++) {
 		if (this->usedObjects[i] == poolableObject)
@@ -98,14 +126,12 @@ void GameObjectPool::releasePoolable(APoolable* poolableObject)
 		this->availableObjects.push_back(poolableObject);
 		this->usedObjects.erase(this->usedObjects.begin() + index);
 		this->setEnabled(poolableObject, false);
-	}
+	}*/
 		//if (objCounter > 200) return;
 
-		//	poolableObject->setEnabled(false);
-		//	availableObjects.push_back(poolableObject);
-			//usedObjects.erase(poolableObject);
-		//	std::cout << this->objCounter << std::endl;
-		//	this->objCounter++;
+		/*poolableObject->setEnabled(false);
+		availableObjects.push_back(poolableObject);*/
+		//usedObjects.erase(poolableObject);
 }
 
 /*implement loop that will release list of objects*/

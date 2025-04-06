@@ -1,42 +1,41 @@
-#include "WalkBehaviour.hpp"
+#include "HitBehaviour.hpp"
 
-WalkBehaviour::WalkBehaviour(std::string name) : AComponent(name, Script)
+HitBehaviour::HitBehaviour(std::string name) : AComponent(name, Script)
 {
 	initializeSprites();
 }
 
-void WalkBehaviour::perform()
+void HitBehaviour::perform()
 {
 	Player* frameObj = (Player*)this->getOwner();
 	MCOPlayerInput* frameInputController = (MCOPlayerInput*)(frameObj->getComponentsOfType(ComponentType::Input)[0]);
 	sf::Transformable* frameTransformable = frameObj->getTransformable();
 
-	if (frameObj->getSheetName() == "walk_sheet")
+	if (frameObj->getSheetName() == "hit_sheet")
 	{
-		/*Checkers*/
-		if (frameTransformable == nullptr) std::cout << "frameTransformable not found" << std::endl;
-		if (frameInputController == nullptr)  std::cout << "frameInputController not found" << std::endl;
-
-		if (frameInputController->isLeft())
+		if (loop >= 2) 
 		{
-			counter--;
-			frameInputController->setLeft(false);
+			coord = traverseList(4);
 		}
-		else if (frameInputController->isRight())
+		else if (frameObj->hitTimer <= 0.0f)
 		{
-			counter++;
-			frameInputController->setRight(false);
+				counter++;
+				frameObj->hitTimer = 0.2f;
+				/*if its a negative number, or is beyond 38 go to the beginning of the list and set coutner to 0 or 38*/
+				if (counter > 3) { counter = 0; loop++; }
+				else if (counter < 0)
+				{
+					counter = 2;
+				}
+				coord = traverseList(counter);
+	
 		}
-		else if (frameInputController->isJump())
-		{
-			counter = 2;
-		}
+		
+	
 
-		/*if its a negative number, or is beyond 38 go to the beginning of the list and set coutner to 0 or 38*/
-		if (counter > 2) counter = 0;
-		else if (counter < 0) counter = 2;
+		
 
-		coord = traverseList(counter);
+		
 
 		/*Sprite Rendering*/
 		currSprite = sf::IntRect(coord[0], coord[1], coord[2], coord[3]);
@@ -46,10 +45,10 @@ void WalkBehaviour::perform()
 
 }
 
-void WalkBehaviour::initializeSprites()
+void HitBehaviour::initializeSprites()
 {
 	//1. Parse a JSON file
-	FILE* file = fopen("Assets/MCOAssets/SpriteSheet/Walk/Walk.json", "rb");
+	FILE* file = fopen("Assets/MCOAssets/SpriteSheet/Hit/Hit.json", "rb");
 
 	//2. Check if we opened succesfully
 	assert(file != 0);
@@ -88,12 +87,12 @@ void WalkBehaviour::initializeSprites()
 
 	}
 
-	//	"frame": {"x":0,"y":0,"w":14,"h":12},
-	coord = { 0,0,14,12};
+	//	"frame": {"x":0,"y":0,"w":18,"h":18},
+	coord = { 0,0,18,18};
 	//currSprite = sf::IntRect(0, 0, 150, 84);
 }
 
-std::vector<int> WalkBehaviour::traverseList(int counter)
+std::vector<int> HitBehaviour::traverseList(int counter)
 {
 	auto i = spriteList.find(counter)->second;
 	return i;

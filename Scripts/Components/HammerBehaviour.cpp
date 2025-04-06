@@ -25,13 +25,19 @@ void HammerBehaviour::perform()
 			counter++;
 			frameInputController->setRight(false);
 		}
-
 		if (timer <= 0.0f)
 		{
 			timer = 10.0f;
 			frameObj->bHammer = false;
 			frameObj->changeSpriteState("walk_sheet");
+			
 		}
+
+		/*add hammer music*/
+		//if its currenlty playing dont play it again
+		if (SFXManager::getInstance()->mAudioList[0]->getSong()->getStatus() != 2)SFXManager::getInstance()->mAudioList[0]->playSong();
+
+		
 
 		/*if its a negative number, or is beyond 38 go to the beginning of the list and set coutner to 0 or 38*/
 		if (counter > 5) counter = 0;

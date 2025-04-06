@@ -1,20 +1,20 @@
-#include "KBehaviour.hpp"
+#include "CBehaviour.hpp"
 
-KBehaviour::KBehaviour(std::string name) : AComponent(name, Script)
+CBehaviour::CBehaviour(std::string name) : AComponent(name, Script)
 {
 	initializeSprites();
 }
 
-void KBehaviour::perform()
+void CBehaviour::perform()
 {
-	Kong* frameObj = (Kong*)this->getOwner();
+	OilCan* frameObj = (OilCan*)this->getOwner();
 
 	/*If timer is less than 0 seconds*/
 	if (frameObj->timer <= 0.0f)
 	{
 		counter++;
-		if (counter >= 3) counter = 0;
-		frameObj->timer = 4.0f;
+		if (counter >= 2) counter = 0;
+		frameObj->timer = 1.0f;
 	}
 
 	coord = traverseList(counter);
@@ -25,10 +25,10 @@ void KBehaviour::perform()
 	frameObj->frameSprite->setOrigin(currSprite.width / 2.0f, currSprite.height / 2.0f);
 }
 
-void KBehaviour::initializeSprites()
+void CBehaviour::initializeSprites()
 {
 	//1. Parse a JSON file
-	FILE* file = fopen("Assets/MCOAssets/SpriteSheet/Kong/Kong.json", "rb");
+	FILE* file = fopen("Assets/MCOAssets/SpriteSheet/OilCan/OilCan.json", "rb");
 
 	//2. Check if we opened succesfully
 	assert(file != 0);
@@ -67,11 +67,11 @@ void KBehaviour::initializeSprites()
 
 	}
 
-	//"frame": {"x":0,"y":0,"w":42,"h":34},
-	coord = { 0,0,42,24 };
+	//"frame": {"x":0,"y":0,"w":18,"h":27},
+	coord = { 0,0,18,26};
 }
 
-std::vector<int> KBehaviour::traverseList(int counter)
+std::vector<int> CBehaviour::traverseList(int counter)
 {
 	auto i = spriteList.find(counter)->second;
 	return i;

@@ -238,6 +238,19 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Scripts\GameObjects\UI\ResultScreen.cpp">
+    <ClCompile Include="Scripts\GameObjects\Poolables\OilCan.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Scripts\Components\FrameComponents\CBehaviour.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Scripts\Components\CHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Scripts\GameObjects\Poolables\Checker.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Scripts\Components\FrameComponents\HitBehaviour.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -465,6 +478,19 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Scripts\GameObjects\UI\ResultScreen.hpp">
+    <ClInclude Include="Scripts\GameObjects\Poolables\OilCan.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Scripts\Components\FrameComponents\CBehaviour.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Scripts\Components\CHandler.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Scripts\GameObjects\Poolables\Checker.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Scripts\Components\FrameComponents\HitBehaviour.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
