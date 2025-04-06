@@ -51,6 +51,7 @@ void MCOPlayerMovement::perform()
 
 	this->ticks += this->deltaTime.asSeconds();
 
+	/*If the player is at the ladder*/
 	if (player->bLadder && !bHasHit)
 	{
 		player->velocity = sf::Vector2f(0.0f, 0.0f);
@@ -67,6 +68,8 @@ void MCOPlayerMovement::perform()
 		}
 		offset = sf::Vector2f(0.0f, 0.0f);
 	}
+
+	/*If the player wants to move to the right/left*/
 	if (inputController->isRight() && !bHasHit)
 	{
 		if (player->bLadder) offset.x += SPEED_MULTIPLIER * 0.3f;

@@ -10,6 +10,7 @@ Game::Game() : mWindow(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "MCO Donkey K
     /*Framerate is set to 60*/
     mWindow.setFramerateLimit(60);
 
+
     ApplicationManager::getInstance()->initialize(&mWindow);
     TextureManager::getInstance()->loadAll();
     FontManager::getInstance()->loadAll();
@@ -18,7 +19,6 @@ Game::Game() : mWindow(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "MCO Donkey K
 
     //register scenes
     SceneManager::getInstance()->registerScene(new MainMenuScene());
-    //SceneManager::getInstance()->registerScene(new GameScene());
     SceneManager::getInstance()->registerScene(new JScene());
     SceneManager::getInstance()->registerScene(new SpriteScene());
 

@@ -2,6 +2,7 @@
 
 PHandler::PHandler(int numNPCs, std::string name, AGameObject* parent) : AComponent(name, Script)
 {
+	/*Calls the pool obj*/
 	PPool = new GameObjectPool(ObjectPoolHolder::PRINCESS_POOL_TAG, new Princess("princess"), numNPCs, parent);
 	PPool->initialize();
 	ObjectPoolHolder::getInstance()->registerObjectPool(PPool);

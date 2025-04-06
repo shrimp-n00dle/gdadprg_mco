@@ -25,6 +25,7 @@ APoolable* Checker::clone()
 
 void Checker::initialize()
 {
+	/*Sprite initialization*/
 	checkerSprite = new sf::RectangleShape();
 	checkerSprite->setPosition(0, 0);
 	checkerSprite->setOrigin(0, 0);

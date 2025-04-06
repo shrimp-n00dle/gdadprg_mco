@@ -2,6 +2,7 @@
 
 KHandler::KHandler(int numNPCs, std::string name, AGameObject* parent) : AComponent(name, Script)
 {
+	/*Object Pooling*/
 	KPool = new GameObjectPool(ObjectPoolHolder::KONG_POOL_TAG, new Kong("kong"), numNPCs, parent);
 	KPool->initialize();
 	ObjectPoolHolder::getInstance()->registerObjectPool(KPool);

@@ -2,6 +2,7 @@
 
 CHandler::CHandler(int numNPCs, std::string name, AGameObject* parent) : AComponent(name, Script)
 {
+	/*Object Pooling*/
 	CPool = new GameObjectPool(ObjectPoolHolder::CAN_POOL_TAG, new OilCan("oilcan"), numNPCs, parent);
 	CPool->initialize();
 	ObjectPoolHolder::getInstance()->registerObjectPool(CPool);

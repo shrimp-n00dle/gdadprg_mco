@@ -6,25 +6,17 @@ HammerBehaviour::HammerBehaviour(std::string name) : AComponent(name, Script)
 }
 void HammerBehaviour::perform()
 {
+
 	Player* frameObj = (Player*)this->getOwner();
 	MCOPlayerInput* frameInputController = (MCOPlayerInput*)(frameObj->getComponentsOfType(ComponentType::Input)[0]);
 	sf::Transformable* transformable = this->getOwner()->getTransformable();
 
+	/*If the current sheet is the hammer sheet, continue
+	If not, ignore the condition*/
 	if (frameObj->bHammer && frameObj->getSheetName() == "hammer_sheet")
 	{
+		/*A timer is added so the frames can have an offset before calling the next one*/
 		timer -= deltaTime.asSeconds();
-		//std::cout << timer << std::endl;
-
-	/*	if (frameInputController->isLeft())
-		{
-			counter--;
-			frameInputController->setLeft(false);
-		}
-		else if (frameInputController->isRight())
-		{
-			counter++;
-			frameInputController->setRight(false);
-		}*/
 
 		if (frameObj->hammerTimer <= 0.0f)
 		{
@@ -49,7 +41,7 @@ void HammerBehaviour::perform()
 
 		
 
-		/*if its a negative number, or is beyond 38 go to the beginning of the list and set coutner to 0 or 38*/
+		/*if its a negative number, or is beyond, go to the beginning of the list and set coutner to 0 or the maximum*/
 		if (counter > 5) counter = 0;
 		else if (counter < 0) counter = 5;
 
@@ -104,8 +96,8 @@ void HammerBehaviour::initializeSprites()
 		counter++;
 
 	}
-	//"frame": {"x":0,"y":0,"w":14,"h":31},
-	coord = { 0,0,14,31 };
+	//"frame": {"x":0,"y":0,"w":25,"h":29},
+	coord = { 0,0,25,29 };
 	//coord = traverseList(0);
 }
 

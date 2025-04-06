@@ -12,13 +12,14 @@ void BarrelBehaviour::perform()
 	/*Animation*/
 
 		/*If timer is less than 0 seconds*/
+		/*A timer is added so the frames can have an offset before calling the next one*/
 		if (frameObj->timer <= 0.0f)
 		{
 			counter++;
 			frameObj->timer = 0.5f;
 		}
 
-		/*if its a negative number, or is beyond 38 go to the beginning of the list and set coutner to 0 or 38*/
+		/*if its a negative number, or is beyond, go to the beginning of the list and set coutner to 0 or the maximum*/
 		if (counter > 3) counter = 0;
 		else if (counter < 0) counter = 3;
 

@@ -25,11 +25,15 @@ APoolable* Barrel::clone()
 
 void Barrel::update(sf::Time deltaTime) 
 {
+	/*If the barrel touches the platform (red beam)*/
 	if (isGrounded())
 	{
+		/*If the barrel is starting at the left, move right*/
 		if (bLeft)this->getTransformable()->move(1, 0);
+		/*If the barrel is starting at the rifgth, move left*/
 		else this->getTransformable()->move(-1, 0);
 	}
+	/*If the barrel is in the air, follow gravity laws*/
 	else if (!isGrounded())
 	{
 		this->getTransformable()->move(0, 9.8f * deltaTime.asSeconds());
@@ -43,6 +47,7 @@ void Barrel::update(sf::Time deltaTime)
 
 void Barrel::initialize()
 {
+	/*Sprite initialization*/
 	frameSprite = new sf::Sprite();
 	frameSprite->setTexture(*TextureManager::getInstance()->getTexture("barrel_sheet"));
 	sf::Vector2u textureSize = frameSprite->getTexture()->getSize();
@@ -62,6 +67,7 @@ void Barrel::initialize()
 	renderer->assignDrawable(frameSprite);
 	attachComponent(renderer);
 
+	/*Barrel Behaviour holds the frame animation for the barrel sprite*/
 	BarrelBehaviour* barrelBehaviour = new BarrelBehaviour("BarrelBehaviour");
 	this->attachComponent(barrelBehaviour);
 }

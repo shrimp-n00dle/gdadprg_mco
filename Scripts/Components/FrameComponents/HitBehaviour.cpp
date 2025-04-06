@@ -11,8 +11,12 @@ void HitBehaviour::perform()
 	MCOPlayerInput* frameInputController = (MCOPlayerInput*)(frameObj->getComponentsOfType(ComponentType::Input)[0]);
 	sf::Transformable* frameTransformable = frameObj->getTransformable();
 
+	/*If the player is hit, the sprite sheet will change and call the proper sprite sheet name
+	If they match, the hit conditions will be followed
+	If not, ignore the condition*/
 	if (frameObj->getSheetName() == "hit_sheet")
 	{
+		/*A loop is called so Mario rotates two times before calling the final sprite*/
 		if (loop >= 2) 
 		{
 			coord = traverseList(4);
@@ -21,7 +25,7 @@ void HitBehaviour::perform()
 		{
 				counter++;
 				frameObj->hitTimer = 0.2f;
-				/*if its a negative number, or is beyond 38 go to the beginning of the list and set coutner to 0 or 38*/
+				/*if its a negative number, or is beyond, go to the beginning of the list and set coutner to 0 or the maximum*/
 				if (counter > 3) { counter = 0; loop++; }
 				else if (counter < 0)
 				{

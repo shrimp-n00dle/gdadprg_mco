@@ -25,7 +25,7 @@ APoolable* Hammer::clone()
 
 void Hammer::initialize()
 {
-	
+	/*Sprite initialization*/
 	sprite = new sf::Sprite();
 	sprite->setTexture(*TextureManager::getInstance()->getTexture("hammer"));
 	sprite->setScale(2.0f, 2.0f);
@@ -44,6 +44,7 @@ void Hammer::initialize()
 
 void Hammer::onCollisionEnter(AGameObject* object)
 {
+	/*If when hammer collides with player*/
 	if (object->getName().find("player") != std::string::npos)
 	{
 		std::cout << "Hammer: collided with " << object->getName() << std::endl;
