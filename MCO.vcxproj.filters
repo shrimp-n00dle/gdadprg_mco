@@ -243,6 +243,12 @@
     <ClCompile Include="Scripts\Components\CHandler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Scripts\GameObjects\Poolables\Checker.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Scripts\Components\FrameComponents\HitBehaviour.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Scripts\Components\FrameComponents\FrameSwticher.hpp">
@@ -471,6 +477,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Scripts\Components\CHandler.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Scripts\GameObjects\Poolables\Checker.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Scripts\Components\FrameComponents\HitBehaviour.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -10,6 +10,7 @@ public:
     void setSong(sf::SoundBuffer audio);
     sf::Sound* getSong();
     void playSong();
+    void stopSong();
 
     static Playlist* readySongtoScene(sf::SoundBuffer* audio);
 

@@ -9,33 +9,38 @@ MCOPlayerInput::~MCOPlayerInput()
 
 void MCOPlayerInput::perform()
 {
+	Player* frameObj = (Player*)this->getOwner();
 
-	if (event.type == sf::Event::KeyPressed)
+	if (frameObj->getSheetName() != "hit_sheet")
 	{
-		keyFlag = true;
-	}
-	else if (event.type == sf::Event::KeyReleased)
-	{
-		keyFlag = false;
+		if (event.type == sf::Event::KeyPressed)
+		{
+			keyFlag = true;
+		}
+		else if (event.type == sf::Event::KeyReleased)
+		{
+			keyFlag = false;
+		}
+
+		switch (event.key.code)
+		{
+		case sf::Keyboard::W:
+			moveUp = keyFlag;
+			break;
+		case sf::Keyboard::A:
+			moveLeft = keyFlag;
+			break;
+		case sf::Keyboard::S:
+			moveDown = keyFlag;
+			break;
+		case sf::Keyboard::D:
+			moveRight = keyFlag;
+			break;
+		case sf::Keyboard::Space:
+			bJump = keyFlag;
+		}
 	}
 
-	switch (event.key.code)
-	{
-	case sf::Keyboard::W:
-		moveUp = keyFlag;
-		break;
-	case sf::Keyboard::A:
-		moveLeft = keyFlag;
-		break;
-	case sf::Keyboard::S:
-		moveDown = keyFlag;
-		break;
-	case sf::Keyboard::D:
-		moveRight = keyFlag;
-		break;
-	case sf::Keyboard::Space:
-		bJump = keyFlag;
-	}
 }
 
 bool MCOPlayerInput::isUp() { return moveUp; }

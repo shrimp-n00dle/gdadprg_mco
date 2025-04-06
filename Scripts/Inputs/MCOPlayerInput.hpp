@@ -1,5 +1,6 @@
 #pragma once
 #include "GenericInput.hpp"
+#include "../GameObjects/Player.hpp"
 class MCOPlayerInput : public GenericInput
 {
 public:

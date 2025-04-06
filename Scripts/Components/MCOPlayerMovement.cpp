@@ -40,6 +40,16 @@ void MCOPlayerMovement::perform()
 		offset.x += SPEED_MULTIPLIER;
 		player->frameSprite->setScale(-2.0f, 2.0f);
 		playerTransformable->move(offset * deltaTime.asSeconds());
+
+		/*Adding walking effects*/
+		if (player->getSheetName() == "walk_sheet")
+		{
+			SFXManager::getInstance()->mAudioList[0]->stopSong();
+			//if its currenlty playing dont play it again
+			if (SFXManager::getInstance()->mAudioList[4]->getSong()->getStatus() != 2)SFXManager::getInstance()->mAudioList[4]->playSong();
+
+		}
+	
 	}
 
 	else if (inputController->isLeft())
@@ -47,6 +57,15 @@ void MCOPlayerMovement::perform()
 		offset.x -= SPEED_MULTIPLIER;
 		player->frameSprite->setScale(2.0f, 2.0f);
 		playerTransformable->move(offset * deltaTime.asSeconds());
+
+		/*Adding walking effects*/
+		if (player->getSheetName() == "walk_sheet")
+		{
+			SFXManager::getInstance()->mAudioList[0]->stopSong();
+			//if its currenlty playing dont play it again
+			if (SFXManager::getInstance()->mAudioList[4]->getSong()->getStatus() != 2)SFXManager::getInstance()->mAudioList[4]->playSong();
+
+		}
 	}
 
 	if (!player->bLadder && !player->bHammer)
@@ -60,10 +79,11 @@ void MCOPlayerMovement::perform()
 			bHop = true;
 
 			/*Adding jumping effects*/
-			//SFXManager::getInstance()->mAudioList[0]->playSong();
+			SFXManager::getInstance()->mAudioList[3]->playSong();
 
-			// player->changeSpriteState("jump_sheet");
+			//player->changeSpriteState("jump_sprite");
 		}
+
 	}	
 
 	if (!inputController->isJump()) {
@@ -71,5 +91,16 @@ void MCOPlayerMovement::perform()
 	}
 	
 	player->getCollider()->setLocalBounds(player->frameSprite->getGlobalBounds());
+
+	/*If im hit*/
+	if (player->getSheetName() == "hit_sheet")
+	{
+		SFXManager::getInstance()->mAudioList[4]->stopSong();
+		//if its currenlty playing dont play it again
+		if (SFXManager::getInstance()->mAudioList[1]->getSong()->getStatus() != 2)SFXManager::getInstance()->mAudioList[1]->playSong();
+
+	}
+
+
 	}
 

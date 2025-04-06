@@ -37,6 +37,9 @@ void Player::initialize()
 	HammerBehaviour* hammerBehaviour = new HammerBehaviour("HammerBehaviour");
 	this->attachComponent(hammerBehaviour);
 
+	HitBehaviour* hitBehaviour = new HitBehaviour("HitBehaviour");
+	this->attachComponent(hitBehaviour);
+
 	/*Add colliders*/
 	this->collider = new Collider("PlayerCollider");
 	this->collider->setLocalBounds(frameSprite->getGlobalBounds());
@@ -52,6 +55,9 @@ void Player::processInput(sf::Event event)
 }
 
 void Player::update(sf::Time deltaTime) {
+
+	hitTimer -= deltaTime.asSeconds();
+
 	previousPosition = frameSprite->getPosition();
 	if (!bGrounded) {  // Apply gravity only when not grounded
 		velocity.y += 9.8f * deltaTime.asSeconds();
@@ -93,7 +99,7 @@ void Player::onCollisionEnter(AGameObject* object)
 	if (object->getName().find("barrel") != std::string::npos)
 	{
 		std::cout << "Player: Collided with " << object->getName() << "\n";
-		//changeSpriteState("hit_sheet");
+		changeSpriteState("hit_sheet");
 		return;
 	}
 
@@ -101,6 +107,7 @@ void Player::onCollisionEnter(AGameObject* object)
 	if (object->getName().find("barrel") != std::string::npos && bHammer)
 	{
 		std::cout << "Player: Collided with " << object->getName() << "\n";
+		
 		return;
 	}
 	

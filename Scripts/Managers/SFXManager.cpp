@@ -14,10 +14,20 @@ SFXManager* SFXManager::getInstance()
 
 void SFXManager::loadAll()
 {
-    loadAudio("1", "Assets/SFX/EnemyGunfire.wav");
-    loadAudio("2", "Assets/SFX/Explosion1.wav");
-    loadAudio("3", "Assets/SFX/Explosion2.wav");
-    loadAudio("4", "Assets/SFX/LaunchMissile.wav");
+    //0
+    loadAudio("hammer_sfx", "Assets/SFX/hammer.wav");
+
+    //1
+    loadAudio("hit_sfx", "Assets/SFX/hit.wav");
+
+    //2
+    loadAudio("intro_sfx", "Assets/SFX/intro.wav");
+    
+    //3
+    loadAudio("jumping_sfx", "Assets/SFX/jumping.wav");
+
+    //4
+    loadAudio("walking_sfx", "Assets/SFX/walking.wav");
 }
 
 void SFXManager::loadAudio(std::string key, std::string path)

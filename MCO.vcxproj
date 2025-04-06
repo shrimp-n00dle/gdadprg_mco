@@ -142,6 +142,7 @@
     <ClCompile Include="Scripts\Components\FrameComponents\BarrelBehaviour.cpp" />
     <ClCompile Include="Scripts\Components\FrameComponents\CBehaviour.cpp" />
     <ClCompile Include="Scripts\Components\FrameComponents\FrameSwticher.cpp" />
+    <ClCompile Include="Scripts\Components\FrameComponents\HitBehaviour.cpp" />
     <ClCompile Include="Scripts\Components\FrameComponents\KBehaviour.cpp" />
     <ClCompile Include="Scripts\Components\FrameComponents\LadderBehaviour.cpp" />
     <ClCompile Include="Scripts\Components\FrameComponents\PBehaviour.cpp" />
@@ -220,6 +221,7 @@
     <ClInclude Include="Scripts\Components\FrameComponents\BarrelBehaviour.hpp" />
     <ClInclude Include="Scripts\Components\FrameComponents\CBehaviour.hpp" />
     <ClInclude Include="Scripts\Components\FrameComponents\FrameSwticher.hpp" />
+    <ClInclude Include="Scripts\Components\FrameComponents\HitBehaviour.hpp" />
     <ClInclude Include="Scripts\Components\FrameComponents\KBehaviour.hpp" />
     <ClInclude Include="Scripts\Components\FrameComponents\LadderBehaviour.hpp" />
     <ClInclude Include="Scripts\Components\FrameComponents\PBehaviour.hpp" />
