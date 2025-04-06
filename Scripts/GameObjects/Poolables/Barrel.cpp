@@ -100,7 +100,7 @@ void Barrel::onCollisionEnter(AGameObject* object)
 	/*Collision on the platform*/
 	if (object->getName().find("Checker1") != std::string::npos)
 	{
-		std::cout << "Barrel collided with checker!!!!!" << std::endl;
+		//std::cout << "Barrel collided with checker!!!!!" << std::endl;
 		onGround = false;
 		if (bLeft) bLeft = false;
 		else if (!bLeft) bLeft = true;
@@ -109,23 +109,10 @@ void Barrel::onCollisionEnter(AGameObject* object)
 	/*Collision on the platform*/
 	if (object->getName().find("Checker2") != std::string::npos)
 	{
-		std::cout << "CHECKER2" << std::endl;
+		//std::cout << "CHECKER2" << std::endl;
 		onGround = false;
 	}
 
 }
-void Barrel::onCollisionExit(AGameObject* object) 
-{
-	/*if (object->getName().find("level1Map") != std::string::npos)
-	{
-		onGround = false;
-		if (bLeft) bLeft = false;
-		else if (!bLeft) bLeft = true;
-	}*/
-
-	if (object->getName().find("Checker2") != std::string::npos)
-	{
-		std::cout << "I left" << std::endl;
-	}
-}
+void Barrel::onCollisionExit(AGameObject* object) {}
 

@@ -95,13 +95,7 @@ void Level1Map::initialize()
 	*/
 }
 
-void Level1Map::onCollisionEnter(AGameObject* object)
-{
-	std::cout << "Collision detected with " << object->getName() << std::endl;
-}
+void Level1Map::onCollisionEnter(AGameObject* object) {}
 
-void Level1Map::onCollisionExit(AGameObject* object)
-{
-	std::cout << "platform collide done" << std::endl;
-}
+void Level1Map::onCollisionExit(AGameObject* object) {}
 

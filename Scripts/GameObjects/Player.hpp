@@ -41,6 +41,11 @@ public:
 
 	float hitTimer = 0.2f;
 
+	// Passive score generation
+	float passiveScoreTimer = 0.0f;
+	const float PASSIVE_SCORE_INTERVAL = 5.0f; // 5 seconds
+	const int PASSIVE_SCORE_AMOUNT = 500;      // 500 points
+
 private:
 	const float SPEED_MULTIPLIER = 300.0f;
 	std::string sheetName = "";

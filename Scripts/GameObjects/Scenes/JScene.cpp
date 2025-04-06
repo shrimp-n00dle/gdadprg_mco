@@ -31,8 +31,6 @@ void JScene::onLoadObjects()
 	LadderHandler* ladderHandler = new LadderHandler(1, "ladderHandler", ladderManager);
 	ladderManager->attachComponent(ladderHandler);
 	this->registerObject(ladderManager);
-	
-
 
 	/*Barrel Checker*/
 	Checker* checker = new Checker("Checker1");
@@ -50,7 +48,7 @@ void JScene::onLoadObjects()
 	Checker* checker4 = new Checker("Checker2");
 	checker4->setChildPosition(200, 290);
 	this->registerObject(checker4);
-
+	
 	/*B*/
 	Checker* checker5 = new Checker("Checker1");
 	checker5->setChildPosition(-70, 340);

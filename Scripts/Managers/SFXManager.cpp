@@ -208,7 +208,7 @@ bool SFXManager::loadBGM(const std::string& path)
 
 void SFXManager::playBGM()
 {
-    if (bgMusic->getStatus() != sf::Music::Playing)
+    if (bgMusic->getStatus() != sf::Music::Playing || !bBGMPlaying)
     {
         bgMusic->play();
         bBGMPlaying = true;

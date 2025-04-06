@@ -93,6 +93,14 @@ void Player::update(sf::Time deltaTime) {
 	//	debugTimer = sf::Time::Zero;
 	//}
 
+	passiveScoreTimer += deltaTime.asSeconds();
+	if (passiveScoreTimer >= PASSIVE_SCORE_INTERVAL) {
+		ScoreManager::getInstance()->addScore(PASSIVE_SCORE_AMOUNT);
+		passiveScoreTimer = 0.0f;
+		std::cout << "Added " << PASSIVE_SCORE_AMOUNT << " passive points! Total: "
+			<< ScoreManager::getInstance()->getScore() << std::endl;
+	}
+
 	if (!bLadder && !bGrounded) {  // Apply gravity only when not grounded
 		velocity.y += 9.8f * deltaTime.asSeconds();
 
@@ -135,6 +143,7 @@ void Player::onCollisionEnter(AGameObject* object)
 		//std::cout << "Player: Collided with " << object->getName() << "\n";
 		ResultScreen* resultScreen = (ResultScreen*)GameObjectManager::getInstance()->findObjectByName("ResultScreen");
 		resultScreen->setEnabled(true);
+		SFXManager::getInstance()->setBGMLoop(false);
 		SFXManager::getInstance()->stopBGM();
 		SFXManager::getInstance()->playSound(AudioKeys::VICTORY);
 		ApplicationManager::getInstance()->pauseApplication();
@@ -191,6 +200,7 @@ void Player::onCollisionEnter(AGameObject* object)
 		//std::cout << "Player: Collided with " << object->getName() << "\n";
 
 		/*Switch the frame to hammer mode*/
+		ScoreManager::getInstance()->addScore(500);
 		changeSpriteState("hammer_sheet");
 		return;
 	}

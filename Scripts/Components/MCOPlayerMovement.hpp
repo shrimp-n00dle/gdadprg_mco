@@ -13,14 +13,17 @@ public:
 	void perform();
 	bool bLadder = false;
 	bool bHop = false;
+
 private:
 	float timer = 10.0f;
 	float jumpTimer = 0.5f;
 	const float SPEED_MULTIPLIER = 300.0f;
 	const float JUMP_MULTIPLIER = 4.0f;
-	const float BULLET_SPAWN_INTERVAL = 2.0f;
 	float ticks = 0.0f;
-	GameObjectPool* projectilePool;
 
+	bool bHasHit = false;
+	float hitDelay = 0.0f;
+	const float HIT_SOUND_DURATION = 3.0f; // Adjust based on your hit sound length
+	GameObjectPool* projectilePool;
 };
 

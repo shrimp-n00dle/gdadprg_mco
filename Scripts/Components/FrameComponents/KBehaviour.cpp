@@ -24,6 +24,7 @@ void KBehaviour::perform()
 			EGameObject* barrelManager = new EGameObject("BarrelManager");
 			BarrelHandler* barrelHandler = new BarrelHandler(1, "BarrelHandler", barrelManager);
 			barrelManager->attachComponent(barrelHandler);
+			// sir if u see this it's fine-- this just overlays on top of the pause/results screen
 			SceneManager::getInstance()->getActiveScene()->registerObject(barrelManager);
 		}
 	}

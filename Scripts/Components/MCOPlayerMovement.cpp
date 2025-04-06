@@ -14,9 +14,28 @@ void MCOPlayerMovement::perform()
 		std::cout << "playerTransformable not found" << std::endl;
 	}
 
+	// Handle hit delay and scene transition
+	if (bHasHit)
+	{
+		hitDelay += deltaTime.asSeconds();
+		SFXManager::getInstance()->stopBGM();
+		if (hitDelay >= HIT_SOUND_DURATION)
+		{
+			// Reset hit state
+			hitDelay = 0.0f;
+
+			// Return to main menu
+			SceneManager::getInstance()->loadScene(SceneManager::MAIN_MENU_SCENE_NAME);
+			return; // Exit early to prevent further movement
+		}
+		return;
+	}
+
 	/*If im hit*/
 	if (player->getSheetName() == "hit_sheet")
 	{
+		bHasHit = true;
+		hitDelay = 0.0f;
 		SFXManager::getInstance()->stopSound(AudioKeys::WALKING);
 		SFXManager::getInstance()->stopBGM();
 		if (!SFXManager::getInstance()->isSoundPlaying(AudioKeys::HIT))
@@ -32,7 +51,7 @@ void MCOPlayerMovement::perform()
 
 	this->ticks += this->deltaTime.asSeconds();
 
-	if (player->bLadder)
+	if (player->bLadder && !bHasHit)
 	{
 		player->velocity = sf::Vector2f(0.0f, 0.0f);
 		if (inputController->isUp())
@@ -48,7 +67,7 @@ void MCOPlayerMovement::perform()
 		}
 		offset = sf::Vector2f(0.0f, 0.0f);
 	}
-	if (inputController->isRight())
+	if (inputController->isRight() && !bHasHit)
 	{
 		if (player->bLadder) offset.x += SPEED_MULTIPLIER * 0.3f;
 		else offset.x += SPEED_MULTIPLIER;
@@ -61,7 +80,7 @@ void MCOPlayerMovement::perform()
 			SFXManager::getInstance()->playSound(AudioKeys::WALKING);
 		}
 	}
-	else if (inputController->isLeft())
+	else if (inputController->isLeft() && !bHasHit)
 	{
 		if (player->bLadder) offset.x -= SPEED_MULTIPLIER * 0.3f;
 		else offset.x -= SPEED_MULTIPLIER;
@@ -75,7 +94,7 @@ void MCOPlayerMovement::perform()
 		}
 	}
 
-	if (!player->bLadder && !player->bHammer)
+	if (!player->bLadder && !player->bHammer && !bHasHit)
 	{
 		if (inputController->isJump() && !bHop && player->isGrounded()
 			&& player->getSheetName() != "hit_sheet")
@@ -99,7 +118,7 @@ void MCOPlayerMovement::perform()
 	player->getCollider()->setLocalBounds(player->frameSprite->getGlobalBounds());
 
 	// Stop walking sound when hammer is active
-	if (player->bHammer)
+	if (player->bHammer && !bHasHit)
 	{
 		SFXManager::getInstance()->stopSound(AudioKeys::WALKING);
 		SFXManager::getInstance()->pauseBGM();
@@ -108,7 +127,8 @@ void MCOPlayerMovement::perform()
 			SFXManager::getInstance()->playSound(AudioKeys::HAMMER);
 		}
 	}
-	else {
+	else if (!bHasHit)  // Only play BGM if not in hit state
+	{
 		SFXManager::getInstance()->playBGM();
 	}
 }
