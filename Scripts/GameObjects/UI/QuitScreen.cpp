@@ -23,6 +23,7 @@ void QuitScreen::initialize()
 	transformable.setScale(sf::Vector2f(0.7f, 0.7f));
 
 	sf::Texture* btnNormal = TextureManager::getInstance()->getTexture("blank_bg");
+	sf::Texture* btnPressed = TextureManager::getInstance()->getTexture("clicked_bg");
 
 	UIText* menu_Text = new UIText("inquiry_text");
 	this->attachChild(menu_Text);
@@ -31,7 +32,7 @@ void QuitScreen::initialize()
 	menu_Text->setFont("oldnesfont");
 	menu_Text->setTextStyled("ARE YOU SURE YOU WANT TO QUIT THE GAME?");
 
-	UIButton* button1 = new UIButton("button_yes", btnNormal, btnNormal);
+	UIButton* button1 = new UIButton("button_yes", btnNormal, btnPressed);
 	this->attachChild(button1);
 	button1->setChildPosition(-130, 150);
 	button1->getTransformable()->setScale(0.3f, 0.3f);
@@ -43,7 +44,7 @@ void QuitScreen::initialize()
 	button1_Text->setSize(100);
 	button1_Text->setText("YES");
 
-	UIButton* button2 = new UIButton("button_no", btnNormal, btnNormal);
+	UIButton* button2 = new UIButton("button_no", btnNormal, btnPressed);
 	this->attachChild(button2);
 	button2->setChildPosition(130,150);
 	button2->getTransformable()->setScale(0.3f, 0.3f);

@@ -4,6 +4,7 @@ MainMenuScreen::MainMenuScreen(std::string name) : AGameObject(name), ButtonList
 
 void MainMenuScreen::initialize()
 {
+	ApplicationManager::getInstance()->resumeApplication();
 	sf::Sprite* sprite = new sf::Sprite();
 	sprite->setTexture(*TextureManager::getInstance()->getTexture("menu_bg"));
 	sf::Vector2u textureSize = sprite->getTexture()->getSize();
@@ -19,8 +20,9 @@ void MainMenuScreen::initialize()
 	transformable.setScale(sf::Vector2f(0.8f, 0.8f));
 
 	sf::Texture* btnNormal = TextureManager::getInstance()->getTexture("blank_bg");
+	sf::Texture* btnPressed = TextureManager::getInstance()->getTexture("clicked_bg");
 
-	UIButton* button1 = new UIButton("button_1", btnNormal, btnNormal);
+	UIButton* button1 = new UIButton("button_1", btnNormal, btnPressed);
 	this->attachChild(button1);
 	button1->setChildPosition(0,300);
 	button1->getTransformable()->setScale(0.3f, 0.3f);
@@ -34,7 +36,7 @@ void MainMenuScreen::initialize()
 	button1_Text->setSize(85);
 	button1_Text->setText("PLAY DEMO");
 
-	UIButton* button2 = new UIButton("button_2", btnNormal, btnNormal);
+	UIButton* button2 = new UIButton("button_2", btnNormal, btnPressed);
 	this->attachChild(button2);
 	button2->setChildPosition(0,400);
 	button2->getTransformable()->setScale(0.3f, 0.3f);
@@ -55,8 +57,9 @@ void MainMenuScreen::initialize()
 	credits->setText("2025, VINGNO & CAO");
 }
 
-void MainMenuScreen::onButtonClick(UIButton* button)
-{
+void MainMenuScreen::onButtonClick(UIButton* button) {}
+
+void MainMenuScreen::onButtonReleased(UIButton* button) {
 	//START GAME
 	if (button->getName() == "button_1")
 	{
@@ -72,8 +75,6 @@ void MainMenuScreen::onButtonClick(UIButton* button)
 		GameObjectManager::getInstance()->findObjectByName("QuitScreen")->setEnabled(true);
 	}
 }
-
-void MainMenuScreen::onButtonReleased(UIButton* button) {}
 
 void MainMenuScreen::update(sf::Time deltaTime)
 {

@@ -82,7 +82,8 @@ void ResultScreen::initialize()
 
     // Menu Button
     sf::Texture* btnNormal = TextureManager::getInstance()->getTexture("blank_bg");
-    UIButton* button = new UIButton("button_menu", btnNormal, btnNormal);
+    sf::Texture* btnPressed = TextureManager::getInstance()->getTexture("clicked_bg");
+    UIButton* button = new UIButton("button_menu", btnNormal, btnPressed);
     this->attachChild(button);
     button->setChildPosition(0, 170);
     button->getTransformable()->setScale(0.3f, 0.3f);

@@ -18,8 +18,8 @@ void ReturnScreen::initialize()
 	setChildPosition(Game::WINDOW_WIDTH / 2, Game::WINDOW_HEIGHT / 2);
 	transformable.setScale(sf::Vector2f(0.7f, 0.7f));
 
-	sf::Texture* btnNormal = TextureManager::getInstance()->getTexture("btn_normal");
-	sf::Texture* btnPressed = TextureManager::getInstance()->getTexture("btn_pressed");
+	sf::Texture* btnNormal = TextureManager::getInstance()->getTexture("blank_bg");
+	sf::Texture* btnPressed = TextureManager::getInstance()->getTexture("clicked_bg");
 
 	UIText* menu_Text = new UIText("inquiry_text");
 	this->attachChild(menu_Text);
