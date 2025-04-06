@@ -32,7 +32,7 @@ void Barrel::update(sf::Time deltaTime)
 	}
 	else if (!isGrounded())
 	{
-		this->getTransformable()->move(0, 9.8f);
+		this->getTransformable()->move(0, 9.8f * deltaTime.asSeconds());
 	}
 	/*Animation purposes*/
 	timer -= deltaTime.asSeconds();
@@ -107,5 +107,10 @@ void Barrel::onCollisionExit(AGameObject* object)
 		if (bLeft) bLeft = false;
 		else if (!bLeft) bLeft = true;
 	}*/
+
+	if (object->getName().find("Checker2") != std::string::npos)
+	{
+		std::cout << "I left" << std::endl;
+	}
 }
 

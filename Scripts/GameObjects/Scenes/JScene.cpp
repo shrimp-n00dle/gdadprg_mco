@@ -34,18 +34,52 @@ void JScene::onLoadObjects()
 
 	/*Barrel Checker*/
 	Checker* checker = new Checker("Checker1");
-	/*sprite->setPosition(platformBounds[i].left, platformBounds[i].top);*/
-	//sprite->setSize(sf::Vector2f(platformBounds[i].width, platformBounds[i].height));
 	checker->setChildPosition(750,250);
 	this->registerObject(checker);
 
 	Checker* checker2 = new Checker("Checker2");
-	checker2->setChildPosition(350, 300);
+	checker2->setChildPosition(540, 290);
 	this->registerObject(checker2);
 
-	Checker* checker3 = new Checker("Checker1");
-	checker3->setChildPosition(20, 350);
+	Checker* checker3 = new Checker("Checker2");
+	checker3->setChildPosition(400, 290);
 	this->registerObject(checker3);
+
+	Checker* checker5 = new Checker("Checker2");
+	checker5->setChildPosition(300, 290);
+	this->registerObject(checker5);
+
+	Checker* checker6 = new Checker("Checker2");
+	checker6->setChildPosition(200, 290);
+	this->registerObject(checker6);
+
+	Checker* checker7 = new Checker("Checker2");
+	checker7->setChildPosition(100, 290);
+	this->registerObject(checker7);
+	
+	//Checker* checker8 = new Checker("Checker2");
+	//checker8->setChildPosition(150, 290);
+	//this->registerObject(checker7);
+
+	Checker* checker4 = new Checker("Checker1");
+	checker4->setChildPosition(-25, 350);
+	this->registerObject(checker4);
+
+	/*Checker* checker3 = new Checker("Checker2");
+	checker3->setChildPosition(500, 290);
+	this->registerObject(checker3);
+
+	Checker* checker4 = new Checker("Checker2");
+	checker4->setChildPosition(450, 290);
+	this->registerObject(checker4);*/
+
+	//Checker* checker2 = new Checker("Checker2");
+	//checker2->setChildPosition(350, 300);
+	//this->registerObject(checker2);
+
+	/*Checker* checker3 = new Checker("Checker1");
+	checker3->setChildPosition(20, 350);
+	this->registerObject(checker3);*/
 
 	//Checker* checker3 = new Checker("Checker");
 	//checker3->setChildPosition(600, 250);

@@ -28,7 +28,7 @@ void Checker::initialize()
 	checkerSprite = new sf::RectangleShape();
 	checkerSprite->setPosition(0, 0);
 	checkerSprite->setOrigin(0, 0);
-	checkerSprite->setSize(sf::Vector2f(20, 20));
+	checkerSprite->setSize(sf::Vector2f(70, 35));
 	checkerSprite->setFillColor(sf::Color(0, 255, 0, 100));  // Semi-transparent Blue
 	checkerSprite->setOutlineColor(sf::Color::Blue);
 	checkerSprite->setOutlineThickness(2);

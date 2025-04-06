@@ -23,6 +23,7 @@ public:
 	void onCollisionEnter(AGameObject* object);
 	void onCollisionExit(AGameObject* object);
 	sf::Sprite* frameSprite;
+	sf::RectangleShape* shape;
 	bool onGround = false;
 	bool bLeft = true;
 	bool isGrounded() const { return onGround; }
