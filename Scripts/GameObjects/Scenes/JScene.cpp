@@ -38,8 +38,7 @@ void JScene::onLoadObjects()
 
 	/*Barrel Checker*/
 	Checker* checker = new Checker("Checker1");
-	checker->setChildPosition(600, 250);
-	//checker->setChildPosition(750,250);
+	checker->setChildPosition(670, 250);
 	this->registerObject(checker);
 
 	Checker* checker2 = new Checker("Checker2");
@@ -47,56 +46,64 @@ void JScene::onLoadObjects()
 	this->registerObject(checker2);
 
 	Checker* checker3 = new Checker("Checker2");
-	checker3->setChildPosition(400, 290);
-	this->registerObject(checker3);
-
-	Checker* checker5 = new Checker("Checker2");
-	checker5->setChildPosition(300, 290);
-	this->registerObject(checker5);
-
-	Checker* checker6 = new Checker("Checker2");
-	checker6->setChildPosition(200, 290);
-	this->registerObject(checker6);
-
-	Checker* checker7 = new Checker("Checker2");
-	checker7->setChildPosition(100, 290);
-	this->registerObject(checker7);
-	
-	//Checker* checker8 = new Checker("Checker2");
-	//checker8->setChildPosition(150, 290);
-	//this->registerObject(checker7);
-
-	Checker* checker4 = new Checker("Checker1");
-	checker4->setChildPosition(-20, 350);
-	this->registerObject(checker4);
-
-	/*Checker* checker3 = new Checker("Checker2");
-	checker3->setChildPosition(500, 290);
+	checker3->setChildPosition(350, 290);
 	this->registerObject(checker3);
 
 	Checker* checker4 = new Checker("Checker2");
-	checker4->setChildPosition(450, 290);
-	this->registerObject(checker4);*/
+	checker4->setChildPosition(200, 290);
+	this->registerObject(checker4);
 
-	//Checker* checker2 = new Checker("Checker2");
-	//checker2->setChildPosition(350, 300);
-	//this->registerObject(checker2);
+	/*B*/
+	Checker* checker5 = new Checker("Checker1");
+	checker5->setChildPosition(-70, 340);
+	this->registerObject(checker5);
 
-	/*Checker* checker3 = new Checker("Checker1");
-	checker3->setChildPosition(20, 350);
-	this->registerObject(checker3);*/
+	Checker* checker6 = new Checker("Checker1");
+	checker6->setChildPosition(670, 400);
+	this->registerObject(checker6);
 
-	//Checker* checker3 = new Checker("Checker");
-	//checker3->setChildPosition(600, 250);
-	//this->registerObject(checker3);
+	Checker* checker7 = new Checker("Checker2");
+	checker7->setChildPosition(200, 390);
+	this->registerObject(checker7);
 
-	//Checker* checker4 = new Checker("Checker");
-	//checker4->setChildPosition(600, 250);
-	//this->registerObject(checker4);
+	Checker* checker8 = new Checker("Checker2");
+	checker8->setChildPosition(350, 390);
+	this->registerObject(checker8);
 
-	//Checker* checker5 = new Checker("Checker");
-	//checker4->setChildPosition(600, 250);
-	//this->registerObject(checker4);
+	/*C*/
+
+	Checker* checker9 = new Checker("Checker2");
+	checker9->setChildPosition(350, 490);
+	this->registerObject(checker9);
+
+	Checker* checker10 = new Checker("Checker2");
+	checker10->setChildPosition(150, 490);
+	this->registerObject(checker10);
+
+	Checker* checker11 = new Checker("Checker1");
+	checker11->setChildPosition(-70, 520);
+	this->registerObject(checker11);
+
+	/*D*/
+	Checker* checker12 = new Checker("Checker1");
+	checker12->setChildPosition(670, 600);
+	this->registerObject(checker12);
+
+	Checker* checker13 = new Checker("Checker2");
+	checker13->setChildPosition(350, 590);
+	this->registerObject(checker13);
+
+
+	/*E*/
+	Checker* checker14 = new Checker("Checker2");
+	checker14->setChildPosition(250, 680);
+	this->registerObject(checker14);
+
+
+
+
+
+
 	
 	/*Hammer*/
 	srand(time(nullptr));

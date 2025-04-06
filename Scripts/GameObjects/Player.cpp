@@ -79,18 +79,18 @@ void Player::update(sf::Time deltaTime) {
 
 	// Debug output for platforms every 2 seconds
 	debugTimer += deltaTime;
-	if (debugTimer >= sf::seconds(2.0f)) {
-		std::cout << "\n=== Current Platforms Colliding With ===" << std::endl;
-		if (platformsCollidingWith.empty()) {
-			std::cout << "No platforms currently colliding" << std::endl;
-		} else {
-			for (Collider* platform : platformsCollidingWith) {
-				std::cout << "Platform: " << platform->getName() << std::endl;
-			}
-		}
-		std::cout << "====================================\n" << std::endl;
-		debugTimer = sf::Time::Zero;
-	}
+	//if (debugTimer >= sf::seconds(2.0f)) {
+	//	std::cout << "\n=== Current Platforms Colliding With ===" << std::endl;
+	//	if (platformsCollidingWith.empty()) {
+	//		std::cout << "No platforms currently colliding" << std::endl;
+	//	} else {
+	//		for (Collider* platform : platformsCollidingWith) {
+	//			std::cout << "Platform: " << platform->getName() << std::endl;
+	//		}
+	//	}
+	//	std::cout << "====================================\n" << std::endl;
+	//	debugTimer = sf::Time::Zero;
+	//}
 
 	if (!bLadder && !bGrounded) {  // Apply gravity only when not grounded
 		velocity.y += 9.8f * deltaTime.asSeconds();
@@ -124,7 +124,7 @@ void Player::update(sf::Time deltaTime) {
 			mainOffset = frameSprite->getPosition().y;
 		frameSprite->setPosition(frameSprite->getPosition().x, mainOffset);
 
-		std::cout << "sprite pos y = " << frameSprite->getPosition().y << std::endl;
+		//std::cout << "sprite pos y = " << frameSprite->getPosition().y << std::endl;
 		// bc i do NOT want to see another collision bounds again, i'm brute forcing the end part
 		// player has to stand on the highest platform
 		if (frameSprite->getPosition().y <= 106.f)

@@ -93,7 +93,7 @@ std::vector<APoolable*> GameObjectPool::requestPoolableBatch(int size)
 that obj to availableObjects list while setting the corresponding flags*/
 void GameObjectPool::releasePoolable(APoolable* poolableObject)
 {
-	for (int i = 0; i < usedObjects.size(); i++)
+	/*for (int i = 0; i < usedObjects.size(); i++)
 	{
 		if (usedObjects[i]->isEnabled() && usedObjects[i] == poolableObject)
 		{
@@ -102,7 +102,7 @@ void GameObjectPool::releasePoolable(APoolable* poolableObject)
 			usedObjects[i]->setEnabled(false);
 			usedObjects.erase(usedObjects.begin() + i);
 		}
-	}
+	}*/
 	/*for (int i = 0; i < usedObjects.size(); i++)
 	{
 		if (usedObjects[i]->isEnabled() && usedObjects[i] == poolableObject)
@@ -115,7 +115,7 @@ void GameObjectPool::releasePoolable(APoolable* poolableObject)
 
 	// Search for the list of current used object in usedObjects then move that object to availableObjects list while setting the corresponding enabled flags
 
-	/*int index = -1;
+	int index = -1;
 
 	for (int i = 0; i < this->usedObjects.size() && index == -1; i++) {
 		if (this->usedObjects[i] == poolableObject)
@@ -126,7 +126,7 @@ void GameObjectPool::releasePoolable(APoolable* poolableObject)
 		this->availableObjects.push_back(poolableObject);
 		this->usedObjects.erase(this->usedObjects.begin() + index);
 		this->setEnabled(poolableObject, false);
-	}*/
+	}
 		//if (objCounter > 200) return;
 
 		/*poolableObject->setEnabled(false);
