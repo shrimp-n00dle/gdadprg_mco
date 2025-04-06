@@ -1,9 +1,6 @@
 #include "MainMenuScreen.hpp"
 
-MainMenuScreen::MainMenuScreen(std::string name) : AGameObject(name), ButtonListener()
-{
-
-}
+MainMenuScreen::MainMenuScreen(std::string name) : AGameObject(name), ButtonListener() {}
 
 void MainMenuScreen::initialize()
 {
@@ -63,9 +60,10 @@ void MainMenuScreen::onButtonClick(UIButton* button)
 	//START GAME
 	if (button->getName() == "button_1")
 	{
-		
-		SceneManager::getInstance()->loadScene(SceneManager::MCOGAME_SCENE_NAME);
-		ApplicationManager::getInstance()->resumeApplication();
+		// Play intro sound and start delay
+		SFXManager::getInstance()->playSound(AudioKeys::INTRO);
+		isIntroPlaying = true;
+		introDelay = 0.0f;
 	}
 
 	//QUIT 
@@ -76,4 +74,20 @@ void MainMenuScreen::onButtonClick(UIButton* button)
 }
 
 void MainMenuScreen::onButtonReleased(UIButton* button) {}
+
+void MainMenuScreen::update(sf::Time deltaTime)
+{
+	if (isIntroPlaying)
+	{
+		introDelay += deltaTime.asSeconds();
+		
+		// Wait for the intro sound to finish before changing scenes
+		if (introDelay >= INTRO_SOUND_DURATION)
+		{
+			isIntroPlaying = false;
+			SceneManager::getInstance()->loadScene(SceneManager::MCOGAME_SCENE_NAME);
+			ApplicationManager::getInstance()->resumeApplication();
+		}
+	}
+}
 

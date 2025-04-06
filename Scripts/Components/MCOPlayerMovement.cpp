@@ -43,16 +43,11 @@ void MCOPlayerMovement::perform()
 		playerTransformable->move(offset * deltaTime.asSeconds());
 
 		/*Adding walking effects*/
-		if (player->getSheetName() == "walk_sheet")
+		if (player->getSheetName() == "walk_sheet" && !SFXManager::getInstance()->isSoundPlaying(AudioKeys::WALKING))
 		{
-			SFXManager::getInstance()->mAudioList[0]->stopSong();
-			//if its currenlty playing dont play it again
-			if (SFXManager::getInstance()->mAudioList[4]->getSong()->getStatus() != 2)SFXManager::getInstance()->mAudioList[4]->playSong();
-
+			SFXManager::getInstance()->playSound(AudioKeys::WALKING);
 		}
-	
 	}
-
 	else if (inputController->isLeft())
 	{
 		if (player->bLadder) offset.x -= SPEED_MULTIPLIER * 0.3f;
@@ -61,12 +56,9 @@ void MCOPlayerMovement::perform()
 		playerTransformable->move(offset * deltaTime.asSeconds());
 
 		/*Adding walking effects*/
-		if (player->getSheetName() == "walk_sheet")
+		if (player->getSheetName() == "walk_sheet" && !SFXManager::getInstance()->isSoundPlaying(AudioKeys::WALKING))
 		{
-			SFXManager::getInstance()->mAudioList[0]->stopSong();
-			//if its currenlty playing dont play it again
-			if (SFXManager::getInstance()->mAudioList[4]->getSong()->getStatus() != 2)SFXManager::getInstance()->mAudioList[4]->playSong();
-
+			SFXManager::getInstance()->playSound(AudioKeys::WALKING);
 		}
 	}
 
@@ -81,7 +73,7 @@ void MCOPlayerMovement::perform()
 			bHop = true;
 
 			/*Adding jumping effects*/
-			SFXManager::getInstance()->mAudioList[3]->playSong();
+			SFXManager::getInstance()->playSound(AudioKeys::JUMPING);
 		}
 
 	}	
@@ -95,12 +87,31 @@ void MCOPlayerMovement::perform()
 	/*If im hit*/
 	if (player->getSheetName() == "hit_sheet")
 	{
-		SFXManager::getInstance()->mAudioList[4]->stopSong();
-		//if its currenlty playing dont play it again
-		if (SFXManager::getInstance()->mAudioList[1]->getSong()->getStatus() != 2)SFXManager::getInstance()->mAudioList[1]->playSong();
-
+		SFXManager::getInstance()->stopSound(AudioKeys::WALKING);
+		if (!SFXManager::getInstance()->isSoundPlaying(AudioKeys::HIT))
+		{
+			SFXManager::getInstance()->playSound(AudioKeys::HIT);
+		}
 	}
 
-
+	// Stop walking sound when hammer is active
+	if (player->bHammer)
+	{
+		SFXManager::getInstance()->stopSound(AudioKeys::WALKING);
+		if (!SFXManager::getInstance()->isSoundPlaying(AudioKeys::HAMMER))
+		{
+			SFXManager::getInstance()->playSound(AudioKeys::HAMMER);
+		}
 	}
+
+	// Play hit sound
+	if (player->getSheetName() == "hit_sheet")
+	{
+		SFXManager::getInstance()->stopSound(AudioKeys::WALKING);
+		if (!SFXManager::getInstance()->isSoundPlaying(AudioKeys::HIT))
+		{
+			SFXManager::getInstance()->playSound(AudioKeys::HIT);
+		}
+	}
+}
 

@@ -35,7 +35,10 @@ void HammerBehaviour::perform()
 
 		/*add hammer music*/
 		//if its currenlty playing dont play it again
-		if (SFXManager::getInstance()->mAudioList[0]->getSong()->getStatus() != 2)SFXManager::getInstance()->mAudioList[0]->playSong();
+		if (!SFXManager::getInstance()->isSoundPlaying(AudioKeys::HAMMER))
+		{
+			SFXManager::getInstance()->playSound(AudioKeys::HAMMER);
+		}
 
 		
 

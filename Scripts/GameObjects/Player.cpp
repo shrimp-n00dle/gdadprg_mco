@@ -46,6 +46,9 @@ void Player::initialize()
 	HammerBehaviour* hammerBehaviour = new HammerBehaviour("HammerBehaviour");
 	this->attachComponent(hammerBehaviour);
 
+	HitBehaviour* hitBehaviour = new HitBehaviour("HitBehaviour");
+	this->attachComponent(hitBehaviour);
+
 	/* Debug Lines for the bounding boxes */
 	sf::RectangleShape* boundingBox = new sf::RectangleShape();
 	boundingBox->setPosition(this->collider->getLocalBounds().left, this->collider->getLocalBounds().top);
@@ -55,9 +58,6 @@ void Player::initialize()
 	boundingBox->setOutlineColor(sf::Color::Red);
 	boundingBox->setOutlineThickness(2);
 	
-	HitBehaviour* hitBehaviour = new HitBehaviour("HitBehaviour");
-	this->attachComponent(hitBehaviour);
-
 	Renderer* boundingRenderer = new Renderer("PlayerCollisionBounds");
 	boundingRenderer->assignDrawable(boundingBox);
 	this->attachComponent(boundingRenderer);
@@ -123,16 +123,6 @@ void Player::update(sf::Time deltaTime) {
 		else
 			mainOffset = frameSprite->getPosition().y;
 		frameSprite->setPosition(frameSprite->getPosition().x, mainOffset);
-
-		std::cout << "sprite pos y = " << frameSprite->getPosition().y << std::endl;
-		// bc i do NOT want to see another collision bounds again, i'm brute forcing the end part
-		// player has to stand on the highest platform
-		if (frameSprite->getPosition().y <= 106.f)
-		{
-			ResultScreen* resultScreen = (ResultScreen*)GameObjectManager::getInstance()->findObjectByName("ResultScreen");
-			resultScreen->setEnabled(true);
-			ApplicationManager::getInstance()->pauseApplication();
-		}
 	}
 
 	AGameObject::update(deltaTime);
@@ -144,6 +134,7 @@ void Player::onCollisionEnter(AGameObject* object)
 		std::cout << "Player: Collided with " << object->getName() << "\n";
 		ResultScreen* resultScreen = (ResultScreen*)GameObjectManager::getInstance()->findObjectByName("ResultScreen");
 		resultScreen->setEnabled(true);
+		SFXManager::getInstance()->playSound(AudioKeys::VICTORY);
 		ApplicationManager::getInstance()->pauseApplication();
 		return;
 	}

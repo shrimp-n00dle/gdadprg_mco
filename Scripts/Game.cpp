@@ -23,7 +23,7 @@ Game::Game() : mWindow(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "MCO Donkey K
     SceneManager::getInstance()->registerScene(new SpriteScene());
 
     //load first scene
-    SceneManager::getInstance()->loadScene(SceneManager::MCOGAME_SCENE_NAME);
+    SceneManager::getInstance()->loadScene(SceneManager::MAIN_MENU_SCENE_NAME);
 }
 
 void Game::run()
@@ -94,23 +94,29 @@ void Game::render()
 
 void Game::handleAudioInput(sf::Keyboard::Key key, bool isPressed)
 {
+    if (!isPressed) return;
+
     switch(key)
     {
         case sf::Keyboard::Num1:
-        bAudio1 = isPressed;
-        break;
+            SFXManager::getInstance()->playSound(AudioKeys::HAMMER);
+            break;
 
         case sf::Keyboard::Num2:
-        bAudio2 = isPressed;
-        break;
+            SFXManager::getInstance()->playSound(AudioKeys::HIT);
+            break;
 
         case sf::Keyboard::Num3:
-        bAudio3 = isPressed;
-        break;
+            SFXManager::getInstance()->playSound(AudioKeys::INTRO);
+            break;
 
         case sf::Keyboard::Num4:
-        bAudio4 = isPressed;
-        break;
+            SFXManager::getInstance()->playSound(AudioKeys::JUMPING);
+            break;
+
+        case sf::Keyboard::Num5:
+            SFXManager::getInstance()->playSound(AudioKeys::WALKING);
+            break;
     }
 }
 
