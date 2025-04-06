@@ -63,7 +63,6 @@ void TextureManager::loadAll()
     storeTexture("btn_pause", "Assets/UI/pause.png");
 
     /*SPRITE FRAMES*/
-    storeTexture("jump_sprite", "Assets/MCOAssets/SpriteSheets/Walk/Walk2.png");
     storeTexture("sprite_sheet", "Assets/SpriteSheets/Dota_Sheet.png");
     storeTexture("walk_sheet", "Assets/MCOAssets/SpriteSheet/Walk/Walk.png");
     storeTexture("climb_sheet", "Assets/MCOAssets/SpriteSheet/Climb/Climb.png");

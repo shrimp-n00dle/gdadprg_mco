@@ -1,5 +1,3 @@
-# gdadprg_mco
-
 DONKEY KONG
 
 Group Names:
