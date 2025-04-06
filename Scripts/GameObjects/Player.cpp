@@ -9,13 +9,14 @@ Player::Player(std::string name) : AGameObject(name), CollisionListener()
 
 void Player::initialize()
 {
+
+	/*sprite initialization*/
 	frameSprite = new sf::Sprite();
 	frameSprite->setTexture(*TextureManager::getInstance()->getTexture("walk_sheet"));
 	sf::Vector2u textureSize = frameSprite->getTexture()->getSize();
 	frameSprite->setOrigin(textureSize.x / 2.0f, textureSize.y / 2.0f);
-	//this->transformable.setPosition(400.0f,80.0f);
-	
 	setChildPosition(150.0f, 60.0f);
+
 	/*Add colliders*/
 	this->collider = new Collider("PlayerCollider");
 	this->collider->setLocalBounds(frameSprite->getGlobalBounds());
@@ -30,22 +31,29 @@ void Player::initialize()
 	renderer->assignDrawable(frameSprite);
 	attachComponent(renderer);
 
+	/*Behaviour Components Added*/
 
+	//For checking players input on the keyboard
 	MCOPlayerInput* inputController = new MCOPlayerInput("MCOPlayerInput");
 	this->attachComponent(inputController);
 
+	//The feedback from the keyboards pressed
 	MCOPlayerMovement* movement = new MCOPlayerMovement("MCOMovement");
 	this->attachComponent(movement);
 
+	//Focuses on the frame by frame animation of player walk
 	WalkBehaviour* walkBehaviour = new WalkBehaviour("WalkBehaviour");
 	this->attachComponent(walkBehaviour);
 
+	//Focuses on the frame by frame animation of player climb
 	LadderBehaviour* ladderBehaviour = new LadderBehaviour("LadderBehaviour");
 	this->attachComponent(ladderBehaviour);
 
+	//Focuses on the frame by frame animation of player hammer 
 	HammerBehaviour* hammerBehaviour = new HammerBehaviour("HammerBehaviour");
 	this->attachComponent(hammerBehaviour);
 
+	//Focuses on the frame by frame animation when the player is hit
 	HitBehaviour* hitBehaviour = new HitBehaviour("HitBehaviour");
 	this->attachComponent(hitBehaviour);	
 }
@@ -56,13 +64,12 @@ void Player::processInput(sf::Event event)
 }
 
 void Player::update(sf::Time deltaTime) {
-	// Update previous position with last frame's final position
-
+	
+	//The hitTimer and hammerTimer holds how fast the frames pass for the Hit and Hammer mode of the player
 	hitTimer -= deltaTime.asSeconds();
 	hammerTimer -= deltaTime.asSeconds();
 
 	previousPosition = frameSprite->getPosition();
-
 
 	// Debug output for platforms every 2 seconds
 	debugTimer += deltaTime;
@@ -125,8 +132,8 @@ void Player::update(sf::Time deltaTime) {
 
 void Player::onCollisionEnter(AGameObject* object)
 {
-	if (object->getName().find("Goal") != std::string::npos) {
-		//std::cout << "Player: Collided with " << object->getName() << "\n";
+	if (object->getName().find("Goal") != std::string::npos) 
+	{
 		ResultScreen* resultScreen = (ResultScreen*)GameObjectManager::getInstance()->findObjectByName("ResultScreen");
 		resultScreen->setEnabled(true);
 		SFXManager::getInstance()->setBGMLoop(false);
@@ -139,7 +146,6 @@ void Player::onCollisionEnter(AGameObject* object)
 	/*Eliminate player*/
 	if (object->getName().find("barrel") != std::string::npos)
 	{
-		//std::cout << "Player: Collided with " << object->getName() << "\n";
 		changeSpriteState("hit_sheet");
 		return;
 	}
@@ -152,26 +158,10 @@ void Player::onCollisionEnter(AGameObject* object)
 		barrelPool->releasePoolable((APoolable*)this);
 		return;
 	}
-	
-	/*Attacked by fireballs and no hammer*/
-	if (object->getName().find("enemy") != std::string::npos && !bHammer)
-	{
-		//std::cout << "Player: Collided with " << object->getName() << "\n";
-		//changeSpriteState("hit_sheet");
-		return;
-	}
-
-	/*Attacked by fireballs with hammer*/
-	if (object->getName().find("enemy") != std::string::npos && bHammer)
-	{
-		//std::cout << "Player: Collided with " << object->getName() << "\n";
-		return;
-	}
 
 	/*Ladder collision with player*/
 	if (object->getName().find("ladder") != std::string::npos && !bHammer)
 	{
-		//std::cout << "Player: Collided with " << object->getName() << "\n";
 		/*Ladder Behaviour initialized the sprite*/
 		if (!bLadder)
 		{
@@ -184,8 +174,6 @@ void Player::onCollisionEnter(AGameObject* object)
 	/*Hammer collision with player*/
 	if (object->getName().find("hammer") != std::string::npos)
 	{
-		//std::cout << "Player: Collided with " << object->getName() << "\n";
-
 		/*Switch the frame to hammer mode*/
 		ScoreManager::getInstance()->addScore(500);
 		changeSpriteState("hammer_sheet");

@@ -2,6 +2,7 @@
 
 HammerHandler::HammerHandler(int numHammers, std::string name, AGameObject* parent) : AComponent(name, Script)
 {
+	/*Object Pooling*/
 	HammerPool = new GameObjectPool(ObjectPoolHolder::HAMMER_POOL_TAG, new Hammer("hammer"), numHammers, parent);
 
 

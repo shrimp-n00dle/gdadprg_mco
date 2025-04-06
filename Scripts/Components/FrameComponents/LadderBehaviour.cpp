@@ -32,10 +32,11 @@ void LadderBehaviour::perform()
 			}
 		}
 
+		//If the player is no longer collidng with the ladder, go back to default sprite sheet/walk sheet
 		if (frameObj->bLadder == false && frameObj->bHammer == false) frameObj->changeSpriteState("walk_sheet");
 
 
-		/*if its a negative number, or is beyond 38 go to the beginning of the list and set coutner to 0 or 38*/
+		/*if its a negative number, or is beyond, go to the beginning of the list and set coutner to 0 or the maximum*/
 		if (counter > 3) counter = 0;
 		else if (counter < 0) counter = 3;
 

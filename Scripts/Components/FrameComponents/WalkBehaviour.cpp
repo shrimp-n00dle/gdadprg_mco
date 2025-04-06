@@ -11,6 +11,8 @@ void WalkBehaviour::perform()
 	MCOPlayerInput* frameInputController = (MCOPlayerInput*)(frameObj->getComponentsOfType(ComponentType::Input)[0]);
 	sf::Transformable* frameTransformable = frameObj->getTransformable();
 
+	/*If the current sprite sheet is the default/walk sheet, continue
+	If not, ignore the condition*/
 	if (frameObj->getSheetName() == "walk_sheet")
 	{
 		/*Checkers*/
@@ -27,12 +29,13 @@ void WalkBehaviour::perform()
 			counter++;
 			frameInputController->setRight(false);
 		}
+		//If the player wants to jump
 		else if (frameInputController->isJump())
 		{
 			counter = 2;
 		}
 
-		/*if its a negative number, or is beyond 38 go to the beginning of the list and set coutner to 0 or 38*/
+		/*if its a negative number, or is beyond, go to the beginning of the list and set coutner to 0 or the maximum*/
 		if (counter > 2) counter = 0;
 		else if (counter < 0) counter = 2;
 

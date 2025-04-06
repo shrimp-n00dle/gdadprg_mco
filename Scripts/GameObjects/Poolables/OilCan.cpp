@@ -19,6 +19,7 @@ APoolable* OilCan::clone()
 
 void OilCan::initialize()
 {
+	/*Sprite initialization*/
 	frameSprite = new sf::Sprite();
 	frameSprite->setTexture(*TextureManager::getInstance()->getTexture("can_sheet"));
 	sf::Vector2u textureSize = frameSprite->getTexture()->getSize();
@@ -41,6 +42,7 @@ void OilCan::initialize()
 
 void OilCan::update(sf::Time deltaTime)
 {
+	//Timer for how long the next frame will be called
 	timer -= deltaTime.asSeconds();
 	AGameObject::update(deltaTime);
 }

@@ -9,10 +9,12 @@ void KBehaviour::perform()
 {
 	Kong* frameObj = (Kong*)this->getOwner();
 
+	/*A timer is added so the frames can have an offset before calling the next frame*/
 	/*If timer is less than 0 seconds*/
 	if (frameObj->timer <= 0.0f)
 	{
 		counter++;
+		/*if its a negative number, or is beyond, go to the beginning of the list and set coutner to 0 or the maximum*/
 		if (counter >= 3) counter = 0;
 		frameObj->timer = 4.0f;
 
@@ -24,6 +26,7 @@ void KBehaviour::perform()
 			EGameObject* barrelManager = new EGameObject("BarrelManager");
 			BarrelHandler* barrelHandler = new BarrelHandler(1, "BarrelHandler", barrelManager);
 			barrelManager->attachComponent(barrelHandler);
+
 			// sir if u see this it's fine-- this just overlays on top of the pause/results screen
 			SceneManager::getInstance()->getActiveScene()->registerObject(barrelManager);
 		}

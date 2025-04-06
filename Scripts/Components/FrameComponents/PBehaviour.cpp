@@ -13,6 +13,7 @@ void PBehaviour::perform()
 		if (frameObj->timer <= 0.0f)
 		{
 			counter++;
+			/*if its a negative number, or is beyond, go to the beginning of the list and set coutner to 0 or the maximum*/
 			if (counter >= 2) counter = 0;
 			frameObj->timer = 2.0f;
 		}

@@ -10,9 +10,11 @@ void CBehaviour::perform()
 	OilCan* frameObj = (OilCan*)this->getOwner();
 
 	/*If timer is less than 0 seconds*/
+	/*A timer is added so the frames can have an offset before calling the next one*/
 	if (frameObj->timer <= 0.0f)
 	{
 		counter++;
+		/*if its a negative number, or is beyond, go to the beginning of the list and set coutner to 0 or the maximum*/
 		if (counter >= 2) counter = 0;
 		frameObj->timer = 1.0f;
 	}

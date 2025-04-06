@@ -19,6 +19,7 @@ APoolable* Princess::clone()
 
 void Princess::initialize()
 {
+	/*Sprite initialization*/
 	frameSprite = new sf::Sprite();
 	frameSprite->setTexture(*TextureManager::getInstance()->getTexture("princess_sheet"));
 	sf::Vector2u textureSize = frameSprite->getTexture()->getSize();
@@ -36,6 +37,7 @@ void Princess::initialize()
 
 void Princess::update(sf::Time deltaTime)
 {
+	//Timer for how long the next frame will be called
 	timer -= deltaTime.asSeconds();
 	AGameObject::update(deltaTime);
 }

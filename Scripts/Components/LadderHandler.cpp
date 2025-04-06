@@ -3,6 +3,7 @@
 
 LadderHandler::LadderHandler(int numLadders, std::string name, AGameObject* parent) : AComponent(name, Script)
 {
+	/*Object pooling*/
 	LadderPool = new GameObjectPool(ObjectPoolHolder::LADDER_POOL_TAG, new Ladder("ladder"), numLadders, parent);
 
 	LadderPool->initialize();
