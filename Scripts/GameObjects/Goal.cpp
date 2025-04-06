@@ -1,9 +1,17 @@
 #include "Goal.hpp"
 
+/**
+ * Constructor for Goal object
+ * @param name Name identifier for the goal object
+ */
 Goal::Goal(std::string name) : AGameObject(name)
 {
 }
 
+/**
+ * Initializes the goal object
+ * Creates a collider for the goal area and sets up debug visualization
+ */
 void Goal::initialize()
 {
     // Create a collider for the goal area
@@ -28,9 +36,17 @@ void Goal::initialize()
     */
 }
 
+/**
+ * Called when a collision with another object begins
+ * @param object The object that collided with the goal
+ */
 void Goal::onCollisionEnter(AGameObject* object)
 {}
 
+/**
+ * Called when a collision with another object ends
+ * @param object The object that stopped colliding with the goal
+ */
 void Goal::onCollisionExit(AGameObject* object)
 {
     // No special handling needed when player leaves the goal area

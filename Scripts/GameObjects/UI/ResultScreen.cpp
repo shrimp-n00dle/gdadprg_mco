@@ -1,9 +1,17 @@
 #include "ResultScreen.hpp"
 
+/**
+ * Constructor for ResultScreen object
+ * @param name Name identifier for the result screen
+ */
 ResultScreen::ResultScreen(std::string name) : AGameObject(name), ButtonListener()
 {
 }
 
+/**
+ * Initializes the result screen
+ * Sets up the background, text elements, and buttons for displaying game results
+ */
 void ResultScreen::initialize()
 {
     sf::Sprite* sprite = new sf::Sprite();
@@ -97,6 +105,11 @@ void ResultScreen::initialize()
     button_Text->setText("MAIN MENU");
 }
 
+/**
+ * Sets the enabled state of the result screen
+ * Updates score display when screen becomes visible
+ * @param flag true to enable the screen, false to disable it
+ */
 void ResultScreen::setEnabled(bool flag)
 {
     AGameObject::setEnabled(flag);
@@ -106,6 +119,10 @@ void ResultScreen::setEnabled(bool flag)
     }
 }
 
+/**
+ * Updates the score display with current score values
+ * Formats and displays score, bonus, and total values
+ */
 void ResultScreen::updateScoreDisplay()
 {
     // Format score with leading zeros
@@ -130,8 +147,17 @@ void ResultScreen::updateScoreDisplay()
     }
 }
 
+/**
+ * Called when a button is clicked
+ * @param button The button that was clicked
+ */
 void ResultScreen::onButtonClick(UIButton* button) {}
 
+/**
+ * Called when a button is released
+ * Handles navigation back to main menu
+ * @param button The button that was released
+ */
 void ResultScreen::onButtonReleased(UIButton* button)
 {
     if (button->getName() == "button_menu")

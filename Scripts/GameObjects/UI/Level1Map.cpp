@@ -1,9 +1,17 @@
 #include "Level1Map.hpp"
 
+/**
+ * Constructor for Level1Map object
+ * @param name Name identifier for the level 1 map
+ */
 Level1Map::Level1Map(std::string name) : AGameObject(name)
 {
 }
 
+/**
+ * Initializes the level 1 map
+ * Sets up the map sprite, colliders, and platform boundaries
+ */
 void Level1Map::initialize()
 {
 	sf::Sprite* mapSprite = new sf::Sprite();
@@ -95,7 +103,15 @@ void Level1Map::initialize()
 	*/
 }
 
+/**
+ * Called when a collision with another object begins
+ * @param object The object that collided with the map
+ */
 void Level1Map::onCollisionEnter(AGameObject* object) {}
 
+/**
+ * Called when a collision with another object ends
+ * @param object The object that stopped colliding with the map
+ */
 void Level1Map::onCollisionExit(AGameObject* object) {}
 

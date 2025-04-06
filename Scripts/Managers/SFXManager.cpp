@@ -3,6 +3,10 @@
 
 SFXManager* SFXManager::sharedInstance = nullptr;
 
+/**
+ * Returns the singleton instance of SFXManager, creating it if it doesn't exist
+ * @return Pointer to the SFXManager instance
+ */
 SFXManager* SFXManager::getInstance()
 {
     if (sharedInstance == nullptr)
@@ -12,12 +16,20 @@ SFXManager* SFXManager::getInstance()
     return sharedInstance;
 }
 
+/**
+ * Constructor for SFXManager
+ * Initializes background music and sets playing state to false
+ */
 SFXManager::SFXManager()
 {
     bgMusic = new sf::Music();
     bBGMPlaying = false;
 }
 
+/**
+ * Destructor for SFXManager
+ * Cleans up all sound buffers, playlists, and background music
+ */
 SFXManager::~SFXManager()
 {
     // Clean up all sound buffers
@@ -38,6 +50,10 @@ SFXManager::~SFXManager()
     delete bgMusic;
 }
 
+/**
+ * Loads all default audio files into the manager
+ * Includes hammer, hit, intro, jumping, walking, victory sounds and background music
+ */
 void SFXManager::loadAll()
 {
     loadAudio(AudioKeys::HAMMER, "Assets/SFX/hammer.wav");
@@ -49,6 +65,12 @@ void SFXManager::loadAll()
     loadBGM("Assets/SFX/25m.wav");
 }
 
+/**
+ * Loads a single audio file into the manager
+ * @param key Unique identifier for the audio
+ * @param path File path to the audio file
+ * @return true if audio was loaded successfully, false otherwise
+ */
 bool SFXManager::loadAudio(const std::string& key, const std::string& path)
 {
     // Check if audio is already loaded
@@ -77,6 +99,11 @@ bool SFXManager::loadAudio(const std::string& key, const std::string& path)
     return true;
 }
 
+/**
+ * Unloads an audio file from the manager
+ * @param key Unique identifier of the audio to unload
+ * @return true if audio was unloaded successfully
+ */
 bool SFXManager::unloadAudio(const std::string& key)
 {
     auto audioIt = AudioMap.find(key);
@@ -97,11 +124,21 @@ bool SFXManager::unloadAudio(const std::string& key)
     return true;
 }
 
+/**
+ * Checks if an audio file is currently loaded
+ * @param key Unique identifier of the audio to check
+ * @return true if audio is loaded, false otherwise
+ */
 bool SFXManager::isAudioLoaded(const std::string& key) const
 {
     return AudioMap.find(key) != AudioMap.end();
 }
 
+/**
+ * Gets the sound buffer for a specific audio key
+ * @param key Unique identifier of the audio
+ * @return Pointer to the sound buffer, or nullptr if not found
+ */
 sf::SoundBuffer* SFXManager::getAudio(const std::string& key)
 {
     auto it = AudioMap.find(key);
@@ -114,6 +151,11 @@ sf::SoundBuffer* SFXManager::getAudio(const std::string& key)
     return nullptr;
 }
 
+/**
+ * Gets the playlist for a specific audio key
+ * @param key Unique identifier of the audio
+ * @return Pointer to the playlist, or nullptr if not found
+ */
 Playlist* SFXManager::getPlaylist(const std::string& key)
 {
     auto it = PlaylistMap.find(key);
@@ -124,6 +166,10 @@ Playlist* SFXManager::getPlaylist(const std::string& key)
     return nullptr;
 }
 
+/**
+ * Plays a sound effect
+ * @param key Unique identifier of the sound to play
+ */
 void SFXManager::playSound(const std::string& key)
 {
     Playlist* playlist = getPlaylist(key);
@@ -133,6 +179,10 @@ void SFXManager::playSound(const std::string& key)
     }
 }
 
+/**
+ * Stops a sound effect
+ * @param key Unique identifier of the sound to stop
+ */
 void SFXManager::stopSound(const std::string& key)
 {
     Playlist* playlist = getPlaylist(key);
@@ -142,6 +192,10 @@ void SFXManager::stopSound(const std::string& key)
     }
 }
 
+/**
+ * Pauses a sound effect
+ * @param key Unique identifier of the sound to pause
+ */
 void SFXManager::pauseSound(const std::string& key)
 {
     Playlist* playlist = getPlaylist(key);
@@ -155,6 +209,11 @@ void SFXManager::pauseSound(const std::string& key)
     }
 }
 
+/**
+ * Checks if a sound is currently playing
+ * @param key Unique identifier of the sound to check
+ * @return true if sound is playing, false otherwise
+ */
 bool SFXManager::isSoundPlaying(const std::string& key) const
 {
     auto it = PlaylistMap.find(key);
@@ -166,6 +225,10 @@ bool SFXManager::isSoundPlaying(const std::string& key) const
     return false;
 }
 
+/**
+ * Sets the volume for all sounds (UNUSED)
+ * @param volume Volume level (0-100)
+ */
 void SFXManager::setVolume(float volume)
 {
     for (auto& pair : PlaylistMap)
@@ -175,6 +238,11 @@ void SFXManager::setVolume(float volume)
     }
 }
 
+/**
+ * Sets the pitch for a specific sound (UNUSED)
+ * @param key Unique identifier of the sound
+ * @param pitch Pitch value to set
+ */
 void SFXManager::setPitch(const std::string& key, float pitch)
 {
     Playlist* playlist = getPlaylist(key);
@@ -185,6 +253,11 @@ void SFXManager::setPitch(const std::string& key, float pitch)
     }
 }
 
+/**
+ * Sets the loop state for a specific sound
+ * @param key Unique identifier of the sound
+ * @param loop true to loop the sound, false to play once
+ */
 void SFXManager::setLoop(const std::string& key, bool loop)
 {
     Playlist* playlist = getPlaylist(key);
@@ -195,7 +268,11 @@ void SFXManager::setLoop(const std::string& key, bool loop)
     }
 }
 
-// BGM Methods
+/**
+ * Loads background music from a file
+ * @param path File path to the background music
+ * @return true if music was loaded successfully, false otherwise
+ */
 bool SFXManager::loadBGM(const std::string& path)
 {
     if (!bgMusic->openFromFile(path))
@@ -206,6 +283,9 @@ bool SFXManager::loadBGM(const std::string& path)
     return true;
 }
 
+/**
+ * Plays the background music
+ */
 void SFXManager::playBGM()
 {
     if (bgMusic->getStatus() != sf::Music::Playing || !bBGMPlaying)
@@ -215,12 +295,18 @@ void SFXManager::playBGM()
     }
 }
 
+/**
+ * Stops the background music
+ */
 void SFXManager::stopBGM()
 {
     bgMusic->stop();
     bBGMPlaying = false;
 }
 
+/**
+ * Pauses the background music
+ */
 void SFXManager::pauseBGM()
 {
     if (bgMusic->getStatus() == sf::Music::Playing)
@@ -230,21 +316,37 @@ void SFXManager::pauseBGM()
     }
 }
 
+/**
+ * Checks if background music is currently playing
+ * @return true if background music is playing, false otherwise
+ */
 bool SFXManager::isBGMPlaying() const
 {
     return bBGMPlaying;
 }
 
+/**
+ * Sets the loop state for background music
+ * @param loop true to loop the music, false to play once
+ */
 void SFXManager::setBGMLoop(bool loop)
 {
     bgMusic->setLoop(loop);
 }
 
+/**
+ * Sets the volume for background music
+ * @param volume Volume level (0-100)
+ */
 void SFXManager::setBGMVolume(float volume)
 {
     bgMusic->setVolume(volume);
 }
 
+/**
+ * Sets the playing offset for background music (UNUSED)
+ * @param seconds Time offset in seconds
+ */
 void SFXManager::setBGMOffset(float seconds)
 {
     bgMusic->setPlayingOffset(sf::seconds(seconds));

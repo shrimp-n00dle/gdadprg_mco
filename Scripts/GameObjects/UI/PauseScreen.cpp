@@ -1,9 +1,17 @@
 #include "PauseScreen.hpp"
 
+/**
+ * Constructor for PauseScreen object
+ * @param name Name identifier for the pause screen
+ */
 PauseScreen::PauseScreen(std::string name) : AGameObject(name), ButtonListener()
 {
 }
 
+/**
+ * Initializes the pause screen
+ * Sets up the background, text elements, and navigation buttons
+ */
 void PauseScreen::initialize()
 {
     sf::Sprite* sprite = new sf::Sprite();
@@ -56,8 +64,17 @@ void PauseScreen::initialize()
     button2_Text->setText("NO");
 }
 
+/**
+ * Called when a button is clicked
+ * @param button The button that was clicked
+ */
 void PauseScreen::onButtonClick(UIButton* button) {}
 
+/**
+ * Called when a button is released
+ * Handles navigation and game state changes
+ * @param button The button that was released
+ */
 void PauseScreen::onButtonReleased(UIButton* button) {
     if (button->getName() == "button_yes")
     {

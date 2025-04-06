@@ -1,10 +1,18 @@
 #include "QuitScreen.hpp"
 
+/**
+ * Constructor for QuitScreen object
+ * @param name Name identifier for the quit screen
+ */
 QuitScreen::QuitScreen(std::string name) : AGameObject(name), ButtonListener()
 {
 
 }
 
+/**
+ * Initializes the quit screen
+ * Sets up the background, text elements, and confirmation buttons
+ */
 void QuitScreen::initialize()
 {
 	//std::cout << "Declared as " << this->getName() << std::endl;
@@ -57,6 +65,11 @@ void QuitScreen::initialize()
 	button2_Text->setText("NO");
 }
 
+/**
+ * Called when a button is clicked
+ * Handles quit confirmation
+ * @param button The button that was clicked
+ */
 void QuitScreen::onButtonClick(UIButton* button)
 {
 	if (button->getName() == "button_yes")
@@ -69,5 +82,9 @@ void QuitScreen::onButtonClick(UIButton* button)
 	}
 }
 
+/**
+ * Called when a button is released
+ * @param button The button that was released
+ */
 void QuitScreen::onButtonReleased(UIButton* button) {}
 

@@ -2,10 +2,18 @@
 #include <sstream>
 #include <iomanip>
 
+/**
+ * Constructor for Level1UI object
+ * @param name Name identifier for the level 1 UI
+ */
 Level1UI::Level1UI(std::string name) : AGameObject(name), ButtonListener()
 {
 }
 
+/**
+ * Initializes the level 1 UI
+ * Sets up score displays, high score, level number, bonus score, and pause button
+ */
 void Level1UI::initialize()
 {
 	// 1UP Text
@@ -69,12 +77,21 @@ void Level1UI::initialize()
 	updateScoreDisplay();
 }
 
+/**
+ * Updates the level 1 UI state
+ * Updates score display and bonus score countdown
+ * @param deltaTime Time elapsed since last update
+ */
 void Level1UI::update(sf::Time deltaTime)
 {
 	updateScoreDisplay();
 	updateBonusScore(deltaTime);
 }
 
+/**
+ * Updates the score display with current values
+ * Formats and displays player score and high score
+ */
 void Level1UI::updateScoreDisplay()
 {
 	std::stringstream scoreStream;
@@ -86,6 +103,11 @@ void Level1UI::updateScoreDisplay()
 	highScoreText->setTextStyled(highScoreStream.str());
 }
 
+/**
+ * Updates the bonus score countdown
+ * Decreases bonus score over time and updates display
+ * @param deltaTime Time elapsed since last update
+ */
 void Level1UI::updateBonusScore(sf::Time deltaTime)
 {
 	bonusCountdown += deltaTime;
@@ -103,8 +125,17 @@ void Level1UI::updateBonusScore(sf::Time deltaTime)
 	}
 }
 
+/**
+ * Called when a button is clicked
+ * @param button The button that was clicked
+ */
 void Level1UI::onButtonClick(UIButton* button) {}
 
+/**
+ * Called when a button is released
+ * Handles pause button functionality
+ * @param button The button that was released
+ */
 void Level1UI::onButtonReleased(UIButton* button)
 {
 	if (button->getName() == "pause_button")

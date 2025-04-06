@@ -1,10 +1,24 @@
 #include "MainMenuScreen.hpp"
 
-MainMenuScreen::MainMenuScreen(std::string name) : AGameObject(name), ButtonListener() {}
+/**
+ * Constructor for MainMenuScreen object
+ * @param name Name identifier for the main menu screen
+ */
+MainMenuScreen::MainMenuScreen(std::string name) : AGameObject(name), ButtonListener()
+{
 
+}
+
+/**
+ * Initializes the main menu screen
+ * Sets up the background, text elements, and navigation buttons
+ */
 void MainMenuScreen::initialize()
 {
 	ApplicationManager::getInstance()->resumeApplication();
+	isIntroPlaying = false;
+	introDelay = 0.0f;
+
 	sf::Sprite* sprite = new sf::Sprite();
 	sprite->setTexture(*TextureManager::getInstance()->getTexture("menu_bg"));
 	sf::Vector2u textureSize = sprite->getTexture()->getSize();
@@ -20,14 +34,12 @@ void MainMenuScreen::initialize()
 	transformable.setScale(sf::Vector2f(0.8f, 0.8f));
 
 	sf::Texture* btnNormal = TextureManager::getInstance()->getTexture("blank_bg");
-	sf::Texture* btnPressed = TextureManager::getInstance()->getTexture("clicked_bg");
 
-	UIButton* button1 = new UIButton("button_1", btnNormal, btnPressed);
+	UIButton* button1 = new UIButton("button_1", btnNormal, btnNormal);
 	this->attachChild(button1);
 	button1->setChildPosition(0,300);
 	button1->getTransformable()->setScale(0.3f, 0.3f);
 	button1->setButtonListener(this);
-
 
 	UIText* button1_Text = new UIText("text_1");
 	button1->attachChild(button1_Text);
@@ -36,7 +48,7 @@ void MainMenuScreen::initialize()
 	button1_Text->setSize(85);
 	button1_Text->setText("PLAY DEMO");
 
-	UIButton* button2 = new UIButton("button_2", btnNormal, btnPressed);
+	UIButton* button2 = new UIButton("button_2", btnNormal, btnNormal);
 	this->attachChild(button2);
 	button2->setChildPosition(0,400);
 	button2->getTransformable()->setScale(0.3f, 0.3f);
@@ -57,9 +69,13 @@ void MainMenuScreen::initialize()
 	credits->setText("2025, VINGNO & CAO");
 }
 
-void MainMenuScreen::onButtonClick(UIButton* button) {}
-
-void MainMenuScreen::onButtonReleased(UIButton* button) {
+/**
+ * Called when a button is clicked
+ * Handles menu navigation and game start
+ * @param button The button that was clicked
+ */
+void MainMenuScreen::onButtonClick(UIButton* button)
+{
 	//START GAME
 	if (button->getName() == "button_1")
 	{
@@ -76,6 +92,17 @@ void MainMenuScreen::onButtonReleased(UIButton* button) {
 	}
 }
 
+/**
+ * Called when a button is released
+ * @param button The button that was released
+ */
+void MainMenuScreen::onButtonReleased(UIButton* button) {}
+
+/**
+ * Updates the main menu state
+ * Handles intro sound delay and scene transition
+ * @param deltaTime Time elapsed since last update
+ */
 void MainMenuScreen::update(sf::Time deltaTime)
 {
 	if (isIntroPlaying)
