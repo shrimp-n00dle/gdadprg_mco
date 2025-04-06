@@ -62,11 +62,13 @@ void PauseScreen::onButtonReleased(UIButton* button) {
     if (button->getName() == "button_yes")
     {
         // Return to main menu
+        SFXManager::getInstance()->stopBGM();
         SceneManager::getInstance()->loadScene(SceneManager::MAIN_MENU_SCENE_NAME);
     }
     else if (button->getName() == "button_no")
     {
         ApplicationManager::getInstance()->resumeApplication();
+        SFXManager::getInstance()->playBGM();
         this->setEnabled(false);
     }
 } 

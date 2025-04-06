@@ -14,6 +14,19 @@ void MCOPlayerMovement::perform()
 		std::cout << "playerTransformable not found" << std::endl;
 	}
 
+	/*If im hit*/
+	if (player->getSheetName() == "hit_sheet")
+	{
+		SFXManager::getInstance()->stopSound(AudioKeys::WALKING);
+		SFXManager::getInstance()->stopBGM();
+		if (!SFXManager::getInstance()->isSoundPlaying(AudioKeys::HIT))
+		{
+			SFXManager::getInstance()->setLoop(AudioKeys::HIT, false);
+			SFXManager::getInstance()->playSound(AudioKeys::HIT);
+		}
+		return;
+	}
+
 	sf::Vector2f offset(0.0f, 0.0f);
 	sf::Vector2f jumpOffset(0.0f, 0.0f);
 
@@ -64,7 +77,8 @@ void MCOPlayerMovement::perform()
 
 	if (!player->bLadder && !player->bHammer)
 	{
-		if (inputController->isJump() && !bHop && player->isGrounded())
+		if (inputController->isJump() && !bHop && player->isGrounded()
+			&& player->getSheetName() != "hit_sheet")
 		{
 			std::cout << "Jump initiated" << std::endl;
 			player->bGrounded = false;
@@ -84,34 +98,18 @@ void MCOPlayerMovement::perform()
 	
 	player->getCollider()->setLocalBounds(player->frameSprite->getGlobalBounds());
 
-	/*If im hit*/
-	if (player->getSheetName() == "hit_sheet")
-	{
-		SFXManager::getInstance()->stopSound(AudioKeys::WALKING);
-		if (!SFXManager::getInstance()->isSoundPlaying(AudioKeys::HIT))
-		{
-			SFXManager::getInstance()->playSound(AudioKeys::HIT);
-		}
-	}
-
 	// Stop walking sound when hammer is active
 	if (player->bHammer)
 	{
 		SFXManager::getInstance()->stopSound(AudioKeys::WALKING);
+		SFXManager::getInstance()->pauseBGM();
 		if (!SFXManager::getInstance()->isSoundPlaying(AudioKeys::HAMMER))
 		{
 			SFXManager::getInstance()->playSound(AudioKeys::HAMMER);
 		}
 	}
-
-	// Play hit sound
-	if (player->getSheetName() == "hit_sheet")
-	{
-		SFXManager::getInstance()->stopSound(AudioKeys::WALKING);
-		if (!SFXManager::getInstance()->isSoundPlaying(AudioKeys::HIT))
-		{
-			SFXManager::getInstance()->playSound(AudioKeys::HIT);
-		}
+	else {
+		SFXManager::getInstance()->playBGM();
 	}
 }
 

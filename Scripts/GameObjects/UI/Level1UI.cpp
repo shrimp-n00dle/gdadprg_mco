@@ -110,6 +110,7 @@ void Level1UI::onButtonReleased(UIButton* button)
 	if (button->getName() == "pause_button")
 	{
 		std::cout << "pause clicked" << std::endl;
+		SFXManager::getInstance()->pauseBGM();
 		PauseScreen* pauseScreen = (PauseScreen*)GameObjectManager::getInstance()->findObjectByName("PauseScreen");
 		pauseScreen->setEnabled(true);
 		ApplicationManager::getInstance()->pauseApplication();

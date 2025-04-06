@@ -14,7 +14,8 @@ SFXManager* SFXManager::getInstance()
 
 SFXManager::SFXManager()
 {
-    // Initialize any default values here
+    bgMusic = new sf::Music();
+    bBGMPlaying = false;
 }
 
 SFXManager::~SFXManager()
@@ -32,6 +33,9 @@ SFXManager::~SFXManager()
         delete pair.second;
     }
     PlaylistMap.clear();
+
+    // Clean up BGM
+    delete bgMusic;
 }
 
 void SFXManager::loadAll()
@@ -42,6 +46,7 @@ void SFXManager::loadAll()
     loadAudio(AudioKeys::JUMPING, "Assets/SFX/jumping.wav");
     loadAudio(AudioKeys::WALKING, "Assets/SFX/walking.wav");
     loadAudio(AudioKeys::VICTORY, "Assets/SFX/victory.wav");
+    loadBGM("Assets/SFX/25m.wav");
 }
 
 bool SFXManager::loadAudio(const std::string& key, const std::string& path)
@@ -188,6 +193,61 @@ void SFXManager::setLoop(const std::string& key, bool loop)
         sf::Sound* sound = playlist->getSong();
         sound->setLoop(loop);
     }
+}
+
+// BGM Methods
+bool SFXManager::loadBGM(const std::string& path)
+{
+    if (!bgMusic->openFromFile(path))
+    {
+        std::cout << "Failed to load BGM file: " << path << std::endl;
+        return false;
+    }
+    return true;
+}
+
+void SFXManager::playBGM()
+{
+    if (bgMusic->getStatus() != sf::Music::Playing)
+    {
+        bgMusic->play();
+        bBGMPlaying = true;
+    }
+}
+
+void SFXManager::stopBGM()
+{
+    bgMusic->stop();
+    bBGMPlaying = false;
+}
+
+void SFXManager::pauseBGM()
+{
+    if (bgMusic->getStatus() == sf::Music::Playing)
+    {
+        bgMusic->pause();
+        bBGMPlaying = false;
+    }
+}
+
+bool SFXManager::isBGMPlaying() const
+{
+    return bBGMPlaying;
+}
+
+void SFXManager::setBGMLoop(bool loop)
+{
+    bgMusic->setLoop(loop);
+}
+
+void SFXManager::setBGMVolume(float volume)
+{
+    bgMusic->setVolume(volume);
+}
+
+void SFXManager::setBGMOffset(float seconds)
+{
+    bgMusic->setPlayingOffset(sf::seconds(seconds));
 }
 
 

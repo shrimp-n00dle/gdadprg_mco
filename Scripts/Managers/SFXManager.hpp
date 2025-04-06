@@ -4,6 +4,7 @@
 #include "SFML/Graphics.hpp"
 #include "unordered_map"
 #include <string>
+#include <map>
 
 // Audio key constants
 namespace AudioKeys {
@@ -13,6 +14,7 @@ namespace AudioKeys {
     const std::string JUMPING = "jumping_sfx";
     const std::string WALKING = "walking_sfx";
     const std::string VICTORY = "victory";
+    const std::string BGM = "bgm";
 }
 
 /*All audio clippings from https://www.youtube.com/watch?v=GKYUNtGrShc 
@@ -38,6 +40,16 @@ public:
     void pauseSound(const std::string& key);
     bool isSoundPlaying(const std::string& key) const;
 
+    // BGM methods
+    bool loadBGM(const std::string& path);
+    void playBGM();
+    void stopBGM();
+    void pauseBGM();
+    bool isBGMPlaying() const;
+    void setBGMLoop(bool loop);
+    void setBGMVolume(float volume);
+    void setBGMOffset(float seconds);
+
     // Audio control
     void setVolume(float volume);
     void setPitch(const std::string& key, float pitch);
@@ -52,4 +64,6 @@ private:
     // Audio dictionary holding all the sounds of the game
     std::unordered_map<std::string, sf::SoundBuffer*> AudioMap;
     std::unordered_map<std::string, Playlist*> PlaylistMap;
+    sf::Music* bgMusic = nullptr;
+    bool bBGMPlaying = false;
 };

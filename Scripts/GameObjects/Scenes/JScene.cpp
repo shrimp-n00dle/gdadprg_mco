@@ -10,6 +10,10 @@ void JScene::onLoadObjects()
 	ScoreManager::getInstance()->resetBonusScore();
 	ScoreManager::getInstance()->resetScore();
 
+	SFXManager::getInstance()->stopBGM();
+	SFXManager::getInstance()->setBGMLoop(true);
+	SFXManager::getInstance()->playBGM();
+
 	/*Level*/
 	Level1Map* levelMap = new Level1Map("level1Map");
 	Player* player = new Player("player");

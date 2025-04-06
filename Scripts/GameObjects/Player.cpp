@@ -77,6 +77,7 @@ void Player::update(sf::Time deltaTime) {
 
 	previousPosition = frameSprite->getPosition();
 
+
 	// Debug output for platforms every 2 seconds
 	debugTimer += deltaTime;
 	if (debugTimer >= sf::seconds(2.0f)) {
@@ -134,6 +135,7 @@ void Player::onCollisionEnter(AGameObject* object)
 		std::cout << "Player: Collided with " << object->getName() << "\n";
 		ResultScreen* resultScreen = (ResultScreen*)GameObjectManager::getInstance()->findObjectByName("ResultScreen");
 		resultScreen->setEnabled(true);
+		SFXManager::getInstance()->stopBGM();
 		SFXManager::getInstance()->playSound(AudioKeys::VICTORY);
 		ApplicationManager::getInstance()->pauseApplication();
 		return;
