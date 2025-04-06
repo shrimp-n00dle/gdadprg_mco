@@ -47,7 +47,6 @@ APoolable* GameObjectPool::requestPoolable()
 	{
 		
 		APoolable* poolableObj = availableObjects[availableObjects.size() - 1];
-		std::cout << "POOLABLE NAME!:  " << poolableObj->getName() << std::endl;
 		availableObjects.erase(availableObjects.begin() + availableObjects.size() - 1);
 		usedObjects.push_back(poolableObj);
 		//std::cout << "Requested object Available: " << availableObjects.size() << " Used: " << usedObjects.size() << std::endl;
