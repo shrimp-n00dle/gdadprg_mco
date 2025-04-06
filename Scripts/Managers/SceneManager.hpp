@@ -21,6 +21,8 @@ public:
 	bool isSceneLoaded(std::string name);
 	void checkLoadScene();
 
+	AScene* getActiveScene();
+
 private:
 	SceneManager() {};
 	SceneManager(SceneManager const&) {}; //copy constructor is private

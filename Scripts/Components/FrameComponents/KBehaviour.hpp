@@ -7,6 +7,10 @@
 #include "rapidjson-1.1.0/include/rapidjson/document.h"
 #include "rapidjson-1.1.0/include/rapidjson/rapidjson.h"
 
+#include "../../GameObjects/EGameObject.hpp"
+#include "../../Managers/SceneManager.hpp"
+
+
 //unordered map of string
 typedef std::unordered_map<int, std::vector<int>> KList;
 

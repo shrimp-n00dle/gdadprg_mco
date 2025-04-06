@@ -2,15 +2,15 @@
 
 "Hammer0.png":
 {
-	"frame": {"x":0,"y":0,"w":14,"h":31},
+	"frame": {"x":0,"y":0,"w":25,"h":29},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":14,"h":31},
-	"sourceSize": {"w":14,"h":31}
+	"spriteSourceSize": {"x":0,"y":0,"w":25,"h":29},
+	"sourceSize": {"w":25,"h":29}
 },
 "Hammer1.png":
 {
-	"frame": {"x":0,"y":62,"w":27,"h":18},
+	"frame": {"x":0,"y":29,"w":27,"h":18},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":27,"h":18},
@@ -18,7 +18,7 @@
 },
 "Hammer2.png":
 {
-	"frame": {"x":0,"y":98,"w":29,"h":17},
+	"frame": {"x":0,"y":47,"w":29,"h":17},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":29,"h":17},
@@ -26,15 +26,15 @@
 },
 "Hammer3.png":
 {
-	"frame": {"x":0,"y":31,"w":17,"h":31},
+	"frame": {"x":0,"y":64,"w":25,"h":29},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":17,"h":31},
-	"sourceSize": {"w":17,"h":31}
+	"spriteSourceSize": {"x":0,"y":0,"w":25,"h":29},
+	"sourceSize": {"w":25,"h":29}
 },
 "Hammer4.png":
 {
-	"frame": {"x":0,"y":80,"w":28,"h":18},
+	"frame": {"x":0,"y":93,"w":28,"h":18},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":28,"h":18},
@@ -42,19 +42,19 @@
 },
 "Hammer5.png":
 {
-	"frame": {"x":14,"y":0,"w":15,"h":31},
+	"frame": {"x":0,"y":111,"w":25,"h":29},
 	"rotated": false,
 	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":15,"h":31},
-	"sourceSize": {"w":15,"h":31}
+	"spriteSourceSize": {"x":0,"y":0,"w":25,"h":29},
+	"sourceSize": {"w":25,"h":29}
 }},
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
 	"version": "1.0",
 	"image": "Hammer.png",
 	"format": "RGBA8888",
-	"size": {"w":29,"h":115},
+	"size": {"w":29,"h":140},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:23c11f488549d5a92defc6f1043b9522:3a5346a1209ce06ae8a2925375f1a71f:2ea91f991ea11d2e60c65245a78d8ccb$"
+	"smartupdate": "$TexturePacker:SmartUpdate:82adda3516c76aaf2b8b099dc89b3422:622ace773562676001d2ea613cf980ba:2ea91f991ea11d2e60c65245a78d8ccb$"
 }
 }

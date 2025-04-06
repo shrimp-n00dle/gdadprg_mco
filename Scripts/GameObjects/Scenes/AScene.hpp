@@ -16,9 +16,11 @@ public:
 	virtual void onUnloadObjects();
 
 	std::string getSceneName();
-protected:
+
 	//IMPORTANT: this must be  called for every object to be loaded/unloaded
 	void registerObject(AGameObject* object);
+protected:
+	
 	std::string sceneName;
 };
 

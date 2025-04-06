@@ -56,3 +56,8 @@ bool SceneManager::isSceneLoaded(std::string name)
 {
 	return this->activeScene->getSceneName() == name;
 }
+
+AScene* SceneManager::getActiveScene()
+{
+	return this->activeScene;
+}

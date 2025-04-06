@@ -80,18 +80,18 @@ void Player::update(sf::Time deltaTime) {
 
 	// Debug output for platforms every 2 seconds
 	debugTimer += deltaTime;
-	if (debugTimer >= sf::seconds(2.0f)) {
-		std::cout << "\n=== Current Platforms Colliding With ===" << std::endl;
-		if (platformsCollidingWith.empty()) {
-			std::cout << "No platforms currently colliding" << std::endl;
-		} else {
-			for (Collider* platform : platformsCollidingWith) {
-				std::cout << "Platform: " << platform->getName() << std::endl;
-			}
-		}
-		std::cout << "====================================\n" << std::endl;
-		debugTimer = sf::Time::Zero;
-	}
+	//if (debugTimer >= sf::seconds(2.0f)) {
+	//	std::cout << "\n=== Current Platforms Colliding With ===" << std::endl;
+	//	if (platformsCollidingWith.empty()) {
+	//		std::cout << "No platforms currently colliding" << std::endl;
+	//	} else {
+	//		for (Collider* platform : platformsCollidingWith) {
+	//			std::cout << "Platform: " << platform->getName() << std::endl;
+	//		}
+	//	}
+	//	std::cout << "====================================\n" << std::endl;
+	//	debugTimer = sf::Time::Zero;
+	//}
 
 	if (!bLadder && !bGrounded) {  // Apply gravity only when not grounded
 		velocity.y += 9.8f * deltaTime.asSeconds();
@@ -132,7 +132,7 @@ void Player::update(sf::Time deltaTime) {
 void Player::onCollisionEnter(AGameObject* object)
 {
 	if (object->getName().find("Goal") != std::string::npos) {
-		std::cout << "Player: Collided with " << object->getName() << "\n";
+		//std::cout << "Player: Collided with " << object->getName() << "\n";
 		ResultScreen* resultScreen = (ResultScreen*)GameObjectManager::getInstance()->findObjectByName("ResultScreen");
 		resultScreen->setEnabled(true);
 		SFXManager::getInstance()->stopBGM();
@@ -144,7 +144,7 @@ void Player::onCollisionEnter(AGameObject* object)
 	/*Eliminate player*/
 	if (object->getName().find("barrel") != std::string::npos)
 	{
-		std::cout << "Player: Collided with " << object->getName() << "\n";
+		//std::cout << "Player: Collided with " << object->getName() << "\n";
 		changeSpriteState("hit_sheet");
 		return;
 	}
@@ -152,7 +152,7 @@ void Player::onCollisionEnter(AGameObject* object)
 	/*If the player has a hammer, delete the barrel*/
 	if (object->getName().find("barrel") != std::string::npos && bHammer)
 	{
-		std::cout << "Player: Collided with " << object->getName() << "\n";
+		//std::cout << "Player: Collided with " << object->getName() << "\n";
 		
 		return;
 	}
@@ -160,7 +160,7 @@ void Player::onCollisionEnter(AGameObject* object)
 	/*Attacked by fireballs and no hammer*/
 	if (object->getName().find("enemy") != std::string::npos && !bHammer)
 	{
-		std::cout << "Player: Collided with " << object->getName() << "\n";
+		//std::cout << "Player: Collided with " << object->getName() << "\n";
 		//changeSpriteState("hit_sheet");
 		return;
 	}
@@ -168,14 +168,14 @@ void Player::onCollisionEnter(AGameObject* object)
 	/*Attacked by fireballs with hammer*/
 	if (object->getName().find("enemy") != std::string::npos && bHammer)
 	{
-		std::cout << "Player: Collided with " << object->getName() << "\n";
+		//std::cout << "Player: Collided with " << object->getName() << "\n";
 		return;
 	}
 
 	/*Ladder collision with player*/
 	if (object->getName().find("ladder") != std::string::npos && !bHammer)
 	{
-		std::cout << "Player: Collided with " << object->getName() << "\n";
+		//std::cout << "Player: Collided with " << object->getName() << "\n";
 		/*Ladder Behaviour initialized the sprite*/
 		if (!bLadder)
 		{
@@ -188,7 +188,7 @@ void Player::onCollisionEnter(AGameObject* object)
 	/*Hammer collision with player*/
 	if (object->getName().find("hammer") != std::string::npos)
 	{
-		std::cout << "Player: Collided with " << object->getName() << "\n";
+		//std::cout << "Player: Collided with " << object->getName() << "\n";
 
 		/*Switch the frame to hammer mode*/
 		changeSpriteState("hammer_sheet");
@@ -198,7 +198,7 @@ void Player::onCollisionEnter(AGameObject* object)
 	/*Platform collision with player*/
 	if (object->getName().find("level1Map") != std::string::npos)
 	{
-		std::cout << "Player: Collided with " << object->getName() << "\n";
+		//std::cout << "Player: Collided with " << object->getName() << "\n";
 
 		Collider* playerCollider = dynamic_cast<Collider*>(this->findComponentByType(AComponent::Physics, "PlayerCollider"));
 		std::vector<AComponent*> platformColliders = object->getComponentsOfType(AComponent::Physics);
@@ -207,7 +207,7 @@ void Player::onCollisionEnter(AGameObject* object)
 		for (AComponent* component : platformColliders) {
 			Collider* platformCollider = dynamic_cast<Collider*>(component);
 			if (platformCollider && platformCollider->hasCollisionWith(playerCollider)) {
-				std::cout << "Found colliding platform: " << platformCollider->getName() << std::endl;
+				//std::cout << "Found colliding platform: " << platformCollider->getName() << std::endl;
 
 				sf::FloatRect playerBounds = playerCollider->getGlobalBounds();
 				sf::FloatRect platformBounds = platformCollider->getGlobalBounds();
