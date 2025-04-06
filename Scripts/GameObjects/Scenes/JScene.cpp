@@ -67,7 +67,6 @@ void JScene::onLoadObjects()
 	this->registerObject(checker8);
 
 	/*C*/
-
 	Checker* checker9 = new Checker("Checker2");
 	checker9->setChildPosition(350, 490);
 	this->registerObject(checker9);

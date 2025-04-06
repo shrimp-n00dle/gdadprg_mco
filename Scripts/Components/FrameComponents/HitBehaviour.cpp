@@ -30,7 +30,8 @@ void HitBehaviour::perform()
 				coord = traverseList(counter);
 	
 		}
-		
+	
+
 		/*Sprite Rendering*/
 		currSprite = sf::IntRect(coord[0], coord[1], coord[2], coord[3]);
 		frameObj->frameSprite->setTextureRect(currSprite);

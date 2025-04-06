@@ -25,17 +25,17 @@ APoolable* Checker::clone()
 
 void Checker::initialize()
 {
-	checkerSprite = new sf::RectangleShape();
-	checkerSprite->setPosition(0, 0);
-	checkerSprite->setOrigin(0, 0);
-	checkerSprite->setSize(sf::Vector2f(70, 35));
-	checkerSprite->setFillColor(sf::Color(0, 255, 0, 100));  // Semi-transparent Blue
-	checkerSprite->setOutlineColor(sf::Color::Blue);
-	checkerSprite->setOutlineThickness(2);
+	//checkerSprite = new sf::RectangleShape();
+	//checkerSprite->setPosition(0, 0);
+	//checkerSprite->setOrigin(0, 0);
+	//checkerSprite->setSize(sf::Vector2f(70, 35));
+	//checkerSprite->setFillColor(sf::Color(0, 255, 0, 100));  // Semi-transparent Blue
+	//checkerSprite->setOutlineColor(sf::Color::Blue);
+	//checkerSprite->setOutlineThickness(2);
 
-	Renderer* renderer = new Renderer("CheckerSprite");
-	renderer->assignDrawable(checkerSprite);
-	attachComponent(renderer);
+	//Renderer* renderer = new Renderer("CheckerSprite");
+	//renderer->assignDrawable(checkerSprite);
+	//attachComponent(renderer);
 
 	this->collider = new Collider("CheckerCollider");
 	this->collider->setLocalBounds(checkerSprite->getGlobalBounds());

@@ -74,6 +74,7 @@ void Player::update(sf::Time deltaTime) {
 	// Update previous position with last frame's final position
 
 	hitTimer -= deltaTime.asSeconds();
+	hammerTimer -= deltaTime.asSeconds();
 
 	previousPosition = frameSprite->getPosition();
 
@@ -161,8 +162,9 @@ void Player::onCollisionEnter(AGameObject* object)
 	/*If the player has a hammer, delete the barrel*/
 	if (object->getName().find("barrel") != std::string::npos && bHammer)
 	{
-		//std::cout << "Player: Collided with " << object->getName() << "\n";
-		
+		/*Delete hammer clone*/
+		GameObjectPool* barrelPool = ObjectPoolHolder::getInstance()->getPool(ObjectPoolHolder::BARREL_POOL_TAG);
+		barrelPool->releasePoolable((APoolable*)this);
 		return;
 	}
 	
