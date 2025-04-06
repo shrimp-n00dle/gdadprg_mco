@@ -58,21 +58,9 @@ void Barrel::initialize()
 	this->collider->setCollisionListener(this);
 	this->attachComponent(this->collider);
 
-	sf::RectangleShape* boundingBox = new sf::RectangleShape();
-	boundingBox->setPosition(frameSprite->getGlobalBounds().left + 40, frameSprite->getGlobalBounds().top - 10);
-	boundingBox->setOrigin(0, 0);
-	boundingBox->setSize(sf::Vector2f(frameSprite->getGlobalBounds().width/3, frameSprite->getGlobalBounds().height));
-	boundingBox->setFillColor(sf::Color(0, 255, 0, 100));  // Semi-transparent green
-	boundingBox->setOutlineColor(sf::Color::Red);
-	boundingBox->setOutlineThickness(2);
-
 	Renderer* renderer = new Renderer("BarrelSprite");
 	renderer->assignDrawable(frameSprite);
 	attachComponent(renderer);
-
-	Renderer* renderer2 = new Renderer("BarrelSpriteCollider");
-	renderer2->assignDrawable(boundingBox);
-	attachComponent(renderer2);
 
 	BarrelBehaviour* barrelBehaviour = new BarrelBehaviour("BarrelBehaviour");
 	this->attachComponent(barrelBehaviour);

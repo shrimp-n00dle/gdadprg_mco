@@ -47,22 +47,7 @@ void Player::initialize()
 	this->attachComponent(hammerBehaviour);
 
 	HitBehaviour* hitBehaviour = new HitBehaviour("HitBehaviour");
-	this->attachComponent(hitBehaviour);
-
-	/* Debug Lines for the bounding boxes */
-	sf::RectangleShape* boundingBox = new sf::RectangleShape();
-	boundingBox->setPosition(this->collider->getLocalBounds().left, this->collider->getLocalBounds().top);
-	boundingBox->setOrigin(0, 0);
-	boundingBox->setSize(sf::Vector2f(this->collider->getLocalBounds().width, this->collider->getLocalBounds().height));
-	boundingBox->setFillColor(sf::Color(0, 0, 255, 100));  // Semi-transparent blue
-	boundingBox->setOutlineColor(sf::Color::Red);
-	boundingBox->setOutlineThickness(2);
-	
-	Renderer* boundingRenderer = new Renderer("PlayerCollisionBounds");
-	boundingRenderer->assignDrawable(boundingBox);
-	this->attachComponent(boundingRenderer);
-
-	
+	this->attachComponent(hitBehaviour);	
 }
 
 void Player::processInput(sf::Event event) 
