@@ -40,6 +40,7 @@ public:
 	std::set<Collider*> platformsCollidingWith;
 
 	float hitTimer = 0.2f;
+	float hammerTimer = 0.2f;
 
 private:
 	const float SPEED_MULTIPLIER = 300.0f;

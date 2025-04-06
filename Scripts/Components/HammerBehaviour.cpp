@@ -15,7 +15,7 @@ void HammerBehaviour::perform()
 		timer -= deltaTime.asSeconds();
 		//std::cout << timer << std::endl;
 
-		if (frameInputController->isLeft())
+	/*	if (frameInputController->isLeft())
 		{
 			counter--;
 			frameInputController->setLeft(false);
@@ -24,6 +24,13 @@ void HammerBehaviour::perform()
 		{
 			counter++;
 			frameInputController->setRight(false);
+		}*/
+
+		if (frameObj->hammerTimer <= 0.0f)
+		{
+			counter++;
+			frameObj->hammerTimer = 0.2f;
+
 		}
 		if (timer <= 0.0f)
 		{
