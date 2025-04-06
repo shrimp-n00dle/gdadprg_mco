@@ -29,12 +29,6 @@ void JScene::onLoadObjects()
 	this->registerObject(ladderManager);
 	
 
-	/*Barrel*/
-	srand(time(nullptr));
-	EGameObject* barrelManager = new EGameObject("BarrelManager");
-	BarrelHandler* barrelHandler = new BarrelHandler(1, "BarrelHandler", barrelManager);
-	barrelManager->attachComponent(barrelHandler);
-	this->registerObject(barrelManager);
 
 	/*Barrel Checker*/
 	Checker* checker = new Checker("Checker1");
@@ -93,17 +87,10 @@ void JScene::onLoadObjects()
 	checker13->setChildPosition(350, 590);
 	this->registerObject(checker13);
 
-
 	/*E*/
 	Checker* checker14 = new Checker("Checker2");
 	checker14->setChildPosition(250, 680);
 	this->registerObject(checker14);
-
-
-
-
-
-
 	
 	/*Hammer*/
 	srand(time(nullptr));

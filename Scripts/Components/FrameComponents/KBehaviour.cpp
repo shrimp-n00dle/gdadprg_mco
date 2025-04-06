@@ -15,6 +15,17 @@ void KBehaviour::perform()
 		counter++;
 		if (counter >= 3) counter = 0;
 		frameObj->timer = 4.0f;
+
+
+		if (counter == 2)
+		{
+			/*Barrel*/
+			srand(time(nullptr));
+			EGameObject* barrelManager = new EGameObject("BarrelManager");
+			BarrelHandler* barrelHandler = new BarrelHandler(1, "BarrelHandler", barrelManager);
+			barrelManager->attachComponent(barrelHandler);
+			SceneManager::getInstance()->getActiveScene()->registerObject(barrelManager);
+		}
 	}
 
 	coord = traverseList(counter);
